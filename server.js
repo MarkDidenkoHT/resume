@@ -1,34 +1,18 @@
-const path = require('path');
 const express = require('express');
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
 const cors = require('cors');
-const multer = require('multer');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(helmet());
 app.use(cors());
-app.use(express.json({ limit: '1mb' }));
-app.use(express.urlencoded({ extended: true, limit: '1mb' }));
-
-const apiLimiter = rateLimit({
-	max: 100,
-	windowMs: 15 * 60 * 1000,
-	message: { error: 'Слишком много запросов, попробуйте позже.' }
-});
-app.use('/api/', apiLimiter);
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5 * 1024 * 1024 } });
+app.use(express.json());
+app.use(express.static('public'));
 
 app.get('*', (req, res) => {
-	const indexPath = path.join(__dirname, 'public', 'index.html');
-	res.sendFile(indexPath);
+    res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.listen(PORT, () => {
-	console.log(`Server started on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
