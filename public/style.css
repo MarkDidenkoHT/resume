@@ -79,7 +79,7 @@ section {
 
 .hero-description {
     font-size: 1.2rem;
-    color: var(--gray);
+    color: #ffffff;
     margin-bottom: 2rem;
     max-width: 600px;
 }
