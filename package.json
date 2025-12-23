@@ -1,0 +1,30 @@
+{
+  "name": "resume",
+  "version": "1.0.0",
+  "description": "Портфолио Марк Диденко — статический сайт",
+  "private": true,
+  "main": "public/index.html",
+  "scripts": {
+    "start": "serve public -s -l 5000",
+    "dev": "live-server public --port=5000 --open=./index.html",
+    "build": "echo \"No build step for static site\"",
+    "test": "echo \"No tests\""
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0",
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarkDidenkoHT/resume.git"
+  },
+  "author": "Марк Диденко",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MarkDidenkoHT/resume/issues"
+  },
+  "homepage": "https://github.com/MarkDidenkoHT/resume#readme"
+}
