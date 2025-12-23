@@ -4,7 +4,7 @@
   "description": "game",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "npx serve public -s -l $PORT",
     "dev": "nodemon server.js"
   },
   "dependencies": {
