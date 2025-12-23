@@ -22,9 +22,7 @@ app.use('/api/', apiLimiter);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/api/health', (req, res) => {
-	res.json({ status: 'ok', env: process.env.NODE_ENV || 'development' });
-});
+const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5 * 1024 * 1024 } });
 
 app.get('*', (req, res) => {
 	const indexPath = path.join(__dirname, 'public', 'index.html');
