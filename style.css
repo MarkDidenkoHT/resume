@@ -278,6 +278,10 @@ section {
     border-radius: 2px;
 }
 
+.weglot-container {
+    display: none !important;
+}
+
 .about-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -295,7 +299,7 @@ section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-top: 6.06rem;
+    margin-top: 7.68rem;
 }
 
 .highlight-item {
