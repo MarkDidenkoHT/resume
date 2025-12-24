@@ -739,6 +739,7 @@ section {
     transform: translateX(-50%);
     display: flex;
     gap: 0.5rem;
+    display: none;
 }
 
 .image-nav-dot {
@@ -778,11 +779,11 @@ section {
 }
 
 .image-nav-prev {
-    left: 1rem;
+    left: -3rem;
 }
 
 .image-nav-next {
-    right: 1rem;
+    right: -3rem;
 }
 
 .thumbnail-container {
@@ -987,7 +988,6 @@ section {
     .language-switcher {
         position: static;
         transform: none;
-        margin-left: auto;
         margin-right: 1rem;
         order: 1;
     }
@@ -1047,7 +1047,7 @@ section {
     }
 
     .project-card {
-        flex: 0 0 calc(50% - 0.5rem);
+        flex: 0 0 100%;
     }
 
     .modal-body {

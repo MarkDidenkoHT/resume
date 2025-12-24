@@ -272,21 +272,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
     const totalCards = 5;
-    const visibleCards = 3;
-    let cardWidth = 0;
 
-    function calculateCardWidth() {
-        if (window.innerWidth <= 480) {
-            cardWidth = document.querySelector('.project-card').offsetWidth + 16;
-        } else if (window.innerWidth <= 768) {
-            cardWidth = document.querySelector('.project-card').offsetWidth + 16;
+    function calculateVisibleCards() {
+        if (window.innerWidth <= 768) {
+            return 1;
         } else {
-            cardWidth = document.querySelector('.project-card').offsetWidth + 24;
+            return 3;
         }
     }
 
+    function calculateCardWidth() {
+        const containerWidth = document.querySelector('.projects-container').offsetWidth;
+        const visibleCards = calculateVisibleCards();
+        return containerWidth / visibleCards;
+    }
+
     function updateSlider() {
-        calculateCardWidth();
+        const cardWidth = calculateCardWidth();
+        const visibleCards = calculateVisibleCards();
         const maxIndex = Math.max(0, totalCards - visibleCards);
         
         if (currentIndex > maxIndex) {
@@ -306,9 +309,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
         prevBtn.disabled = currentIndex === 0;
         nextBtn.disabled = currentIndex >= maxIndex;
+        
+        if (window.innerWidth <= 768) {
+            prevBtn.style.display = 'flex';
+            nextBtn.style.display = 'flex';
+        } else {
+            prevBtn.style.display = 'flex';
+            nextBtn.style.display = 'flex';
+        }
     }
 
     nextBtn.addEventListener('click', () => {
+        const visibleCards = calculateVisibleCards();
         const maxIndex = Math.max(0, totalCards - visibleCards);
         if (currentIndex < maxIndex) {
             currentIndex++;
@@ -325,8 +337,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            currentIndex = index;
-            updateSlider();
+            const visibleCards = calculateVisibleCards();
+            const maxIndex = Math.max(0, totalCards - visibleCards);
+            if (index <= maxIndex) {
+                currentIndex = index;
+                updateSlider();
+            }
         });
     });
 
