@@ -111,13 +111,13 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             title: "Shattered Crown",
-            description: "Хобби-проект, фэнтэзи tbrpg, альфа-версия запланирована на начало весны 2026.",
+            description: "Хобби-проект, фэнтэзи tbrpg, альфа-версия запланирована на начало весны 2026. Пошаговая онлайн игра, с небольшой сюжетной линией, развитием персонажей, профессиями, экономикой.",
             images: [
                 "./assets/images/shattered_crown1.jpg",
-                "https://via.placeholder.com/800x600/6366f1/ffffff?text=Project+5-2",
-                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+5-3",
-                "https://via.placeholder.com/800x600/10b981/ffffff?text=Project+5-4",
-                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Project+5-5"
+                "./assets/images/shattered_crown2.jpg",
+                "./assets/images/shattered_crown3.jpg",
+                "./assets/images/shattered_crown4.jpg",
+                "./assets/images/shattered_crown5.jpg"
             ],
             tags: ["HTML/CSS/JS", "Supabase", "Telegram API", "Push Notifications", "Cloud Sync"]
         }
