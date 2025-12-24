@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalTitle = document.getElementById('modalTitle');
     const modalDescription = document.getElementById('modalDescription');
     const modalTags = document.getElementById('modalTags');
-    const modalClose = document.querySelector('.modal-close');
     const modalXClose = document.querySelector('.modal-x-close');
 
     const projectsData = [
@@ -111,11 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         });
-    });
-
-    modalClose.addEventListener('click', () => {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
     });
 
     modalXClose.addEventListener('click', () => {
@@ -191,20 +185,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.querySelector('.next-btn');
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
-    const cardWidth = 300;
     const totalCards = 5;
     const visibleCards = 3;
+    let cardWidth = 0;
+
+    function calculateCardWidth() {
+        if (window.innerWidth <= 480) {
+            cardWidth = document.querySelector('.project-card').offsetWidth + 16;
+        } else if (window.innerWidth <= 768) {
+            cardWidth = document.querySelector('.project-card').offsetWidth + 16;
+        } else {
+            cardWidth = document.querySelector('.project-card').offsetWidth + 24;
+        }
+    }
 
     function updateSlider() {
-        const maxIndex = totalCards - visibleCards;
+        calculateCardWidth();
+        const maxIndex = Math.max(0, totalCards - visibleCards);
+        
         if (currentIndex > maxIndex) {
             currentIndex = maxIndex;
         }
         
-        sliderTrack.style.transform = `translateX(-${currentIndex * (cardWidth + 24)}px)`;
+        sliderTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
         
         dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
+            if (index <= maxIndex) {
+                dot.style.display = 'inline-block';
+                dot.classList.toggle('active', index === currentIndex);
+            } else {
+                dot.style.display = 'none';
+            }
         });
         
         prevBtn.disabled = currentIndex === 0;
@@ -212,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     nextBtn.addEventListener('click', () => {
-        const maxIndex = totalCards - visibleCards;
+        const maxIndex = Math.max(0, totalCards - visibleCards);
         if (currentIndex < maxIndex) {
             currentIndex++;
             updateSlider();
@@ -234,21 +245,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     updateSlider();
-
-    window.addEventListener('resize', () => {
-        if (window.innerWidth <= 768) {
-            const mobileCardWidth = 280;
-            sliderTrack.style.transform = `translateX(-${currentIndex * (mobileCardWidth + 16)}px)`;
-        } else {
-            sliderTrack.style.transform = `translateX(-${currentIndex * (cardWidth + 24)}px)`;
-        }
-    });
+    window.addEventListener('resize', updateSlider);
 
     const languageBtn = document.querySelector('.language-btn');
     const languageDropdown = document.querySelector('.language-dropdown');
     const currentLanguage = document.querySelector('.current-language');
 
-    languageBtn.addEventListener('click', () => {
+    languageBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         languageDropdown.classList.toggle('show');
     });
 
@@ -266,16 +270,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.language-switcher')) {
-            languageDropdown.classList.remove('show');
-        }
+    document.addEventListener('click', () => {
+        languageDropdown.classList.remove('show');
     });
 
     const originalWeglotContainer = document.querySelector('.weglot-container');
     if (originalWeglotContainer) {
         originalWeglotContainer.style.display = 'none';
     }
+
+    document.querySelectorAll('.weglot-container').forEach(container => {
+        container.style.display = 'none';
+    });
 
     let currentImageIndex = 0;
     const imageNavDots = document.querySelectorAll('.image-nav-dot');

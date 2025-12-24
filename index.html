@@ -6,7 +6,7 @@
     <title>Марк Диденко - Портфолио</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
     <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
     <script>
         Weglot.initialize({
@@ -15,6 +15,8 @@
     </script>
 </head>
 <body>
+    <div class="weglot-container" style="display: none;"></div>
+
     <nav id="navbar">
         <div class="nav-container">
             <ul class="nav-menu">
@@ -89,7 +91,7 @@
                         <ul>
                             <li><i class="fas fa-envelope"></i><strong>Email:</strong> <a href="mailto:markdidenkowork@gmail.com">markdidenkowork@gmail.com</a></li>
                             <li><i class="fas fa-phone"></i><strong>Телефон:</strong> +373 777 93024</li>
-                            <li><i class="fab fa-telegram"></i><strong>Telegram:</strong> <a href="https://t.me/markdidenko" target="_blank">@markdidenko</a></li>
+                            <li><i class="fab fa-telegram"></i><strong>Telegram:</strong> <a href="https://t.me/markdidenko" target="_blank">@markdidenko <span class="preferred">(Предпочтительно)</span></a></li>
                         </ul>
                     </div>
                     <div class="info-card">
@@ -370,7 +372,6 @@
 
     <div id="projectModal" class="modal">
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
             <div class="modal-header">
                 <h3 id="modalTitle"></h3>
                 <button class="modal-x-close">✕</button>
@@ -587,8 +588,8 @@
                     <div class="contact-item">
                         <i class="fab fa-telegram"></i>
                         <div>
-                            <h4>Telegram <span class="preferred">(Предпочтительно)</span></h4>
-                            <a href="https://t.me/markdidenko" target="_blank">@markdidenko</a>
+                            <h4>Telegram</h4>
+                            <a href="https://t.me/markdidenko" target="_blank">@markdidenko <span class="preferred">(Предпочтительно)</span></a>
                         </div>
                     </div>
                 </div>

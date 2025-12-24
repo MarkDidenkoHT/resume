@@ -362,6 +362,14 @@ section {
     text-decoration: underline;
 }
 
+.preferred {
+    font-size: 0.8rem;
+    color: var(--primary);
+    font-weight: normal;
+    margin-left: 0.5rem;
+    text-decoration: underline;
+}
+
 .text-sm {
     font-size: 0.9rem;
     color: var(--gray);
@@ -464,7 +472,7 @@ section {
 
 .projects-slider {
     position: relative;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 2rem auto;
     overflow: hidden;
 }
@@ -478,17 +486,17 @@ section {
     display: flex;
     transition: transform 0.5s ease;
     gap: 1.5rem;
-    width: max-content;
 }
 
 .project-card {
-    flex: 0 0 300px;
+    flex: 0 0 calc(33.333% - 1rem);
     background: var(--white);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     position: relative;
+    min-width: 0;
 }
 
 .project-card:hover {
@@ -589,6 +597,16 @@ section {
     color: var(--white);
 }
 
+.slider-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.slider-btn:disabled:hover {
+    background: var(--white);
+    color: inherit;
+}
+
 .prev-btn {
     left: 10px;
 }
@@ -641,22 +659,9 @@ section {
     background: var(--white);
     border-radius: 15px;
     overflow: hidden;
-}
-
-.modal-close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: var(--white);
-    font-size: 3rem;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1;
-    transition: color 0.3s ease;
-}
-
-.modal-close:hover {
-    color: var(--primary);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-header {
@@ -667,11 +672,13 @@ section {
     background: var(--dark);
     color: var(--white);
     border-bottom: 2px solid var(--primary);
+    flex-shrink: 0;
 }
 
 .modal-header h3 {
     margin: 0;
     font-size: 1.5rem;
+    padding-right: 2rem;
 }
 
 .modal-x-close {
@@ -683,6 +690,7 @@ section {
     padding: 0.5rem;
     line-height: 1;
     transition: color 0.3s ease;
+    flex-shrink: 0;
 }
 
 .modal-x-close:hover {
@@ -692,7 +700,8 @@ section {
 .modal-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 500px;
+    overflow: hidden;
+    flex-grow: 1;
 }
 
 .modal-image-container {
@@ -700,6 +709,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    overflow: auto;
 }
 
 .main-image-container {
@@ -707,6 +717,7 @@ section {
     height: 350px;
     overflow: hidden;
     border-radius: 10px;
+    flex-shrink: 0;
 }
 
 .main-image-container img {
@@ -771,12 +782,15 @@ section {
 .thumbnail-container {
     overflow-x: auto;
     padding: 1rem 0;
+    flex-shrink: 0;
 }
 
 .thumbnail-track {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    width: max-content;
+    margin: 0 auto;
 }
 
 .thumbnail {
@@ -787,6 +801,7 @@ section {
     cursor: pointer;
     border: 2px solid transparent;
     transition: border-color 0.3s ease;
+    flex-shrink: 0;
 }
 
 .thumbnail.active {
@@ -801,9 +816,10 @@ section {
 
 .modal-text {
     padding: 2rem;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .modal-text p {
@@ -916,17 +932,12 @@ section {
     color: var(--dark);
 }
 
-.preferred {
-    font-size: 0.8rem;
-    color: var(--primary);
-    font-weight: normal;
-    margin-left: 0.5rem;
-    text-decoration: underline;
-}
-
 .contact-item a {
     color: var(--primary);
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
 }
 
 .contact-item a:hover {
@@ -1024,7 +1035,7 @@ section {
     }
 
     .project-card {
-        flex: 0 0 280px;
+        flex: 0 0 calc(50% - 0.5rem);
     }
 
     .modal-body {
@@ -1048,6 +1059,7 @@ section {
     .modal-content {
         margin: 2% auto;
         max-width: 95%;
+        max-height: 95vh;
     }
 
     .modal-header {
@@ -1101,7 +1113,7 @@ section {
     }
 
     .project-card {
-        flex: 0 0 260px;
+        flex: 0 0 100%;
     }
 
     .btn-view {
