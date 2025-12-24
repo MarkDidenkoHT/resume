@@ -57,46 +57,114 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDescription = document.getElementById('modalDescription');
     const modalTags = document.getElementById('modalTags');
     const modalXClose = document.querySelector('.modal-x-close');
+    const imageNavDotsContainer = document.querySelector('.image-nav-dots');
+    const thumbnailTrack = document.querySelector('.thumbnail-track');
 
     const projectsData = [
         {
             title: "Внутренняя система управления",
             description: "Комплексная система автоматизации HR-процессов с интеграцией Telegram ботов и систем видеонаблюдения. Система включает 18 модулей, электронный журнал отпусков, контроль посещаемости через HIK-vision.",
-            image: "./assets/images/project1.jpg",
+            images: [
+                "https://via.placeholder.com/800x600/6366f1/ffffff?text=Project+1-1",
+                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+1-2",
+                "https://via.placeholder.com/800x600/10b981/ffffff?text=Project+1-3",
+                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Project+1-4",
+                "https://via.placeholder.com/800x600/ef4444/ffffff?text=Project+1-5"
+            ],
             tags: ["Telegram Bots", "Supabase", "Apps Script", "PostgreSQL", "HIK-vision"]
         },
         {
             title: "E-commerce платформа",
             description: "Оптимизация работы маркетплейса с 10,000+ товаров. Автоматизация обновления остатков и цен, разработка шаблонов импорта, повышение скорости обработки данных на 40%.",
-            image: "./assets/images/project2.jpg",
+            images: [
+                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+2-1",
+                "https://via.placeholder.com/800x600/6366f1/ffffff?text=Project+2-2",
+                "https://via.placeholder.com/800x600/10b981/ffffff?text=Project+2-3",
+                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Project+2-4",
+                "https://via.placeholder.com/800x600/ef4444/ffffff?text=Project+2-5"
+            ],
             tags: ["CS-Cart", "ETL", "SEO", "Google Sheets", "Автоматизация"]
         },
         {
             title: "Аналитическая панель",
             description: "Дашборд для отслеживания ключевых бизнес-метрик. Автоматизация отчетности, визуализация данных, интеграция с различными источниками данных.",
-            image: "./assets/images/project3.jpg",
+            images: [
+                "https://via.placeholder.com/800x600/10b981/ffffff?text=Project+3-1",
+                "https://via.placeholder.com/800x600/6366f1/ffffff?text=Project+3-2",
+                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+3-3",
+                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Project+3-4",
+                "https://via.placeholder.com/800x600/ef4444/ffffff?text=Project+3-5"
+            ],
             tags: ["PostgreSQL", "Google Sheets", "JavaScript", "Data Visualization", "API"]
         },
         {
             title: "Интеграция ИИ",
             description: "Внедрение искусственного интеллекта для автоматизации процессов контент-менеджмента. Генерация описаний товаров, оптимизация мета-данных, анализ данных.",
-            image: "./assets/images/project1.jpg",
+            images: [
+                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Project+4-1",
+                "https://via.placeholder.com/800x600/6366f1/ffffff?text=Project+4-2",
+                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+4-3",
+                "https://via.placeholder.com/800x600/10b981/ffffff?text=Project+4-4",
+                "https://via.placeholder.com/800x600/ef4444/ffffff?text=Project+4-5"
+            ],
             tags: ["AI Integration", "Automation", "Python", "NLP", "Machine Learning"]
         },
         {
-            title: "Мобильное приложение",
-            description: "Кроссплатформенное приложение для управления задачами и проектами. Синхронизация с облаком, уведомления, совместная работа в реальном времени.",
-            image: "./assets/images/project2.jpg",
-            tags: ["React Native", "Firebase", "REST API", "Push Notifications", "Cloud Sync"]
+            title: "Shattered Crown",
+            description: "Хобби-проект, фэнтэзи tbrpg, альфа-версия запланирована на начало весны 2026.",
+            images: [
+                "./assets/images/shattered_crown1.jpg",
+                "https://via.placeholder.com/800x600/6366f1/ffffff?text=Project+5-2",
+                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+5-3",
+                "https://via.placeholder.com/800x600/10b981/ffffff?text=Project+5-4",
+                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Project+5-5"
+            ],
+            tags: ["HTML/CSS/JS", "Supabase", "Telegram API", "Push Notifications", "Cloud Sync"]
         }
     ];
+
+    let currentProjectIndex = 0;
+    let currentImageIndex = 0;
+
+    function updateImageNavigation(projectIndex) {
+        const project = projectsData[projectIndex];
+        
+        imageNavDotsContainer.innerHTML = '';
+        thumbnailTrack.innerHTML = '';
+        
+        project.images.forEach((image, index) => {
+            const dot = document.createElement('span');
+            dot.className = 'image-nav-dot';
+            if (index === currentImageIndex) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                currentImageIndex = index;
+                modalImage.src = project.images[currentImageIndex];
+                updateImageNavigation(projectIndex);
+            });
+            imageNavDotsContainer.appendChild(dot);
+
+            const thumbnail = document.createElement('div');
+            thumbnail.className = 'thumbnail';
+            if (index === currentImageIndex) thumbnail.classList.add('active');
+            thumbnail.innerHTML = `<img src="${image.replace('800x600', '100x100')}" alt="">`;
+            thumbnail.addEventListener('click', () => {
+                currentImageIndex = index;
+                modalImage.src = project.images[currentImageIndex];
+                updateImageNavigation(projectIndex);
+            });
+            thumbnailTrack.appendChild(thumbnail);
+        });
+        
+        modalImage.src = project.images[currentImageIndex];
+    }
 
     document.querySelectorAll('.btn-view').forEach((btn, index) => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
+            currentProjectIndex = index;
+            currentImageIndex = 0;
             const project = projectsData[index];
             
-            modalImage.src = project.image;
             modalTitle.textContent = project.title;
             modalDescription.textContent = project.description;
             
@@ -107,6 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 modalTags.appendChild(span);
             });
             
+            updateImageNavigation(index);
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         });
@@ -122,6 +191,23 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+    });
+
+    const imageNavPrev = document.querySelector('.image-nav-prev');
+    const imageNavNext = document.querySelector('.image-nav-next');
+
+    imageNavPrev.addEventListener('click', () => {
+        const project = projectsData[currentProjectIndex];
+        currentImageIndex = (currentImageIndex - 1 + project.images.length) % project.images.length;
+        modalImage.src = project.images[currentImageIndex];
+        updateImageNavigation(currentProjectIndex);
+    });
+
+    imageNavNext.addEventListener('click', () => {
+        const project = projectsData[currentProjectIndex];
+        currentImageIndex = (currentImageIndex + 1) % project.images.length;
+        modalImage.src = project.images[currentImageIndex];
+        updateImageNavigation(currentProjectIndex);
     });
 
     const skillBars = document.querySelectorAll('.skill-progress');
@@ -274,60 +360,7 @@ document.addEventListener('DOMContentLoaded', function() {
         languageDropdown.classList.remove('show');
     });
 
-    const originalWeglotContainer = document.querySelector('.weglot-container');
-    if (originalWeglotContainer) {
-        originalWeglotContainer.style.display = 'none';
-    }
-
     document.querySelectorAll('.weglot-container').forEach(container => {
         container.style.display = 'none';
     });
-
-    let currentImageIndex = 0;
-    const imageNavDots = document.querySelectorAll('.image-nav-dot');
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    const imageNavPrev = document.querySelector('.image-nav-prev');
-    const imageNavNext = document.querySelector('.image-nav-next');
-    const thumbnailTrack = document.querySelector('.thumbnail-track');
-
-    function updateImageNavigation() {
-        imageNavDots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentImageIndex);
-        });
-        
-        thumbnails.forEach((thumb, index) => {
-            thumb.classList.toggle('active', index === currentImageIndex);
-        });
-
-        if (window.innerWidth <= 768) {
-            const thumbnailWidth = 96;
-            thumbnailTrack.style.transform = `translateX(-${currentImageIndex * thumbnailWidth}px)`;
-        }
-    }
-
-    imageNavDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentImageIndex = index;
-            updateImageNavigation();
-        });
-    });
-
-    thumbnails.forEach((thumb, index) => {
-        thumb.addEventListener('click', () => {
-            currentImageIndex = index;
-            updateImageNavigation();
-        });
-    });
-
-    imageNavPrev.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex - 1 + imageNavDots.length) % imageNavDots.length;
-        updateImageNavigation();
-    });
-
-    imageNavNext.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex + 1) % imageNavDots.length;
-        updateImageNavigation();
-    });
-
-    updateImageNavigation();
 });
