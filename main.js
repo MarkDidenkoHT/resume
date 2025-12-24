@@ -57,58 +57,106 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDescription = document.getElementById('modalDescription');
     const modalTags = document.getElementById('modalTags');
     const modalClose = document.querySelector('.modal-close');
+    const modalPrevBtn = document.querySelector('.modal-prev-btn');
+    const modalNextBtn = document.querySelector('.modal-next-btn');
+    const modalThumbnails = document.querySelectorAll('.thumbnail');
 
     const projectsData = [
         {
             title: "Внутренняя система управления",
             description: "Комплексная система автоматизации HR-процессов с интеграцией Telegram ботов и систем видеонаблюдения. Система включает 18 модулей, электронный журнал отпусков, контроль посещаемости через HIK-vision.",
-            image: "./assets/images/project1.jpg",
+            images: ["./assets/images/project1.jpg", "./assets/images/project2.jpg", "./assets/images/project3.jpg"],
             tags: ["Telegram Bots", "Supabase", "Apps Script", "PostgreSQL", "HIK-vision"]
         },
         {
             title: "E-commerce платформа",
             description: "Оптимизация работы маркетплейса с 10,000+ товаров. Автоматизация обновления остатков и цен, разработка шаблонов импорта, повышение скорости обработки данных на 40%.",
-            image: "./assets/images/project2.jpg",
+            images: ["./assets/images/project2.jpg", "./assets/images/project1.jpg", "./assets/images/project3.jpg"],
             tags: ["CS-Cart", "ETL", "SEO", "Google Sheets", "Автоматизация"]
         },
         {
             title: "Аналитическая панель",
             description: "Дашборд для отслеживания ключевых бизнес-метрик. Автоматизация отчетности, визуализация данных, интеграция с различными источниками данных.",
-            image: "./assets/images/project3.jpg",
+            images: ["./assets/images/project3.jpg", "./assets/images/project1.jpg", "./assets/images/project2.jpg"],
             tags: ["PostgreSQL", "Google Sheets", "JavaScript", "Data Visualization", "API"]
         },
         {
             title: "Интеграция ИИ",
             description: "Внедрение искусственного интеллекта для автоматизации процессов контент-менеджмента. Генерация описаний товаров, оптимизация мета-данных, анализ данных.",
-            image: "./assets/images/project1.jpg",
+            images: ["./assets/images/project1.jpg", "./assets/images/project2.jpg", "./assets/images/project3.jpg"],
             tags: ["AI Integration", "Automation", "Python", "NLP", "Machine Learning"]
         },
         {
             title: "Мобильное приложение",
             description: "Кроссплатформенное приложение для управления задачами и проектами. Синхронизация с облаком, уведомления, совместная работа в реальном времени.",
-            image: "./assets/images/project2.jpg",
+            images: ["./assets/images/project2.jpg", "./assets/images/project1.jpg", "./assets/images/project3.jpg"],
             tags: ["React Native", "Firebase", "REST API", "Push Notifications", "Cloud Sync"]
         }
     ];
 
+    let currentProjectIndex = 0;
+    let currentImageIndex = 0;
+
+    function openModal(index) {
+        currentProjectIndex = index;
+        currentImageIndex = 0;
+        const project = projectsData[index];
+        
+        updateModalImage();
+        modalTitle.textContent = project.title;
+        modalDescription.textContent = project.description;
+        
+        modalTags.innerHTML = '';
+        project.tags.forEach(tag => {
+            const span = document.createElement('span');
+            span.textContent = tag;
+            modalTags.appendChild(span);
+        });
+        
+        modalThumbnails.forEach((thumb, idx) => {
+            thumb.src = project.images[idx] || project.images[0];
+            thumb.classList.toggle('active', idx === currentImageIndex);
+        });
+        
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function updateModalImage() {
+        modalImage.src = projectsData[currentProjectIndex].images[currentImageIndex];
+        modalThumbnails.forEach((thumb, idx) => {
+            thumb.classList.toggle('active', idx === currentImageIndex);
+        });
+    }
+
     document.querySelectorAll('.btn-view').forEach((btn, index) => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const project = projectsData[index];
-            
-            modalImage.src = project.image;
-            modalTitle.textContent = project.title;
-            modalDescription.textContent = project.description;
-            
-            modalTags.innerHTML = '';
-            project.tags.forEach(tag => {
-                const span = document.createElement('span');
-                span.textContent = tag;
-                modalTags.appendChild(span);
-            });
-            
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            openModal(index);
+        });
+    });
+
+    document.querySelectorAll('.btn-view-mobile').forEach((btn, index) => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openModal(index);
+        });
+    });
+
+    modalPrevBtn.addEventListener('click', () => {
+        currentImageIndex = currentImageIndex > 0 ? currentImageIndex - 1 : projectsData[currentProjectIndex].images.length - 1;
+        updateModalImage();
+    });
+
+    modalNextBtn.addEventListener('click', () => {
+        currentImageIndex = currentImageIndex < projectsData[currentProjectIndex].images.length - 1 ? currentImageIndex + 1 : 0;
+        updateModalImage();
+    });
+
+    modalThumbnails.forEach((thumb, index) => {
+        thumb.addEventListener('click', () => {
+            currentImageIndex = index;
+            updateModalImage();
         });
     });
 
@@ -185,23 +233,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.querySelector('.next-btn');
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
-    const cardWidth = 300 + 24;
     const totalCards = 5;
-    const visibleCards = 3;
+    const cardWidth = 100 / 3.5;
 
     function updateSlider() {
-        sliderTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        sliderTrack.style.transform = `translateX(-${currentIndex * cardWidth}%)`;
         
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
         });
         
         prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex >= totalCards - visibleCards;
+        nextBtn.disabled = currentIndex >= totalCards - 1;
     }
 
     nextBtn.addEventListener('click', () => {
-        if (currentIndex < totalCards - visibleCards) {
+        if (currentIndex < totalCards - 1) {
             currentIndex++;
             updateSlider();
         }
@@ -217,21 +264,24 @@ document.addEventListener('DOMContentLoaded', function() {
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentIndex = index;
-            if (currentIndex > totalCards - visibleCards) {
-                currentIndex = totalCards - visibleCards;
-            }
             updateSlider();
         });
     });
 
     updateSlider();
 
-    window.addEventListener('resize', () => {
-        if (window.innerWidth <= 768) {
-            const mobileCardWidth = 280 + 16;
-            sliderTrack.style.transform = `translateX(-${currentIndex * mobileCardWidth}px)`;
-        } else {
-            sliderTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-        }
+    const langButtons = document.querySelectorAll('.lang-btn');
+    langButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            langButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            if (lang === 'en') {
+                Weglot.switchTo('en');
+            } else {
+                Weglot.switchTo('ru');
+            }
+        });
     });
 });

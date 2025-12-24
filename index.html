@@ -6,7 +6,18 @@
     <title>Марк Диденко - Портфолио</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
+    <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
+    <script>
+        Weglot.initialize({
+            api_key: 'wg_99727e8796de272a8eed80d7ce3ae4386'
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const originalButton = document.querySelector('.wg-drop.country-selector');
+            if (originalButton) {
+                originalButton.style.display = 'none';
+            }
+        });
+    </script>
 </head>
 <body>
     <nav id="navbar">
@@ -17,6 +28,11 @@
                 <li><a href="#projects">Проекты</a></li>
                 <li><a href="#skills">Навыки</a></li>
                 <li><a href="#contact">Контакты</a></li>
+                <li class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </li>
             </ul>
             <button class="hamburger">
                 <span></span>
@@ -43,9 +59,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="scroll-indicator">
-            <span></span>
-        </div> -->
     </section>
 
     <section id="about">
@@ -76,7 +89,7 @@
                         <ul>
                             <li><i class="fas fa-envelope"></i><strong>Email:</strong> <a href="mailto:markdidenkowork@gmail.com">markdidenkowork@gmail.com</a></li>
                             <li><i class="fas fa-phone"></i><strong>Телефон:</strong> +373 777 93024</li>
-                            <li><i class="fab fa-telegram"></i><strong>Telegram:</strong> <a href="https://t.me/markdidenko" target="_blank">@markdidenko</a></li>
+                            <li><i class="fab fa-telegram"></i><strong>Telegram:</strong> <a href="https://t.me/markdidenko" target="_blank" class="telegram-highlight">@markdidenko</a></li>
                         </ul>
                     </div>
                     <div class="info-card">
@@ -258,6 +271,9 @@
                                 <div class="project-overlay">
                                     <button class="btn-view">Подробнее</button>
                                 </div>
+                                <div class="project-details-btn">
+                                    <button class="btn-view-mobile">Подробнее</button>
+                                </div>
                             </div>
                             <div class="project-info">
                                 <h3>Внутренняя система управления</h3>
@@ -275,6 +291,9 @@
                                 <img src="./assets/images/project2.jpg" alt="Проект 2" loading="lazy">
                                 <div class="project-overlay">
                                     <button class="btn-view">Подробнее</button>
+                                </div>
+                                <div class="project-details-btn">
+                                    <button class="btn-view-mobile">Подробнее</button>
                                 </div>
                             </div>
                             <div class="project-info">
@@ -294,6 +313,9 @@
                                 <div class="project-overlay">
                                     <button class="btn-view">Подробнее</button>
                                 </div>
+                                <div class="project-details-btn">
+                                    <button class="btn-view-mobile">Подробнее</button>
+                                </div>
                             </div>
                             <div class="project-info">
                                 <h3>Аналитическая панель</h3>
@@ -312,6 +334,9 @@
                                 <div class="project-overlay">
                                     <button class="btn-view">Подробнее</button>
                                 </div>
+                                <div class="project-details-btn">
+                                    <button class="btn-view-mobile">Подробнее</button>
+                                </div>
                             </div>
                             <div class="project-info">
                                 <h3>Интеграция ИИ</h3>
@@ -329,6 +354,9 @@
                                 <img src="./assets/images/project2.jpg" alt="Проект 5" loading="lazy">
                                 <div class="project-overlay">
                                     <button class="btn-view">Подробнее</button>
+                                </div>
+                                <div class="project-details-btn">
+                                    <button class="btn-view-mobile">Подробнее</button>
                                 </div>
                             </div>
                             <div class="project-info">
@@ -360,7 +388,18 @@
         <div class="modal-content">
             <span class="modal-close">&times;</span>
             <div class="modal-body">
-                <img id="modalImage" src="" alt="">
+                <div class="modal-gallery">
+                    <div class="modal-main-image">
+                        <img id="modalImage" src="" alt="">
+                        <button class="modal-nav-btn modal-prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="modal-nav-btn modal-next-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="modal-thumbnails">
+                        <img class="thumbnail active" src="./assets/images/project1.jpg" alt="">
+                        <img class="thumbnail" src="./assets/images/project2.jpg" alt="">
+                        <img class="thumbnail" src="./assets/images/project3.jpg" alt="">
+                    </div>
+                </div>
                 <div class="modal-text">
                     <h3 id="modalTitle"></h3>
                     <p id="modalDescription"></p>
@@ -397,10 +436,10 @@
                         <div class="skill-item">
                             <div class="skill-header">
                                 <span>HTML / CSS / JavaScript</span>
-                                <span>Продвинутый</span>
+                                <span>Средний</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="80" data-animated="false"></div>
+                                <div class="skill-progress" data-width="65" data-animated="false"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -414,7 +453,7 @@
                         </div>
                         <div class="skill-item">
                             <div class="skill-header">
-                                <span>Apps Script / GSQL</span>
+                                <span>Apps Script</span>
                                 <span>Продвинутый</span>
                             </div>
                             <div class="skill-bar">
@@ -466,7 +505,7 @@
                                 <span>Экспертный</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="95" data-animated="false"></div>
+                                <div class="skill-progress" data-width="100" data-animated="false"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -484,7 +523,7 @@
                                 <span>Продвинутый</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="85" data-animated="false"></div>
+                                <div class="skill-progress" data-width="75" data-animated="false"></div>
                             </div>
                         </div>
                     </div>
@@ -545,10 +584,10 @@
                             <a href="tel:+37377793024">+373 777 93024</a>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item telegram-highlight">
                         <i class="fab fa-telegram"></i>
                         <div>
-                            <h4>Telegram</h4>
+                            <h4>Telegram (предпочтительно)</h4>
                             <a href="https://t.me/markdidenko" target="_blank">@markdidenko</a>
                         </div>
                     </div>
@@ -556,5 +595,6 @@
             </div>
         </div>
     </section>
+    <script src="main.js"></script>
 </body>
 </html>
