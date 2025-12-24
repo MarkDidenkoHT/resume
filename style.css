@@ -958,6 +958,10 @@ section {
         order: 2;
     }
 
+    .language-dropdown {
+        right: unset !important;
+    }
+
     .thumbnail-track {
         justify-content: flex-start;
         /* padding: 0 1rem; */
