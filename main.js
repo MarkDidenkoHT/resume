@@ -57,139 +57,68 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDescription = document.getElementById('modalDescription');
     const modalTags = document.getElementById('modalTags');
     const modalClose = document.querySelector('.modal-close');
-    const modalThumbnails = document.querySelector('.thumbnails-container');
-    const modalBullets = document.querySelector('.modal-bullets');
-    const modalPrevNav = document.querySelector('.prev-nav');
-    const modalNextNav = document.querySelector('.next-nav');
+    const modalXClose = document.querySelector('.modal-x-close');
 
     const projectsData = [
         {
             title: "Внутренняя система управления",
             description: "Комплексная система автоматизации HR-процессов с интеграцией Telegram ботов и систем видеонаблюдения. Система включает 18 модулей, электронный журнал отпусков, контроль посещаемости через HIK-vision.",
-            images: [
-                "https://via.placeholder.com/800x600/6366f1/ffffff?text=System+1",
-                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=System+2",
-                "https://via.placeholder.com/800x600/10b981/ffffff?text=System+3",
-                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=System+4"
-            ],
+            image: "./assets/images/project1.jpg",
             tags: ["Telegram Bots", "Supabase", "Apps Script", "PostgreSQL", "HIK-vision"]
         },
         {
             title: "E-commerce платформа",
             description: "Оптимизация работы маркетплейса с 10,000+ товаров. Автоматизация обновления остатков и цен, разработка шаблонов импорта, повышение скорости обработки данных на 40%.",
-            images: [
-                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=E-commerce+1",
-                "https://via.placeholder.com/800x600/6366f1/ffffff?text=E-commerce+2",
-                "https://via.placeholder.com/800x600/10b981/ffffff?text=E-commerce+3"
-            ],
+            image: "./assets/images/project2.jpg",
             tags: ["CS-Cart", "ETL", "SEO", "Google Sheets", "Автоматизация"]
         },
         {
             title: "Аналитическая панель",
             description: "Дашборд для отслеживания ключевых бизнес-метрик. Автоматизация отчетности, визуализация данных, интеграция с различными источниками данных.",
-            images: [
-                "https://via.placeholder.com/800x600/10b981/ffffff?text=Dashboard+1",
-                "https://via.placeholder.com/800x600/6366f1/ffffff?text=Dashboard+2",
-                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Dashboard+3",
-                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Dashboard+4",
-                "https://via.placeholder.com/800x600/ef4444/ffffff?text=Dashboard+5"
-            ],
+            image: "./assets/images/project3.jpg",
             tags: ["PostgreSQL", "Google Sheets", "JavaScript", "Data Visualization", "API"]
         },
         {
             title: "Интеграция ИИ",
             description: "Внедрение искусственного интеллекта для автоматизации процессов контент-менеджмента. Генерация описаний товаров, оптимизация мета-данных, анализ данных.",
-            images: [
-                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=AI+1",
-                "https://via.placeholder.com/800x600/6366f1/ffffff?text=AI+2"
-            ],
+            image: "./assets/images/project1.jpg",
             tags: ["AI Integration", "Automation", "Python", "NLP", "Machine Learning"]
         },
         {
             title: "Мобильное приложение",
             description: "Кроссплатформенное приложение для управления задачами и проектами. Синхронизация с облаком, уведомления, совместная работа в реальном времени.",
-            images: [
-                "https://via.placeholder.com/800x600/ef4444/ffffff?text=App+1",
-                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=App+2",
-                "https://via.placeholder.com/800x600/10b981/ffffff?text=App+3"
-            ],
+            image: "./assets/images/project2.jpg",
             tags: ["React Native", "Firebase", "REST API", "Push Notifications", "Cloud Sync"]
         }
     ];
 
-    let currentProjectIndex = 0;
-    let currentImageIndex = 0;
-
-    function openModal(projectIndex) {
-        currentProjectIndex = projectIndex;
-        currentImageIndex = 0;
-        const project = projectsData[projectIndex];
-        
-        updateModalImages();
-        
-        modalTitle.textContent = project.title;
-        modalDescription.textContent = project.description;
-        
-        modalTags.innerHTML = '';
-        project.tags.forEach(tag => {
-            const span = document.createElement('span');
-            span.textContent = tag;
-            modalTags.appendChild(span);
-        });
-        
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function updateModalImages() {
-        const project = projectsData[currentProjectIndex];
-        const images = project.images;
-        
-        modalImage.src = images[currentImageIndex];
-        
-        modalThumbnails.innerHTML = '';
-        modalBullets.innerHTML = '';
-        
-        images.forEach((image, index) => {
-            const thumbnail = document.createElement('div');
-            thumbnail.className = `thumbnail ${index === currentImageIndex ? 'active' : ''}`;
-            thumbnail.innerHTML = `<img src="${image.replace('800x600', '100x75')}" alt="Thumbnail ${index + 1}">`;
-            thumbnail.addEventListener('click', () => {
-                currentImageIndex = index;
-                updateModalImages();
-            });
-            modalThumbnails.appendChild(thumbnail);
-            
-            const bullet = document.createElement('div');
-            bullet.className = `modal-bullet ${index === currentImageIndex ? 'active' : ''}`;
-            bullet.addEventListener('click', () => {
-                currentImageIndex = index;
-                updateModalImages();
-            });
-            modalBullets.appendChild(bullet);
-        });
-    }
-
-    modalPrevNav.addEventListener('click', () => {
-        const images = projectsData[currentProjectIndex].images;
-        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-        updateModalImages();
-    });
-
-    modalNextNav.addEventListener('click', () => {
-        const images = projectsData[currentProjectIndex].images;
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        updateModalImages();
-    });
-
     document.querySelectorAll('.btn-view').forEach((btn, index) => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            openModal(index);
+            const project = projectsData[index];
+            
+            modalImage.src = project.image;
+            modalTitle.textContent = project.title;
+            modalDescription.textContent = project.description;
+            
+            modalTags.innerHTML = '';
+            project.tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.textContent = tag;
+                modalTags.appendChild(span);
+            });
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
         });
     });
 
     modalClose.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    modalXClose.addEventListener('click', () => {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
     });
@@ -262,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.querySelector('.next-btn');
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
-    const cardWidth = 320 + 24;
+    const cardWidth = 300;
     const totalCards = 5;
     const visibleCards = 3;
 
@@ -272,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentIndex = maxIndex;
         }
         
-        sliderTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        sliderTrack.style.transform = `translateX(-${currentIndex * (cardWidth + 24)}px)`;
         
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
@@ -283,7 +212,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     nextBtn.addEventListener('click', () => {
-        if (currentIndex < totalCards - visibleCards) {
+        const maxIndex = totalCards - visibleCards;
+        if (currentIndex < maxIndex) {
             currentIndex++;
             updateSlider();
         }
@@ -299,9 +229,6 @@ document.addEventListener('DOMContentLoaded', function() {
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentIndex = index;
-            if (currentIndex > totalCards - visibleCards) {
-                currentIndex = totalCards - visibleCards;
-            }
             updateSlider();
         });
     });
@@ -310,55 +237,91 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('resize', () => {
         if (window.innerWidth <= 768) {
-            const mobileCardWidth = 280 + 16;
-            sliderTrack.style.transform = `translateX(-${currentIndex * mobileCardWidth}px)`;
+            const mobileCardWidth = 280;
+            sliderTrack.style.transform = `translateX(-${currentIndex * (mobileCardWidth + 16)}px)`;
         } else {
-            sliderTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            sliderTrack.style.transform = `translateX(-${currentIndex * (cardWidth + 24)}px)`;
         }
     });
 
     const languageBtn = document.querySelector('.language-btn');
     const languageDropdown = document.querySelector('.language-dropdown');
-    const languageLinks = document.querySelectorAll('.language-dropdown a');
+    const currentLanguage = document.querySelector('.current-language');
 
-    languageBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
+    languageBtn.addEventListener('click', () => {
         languageDropdown.classList.toggle('show');
     });
 
-    languageLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const lang = link.getAttribute('data-lang');
-            
-            languageLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-            
-            const span = languageBtn.querySelector('span');
-            span.textContent = lang.toUpperCase();
-            
-            const weglotContainer = document.querySelector('.weglot-container');
-            if (weglotContainer) {
-                weglotContainer.style.display = 'none';
-            }
-            
+    document.querySelectorAll('.language-dropdown button').forEach(button => {
+        button.addEventListener('click', () => {
+            const lang = button.getAttribute('data-language');
+            currentLanguage.textContent = lang.toUpperCase();
             languageDropdown.classList.remove('show');
+            
+            if (lang === 'en') {
+                Weglot.switchTo('en');
+            } else {
+                Weglot.switchTo('ru');
+            }
         });
     });
 
     document.addEventListener('click', (e) => {
-        if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
+        if (!e.target.closest('.language-switcher')) {
             languageDropdown.classList.remove('show');
         }
     });
 
-    const weglotContainer = document.querySelector('.weglot-container');
-    if (weglotContainer) {
-        weglotContainer.style.display = 'none';
+    const originalWeglotContainer = document.querySelector('.weglot-container');
+    if (originalWeglotContainer) {
+        originalWeglotContainer.style.display = 'none';
     }
 
-    const telegramIcons = document.querySelectorAll('.telegram-highlight');
-    telegramIcons.forEach(icon => {
-        icon.style.color = '#0088cc';
+    let currentImageIndex = 0;
+    const imageNavDots = document.querySelectorAll('.image-nav-dot');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const imageNavPrev = document.querySelector('.image-nav-prev');
+    const imageNavNext = document.querySelector('.image-nav-next');
+    const thumbnailTrack = document.querySelector('.thumbnail-track');
+
+    function updateImageNavigation() {
+        imageNavDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentImageIndex);
+        });
+        
+        thumbnails.forEach((thumb, index) => {
+            thumb.classList.toggle('active', index === currentImageIndex);
+        });
+
+        if (window.innerWidth <= 768) {
+            const thumbnailWidth = 96;
+            thumbnailTrack.style.transform = `translateX(-${currentImageIndex * thumbnailWidth}px)`;
+        }
+    }
+
+    imageNavDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentImageIndex = index;
+            updateImageNavigation();
+        });
     });
+
+    thumbnails.forEach((thumb, index) => {
+        thumb.addEventListener('click', () => {
+            currentImageIndex = index;
+            updateImageNavigation();
+        });
+    });
+
+    imageNavPrev.addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex - 1 + imageNavDots.length) % imageNavDots.length;
+        updateImageNavigation();
+    });
+
+    imageNavNext.addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex + 1) % imageNavDots.length;
+        updateImageNavigation();
+    });
+
+    updateImageNavigation();
 });
