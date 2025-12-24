@@ -44,7 +44,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, var(--section-bg) 100%);
+    background: #0f172a;
     color: var(--white);
     position: relative;
     overflow: hidden;
