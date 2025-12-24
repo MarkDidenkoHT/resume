@@ -958,6 +958,10 @@ section {
         order: 2;
     }
 
+    .about-highlights {
+        margin-top: unset;
+    }
+
     .language-dropdown {
         right: unset !important;
     }
