@@ -141,40 +141,6 @@ section {
     object-fit: cover;
 }
 
-.scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.scroll-indicator span {
-    display: block;
-    width: 30px;
-    height: 50px;
-    border: 2px solid var(--white);
-    border-radius: 50px;
-    position: relative;
-}
-
-.scroll-indicator span::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    background: var(--white);
-    border-radius: 50%;
-    transform: translateX(-50%);
-    animation: scroll 2s infinite;
-}
-
-@keyframes scroll {
-    0% { top: 10px; opacity: 1; }
-    100% { top: 30px; opacity: 0; }
-}
-
 #navbar {
     position: fixed;
     top: 0;
@@ -201,7 +167,6 @@ section {
     display: flex;
     list-style: none;
     gap: 2rem;
-    align-items: center;
 }
 
 .nav-menu a {
@@ -216,33 +181,59 @@ section {
 }
 
 .language-switcher {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-left: 1rem;
+    position: relative;
+    margin-left: auto;
+    margin-right: 2rem;
 }
 
-.lang-btn {
-    background: none;
-    border: none;
+.language-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: 500;
-    padding: 5px 10px;
-    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     transition: all 0.3s ease;
 }
 
-.lang-btn.active {
+.language-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    display: none;
+    min-width: 150px;
+    z-index: 1001;
+}
+
+.language-dropdown.show {
+    display: block;
+}
+
+.language-dropdown a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--dark);
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.language-dropdown a:hover {
+    background: var(--light);
+}
+
+.language-dropdown a.active {
     background: var(--primary);
-}
-
-.lang-btn:hover:not(.active) {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.lang-separator {
-    color: var(--gray);
+    color: var(--white);
 }
 
 .hamburger {
@@ -280,13 +271,6 @@ section {
     height: 4px;
     background: var(--gradient);
     border-radius: 2px;
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--gray);
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
 }
 
 .about-content {
@@ -373,9 +357,8 @@ section {
     text-decoration: underline;
 }
 
-.telegram-highlight a {
-    color: #0088cc;
-    font-weight: 600;
+.telegram-highlight {
+    color: #0088cc !important;
 }
 
 .text-sm {
@@ -498,8 +481,7 @@ section {
 }
 
 .project-card {
-    flex: 0 0 calc(100% / 3.5 - 1rem);
-    max-width: calc(100% / 3.5 - 1rem);
+    flex: 0 0 320px;
     background: var(--white);
     border-radius: 15px;
     overflow: hidden;
@@ -530,61 +512,24 @@ section {
     transform: scale(1.1);
 }
 
-.project-overlay {
+.btn-view {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(99, 102, 241, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.project-card:hover .project-overlay {
-    opacity: 1;
-}
-
-.project-details-btn {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    z-index: 2;
-    display: none;
-}
-
-.btn-view-mobile {
+    bottom: 1rem;
+    right: 1rem;
     padding: 0.5rem 1rem;
     background: var(--primary);
     color: var(--white);
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     font-weight: 600;
     cursor: pointer;
-    font-size: 0.9rem;
     transition: all 0.3s ease;
-}
-
-.btn-view-mobile:hover {
-    background: var(--primary-dark);
-}
-
-.btn-view {
-    padding: 0.8rem 2rem;
-    background: var(--white);
-    color: var(--primary);
-    border: none;
-    border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    z-index: 2;
 }
 
 .btn-view:hover {
-    transform: scale(1.1);
+    background: var(--primary-dark);
+    transform: scale(1.05);
 }
 
 .project-info {
@@ -637,16 +582,6 @@ section {
     color: var(--white);
 }
 
-.slider-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-.slider-btn:disabled:hover {
-    background: var(--white);
-    color: inherit;
-}
-
 .prev-btn {
     left: -25px;
 }
@@ -694,35 +629,38 @@ section {
 
 .modal-content {
     position: relative;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 5% auto;
     background: var(--white);
     border-radius: 15px;
     overflow: hidden;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .modal-close {
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: 1rem;
+    right: 1rem;
     color: var(--dark);
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
     cursor: pointer;
-    z-index: 3;
+    z-index: 1;
     transition: color 0.3s ease;
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--white);
     border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .modal-close:hover {
     color: var(--primary);
-    background: var(--white);
+    background: var(--light);
 }
 
 .modal-body {
@@ -732,7 +670,7 @@ section {
     padding: 2rem;
 }
 
-.modal-gallery {
+.modal-images {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -740,9 +678,9 @@ section {
 
 .modal-main-image {
     position: relative;
-    border-radius: 10px;
-    overflow: hidden;
     height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 .modal-main-image img {
@@ -751,63 +689,96 @@ section {
     object-fit: cover;
 }
 
-.modal-nav-btn {
+.modal-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.modal-nav-btn:hover {
+.modal-nav:hover {
     background: var(--white);
 }
 
-.modal-prev-btn {
-    left: 10px;
+.prev-nav {
+    left: 1rem;
 }
 
-.modal-next-btn {
-    right: 10px;
+.next-nav {
+    right: 1rem;
 }
 
-.modal-thumbnails {
+.modal-bullets {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
     display: flex;
-    gap: 10px;
     justify-content: center;
+    gap: 0.5rem;
 }
 
-.thumbnail {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 5px;
+.modal-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
     cursor: pointer;
-    opacity: 0.6;
     transition: all 0.3s ease;
 }
 
-.thumbnail.active, .thumbnail:hover {
-    opacity: 1;
-    border: 2px solid var(--primary);
+.modal-bullet.active {
+    background: var(--white);
+    transform: scale(1.2);
+}
+
+.modal-thumbnails {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.thumbnails-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.thumbnail {
+    flex: 0 0 80px;
+    height: 80px;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.thumbnail.active {
+    border-color: var(--primary);
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .modal-text {
-    display: flex;
-    flex-direction: column;
+    padding: 1rem 0;
 }
 
 .modal-text h3 {
     margin-bottom: 1rem;
     color: var(--dark);
+    font-size: 1.8rem;
 }
 
 .modal-text p {
@@ -915,17 +886,9 @@ section {
     width: 30px;
 }
 
-.contact-item.telegram-highlight i {
-    color: #0088cc;
-}
-
 .contact-item h4 {
     margin-bottom: 0.5rem;
     color: var(--dark);
-}
-
-.contact-item.telegram-highlight h4 {
-    color: #0088cc;
 }
 
 .contact-item a {
@@ -933,13 +896,13 @@ section {
     text-decoration: none;
 }
 
-.contact-item.telegram-highlight a {
-    color: #0088cc;
-    font-weight: 600;
-}
-
 .contact-item a:hover {
     text-decoration: underline;
+}
+
+.highlight-telegram {
+    border: 2px solid #0088cc;
+    background: linear-gradient(135deg, rgba(0, 136, 204, 0.1) 0%, rgba(0, 136, 204, 0.05) 100%);
 }
 
 @media (max-width: 768px) {
@@ -959,7 +922,6 @@ section {
         opacity: 0;
         pointer-events: none;
         transition: all 0.3s ease;
-        align-items: flex-start;
     }
 
     .nav-menu.active {
@@ -969,8 +931,14 @@ section {
     }
 
     .language-switcher {
-        margin-left: 0;
-        margin-top: 1rem;
+        position: static;
+        margin-right: 0;
+        order: 1;
+    }
+
+    .language-dropdown {
+        right: auto;
+        left: 0;
     }
 
     .hero-content {
@@ -1028,26 +996,21 @@ section {
     }
 
     .project-card {
-        flex: 0 0 calc(100% - 2rem);
-        max-width: calc(100% - 2rem);
-    }
-
-    .project-details-btn {
-        display: block;
+        flex: 0 0 280px;
     }
 
     .modal-body {
         grid-template-columns: 1fr;
         padding: 1rem;
-    }
-
-    .modal-content {
-        margin: 10% auto;
-        max-width: 95%;
+        gap: 1rem;
     }
 
     .modal-main-image {
         height: 200px;
+    }
+
+    .modal-text {
+        padding: 0;
     }
 
     .skills-grid {
@@ -1057,7 +1020,6 @@ section {
     .contact-info {
         flex-direction: column;
         width: 100%;
-        gap: 1rem;
     }
 
     .contact-item {
@@ -1098,7 +1060,6 @@ section {
     }
 
     .project-card {
-        flex: 0 0 calc(100% - 1rem);
-        max-width: calc(100% - 1rem);
+        flex: 0 0 260px;
     }
 }

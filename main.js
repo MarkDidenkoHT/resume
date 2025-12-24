@@ -57,39 +57,62 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDescription = document.getElementById('modalDescription');
     const modalTags = document.getElementById('modalTags');
     const modalClose = document.querySelector('.modal-close');
-    const modalPrevBtn = document.querySelector('.modal-prev-btn');
-    const modalNextBtn = document.querySelector('.modal-next-btn');
-    const modalThumbnails = document.querySelectorAll('.thumbnail');
+    const modalThumbnails = document.querySelector('.thumbnails-container');
+    const modalBullets = document.querySelector('.modal-bullets');
+    const modalPrevNav = document.querySelector('.prev-nav');
+    const modalNextNav = document.querySelector('.next-nav');
 
     const projectsData = [
         {
             title: "Внутренняя система управления",
             description: "Комплексная система автоматизации HR-процессов с интеграцией Telegram ботов и систем видеонаблюдения. Система включает 18 модулей, электронный журнал отпусков, контроль посещаемости через HIK-vision.",
-            images: ["./assets/images/project1.jpg", "./assets/images/project2.jpg", "./assets/images/project3.jpg"],
+            images: [
+                "https://via.placeholder.com/800x600/6366f1/ffffff?text=System+1",
+                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=System+2",
+                "https://via.placeholder.com/800x600/10b981/ffffff?text=System+3",
+                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=System+4"
+            ],
             tags: ["Telegram Bots", "Supabase", "Apps Script", "PostgreSQL", "HIK-vision"]
         },
         {
             title: "E-commerce платформа",
             description: "Оптимизация работы маркетплейса с 10,000+ товаров. Автоматизация обновления остатков и цен, разработка шаблонов импорта, повышение скорости обработки данных на 40%.",
-            images: ["./assets/images/project2.jpg", "./assets/images/project1.jpg", "./assets/images/project3.jpg"],
+            images: [
+                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=E-commerce+1",
+                "https://via.placeholder.com/800x600/6366f1/ffffff?text=E-commerce+2",
+                "https://via.placeholder.com/800x600/10b981/ffffff?text=E-commerce+3"
+            ],
             tags: ["CS-Cart", "ETL", "SEO", "Google Sheets", "Автоматизация"]
         },
         {
             title: "Аналитическая панель",
             description: "Дашборд для отслеживания ключевых бизнес-метрик. Автоматизация отчетности, визуализация данных, интеграция с различными источниками данных.",
-            images: ["./assets/images/project3.jpg", "./assets/images/project1.jpg", "./assets/images/project2.jpg"],
+            images: [
+                "https://via.placeholder.com/800x600/10b981/ffffff?text=Dashboard+1",
+                "https://via.placeholder.com/800x600/6366f1/ffffff?text=Dashboard+2",
+                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Dashboard+3",
+                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Dashboard+4",
+                "https://via.placeholder.com/800x600/ef4444/ffffff?text=Dashboard+5"
+            ],
             tags: ["PostgreSQL", "Google Sheets", "JavaScript", "Data Visualization", "API"]
         },
         {
             title: "Интеграция ИИ",
             description: "Внедрение искусственного интеллекта для автоматизации процессов контент-менеджмента. Генерация описаний товаров, оптимизация мета-данных, анализ данных.",
-            images: ["./assets/images/project1.jpg", "./assets/images/project2.jpg", "./assets/images/project3.jpg"],
+            images: [
+                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=AI+1",
+                "https://via.placeholder.com/800x600/6366f1/ffffff?text=AI+2"
+            ],
             tags: ["AI Integration", "Automation", "Python", "NLP", "Machine Learning"]
         },
         {
             title: "Мобильное приложение",
             description: "Кроссплатформенное приложение для управления задачами и проектами. Синхронизация с облаком, уведомления, совместная работа в реальном времени.",
-            images: ["./assets/images/project2.jpg", "./assets/images/project1.jpg", "./assets/images/project3.jpg"],
+            images: [
+                "https://via.placeholder.com/800x600/ef4444/ffffff?text=App+1",
+                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=App+2",
+                "https://via.placeholder.com/800x600/10b981/ffffff?text=App+3"
+            ],
             tags: ["React Native", "Firebase", "REST API", "Push Notifications", "Cloud Sync"]
         }
     ];
@@ -97,12 +120,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentProjectIndex = 0;
     let currentImageIndex = 0;
 
-    function openModal(index) {
-        currentProjectIndex = index;
+    function openModal(projectIndex) {
+        currentProjectIndex = projectIndex;
         currentImageIndex = 0;
-        const project = projectsData[index];
+        const project = projectsData[projectIndex];
         
-        updateModalImage();
+        updateModalImages();
+        
         modalTitle.textContent = project.title;
         modalDescription.textContent = project.description;
         
@@ -113,50 +137,55 @@ document.addEventListener('DOMContentLoaded', function() {
             modalTags.appendChild(span);
         });
         
-        modalThumbnails.forEach((thumb, idx) => {
-            thumb.src = project.images[idx] || project.images[0];
-            thumb.classList.toggle('active', idx === currentImageIndex);
-        });
-        
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
 
-    function updateModalImage() {
-        modalImage.src = projectsData[currentProjectIndex].images[currentImageIndex];
-        modalThumbnails.forEach((thumb, idx) => {
-            thumb.classList.toggle('active', idx === currentImageIndex);
+    function updateModalImages() {
+        const project = projectsData[currentProjectIndex];
+        const images = project.images;
+        
+        modalImage.src = images[currentImageIndex];
+        
+        modalThumbnails.innerHTML = '';
+        modalBullets.innerHTML = '';
+        
+        images.forEach((image, index) => {
+            const thumbnail = document.createElement('div');
+            thumbnail.className = `thumbnail ${index === currentImageIndex ? 'active' : ''}`;
+            thumbnail.innerHTML = `<img src="${image.replace('800x600', '100x75')}" alt="Thumbnail ${index + 1}">`;
+            thumbnail.addEventListener('click', () => {
+                currentImageIndex = index;
+                updateModalImages();
+            });
+            modalThumbnails.appendChild(thumbnail);
+            
+            const bullet = document.createElement('div');
+            bullet.className = `modal-bullet ${index === currentImageIndex ? 'active' : ''}`;
+            bullet.addEventListener('click', () => {
+                currentImageIndex = index;
+                updateModalImages();
+            });
+            modalBullets.appendChild(bullet);
         });
     }
+
+    modalPrevNav.addEventListener('click', () => {
+        const images = projectsData[currentProjectIndex].images;
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        updateModalImages();
+    });
+
+    modalNextNav.addEventListener('click', () => {
+        const images = projectsData[currentProjectIndex].images;
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        updateModalImages();
+    });
 
     document.querySelectorAll('.btn-view').forEach((btn, index) => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             openModal(index);
-        });
-    });
-
-    document.querySelectorAll('.btn-view-mobile').forEach((btn, index) => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openModal(index);
-        });
-    });
-
-    modalPrevBtn.addEventListener('click', () => {
-        currentImageIndex = currentImageIndex > 0 ? currentImageIndex - 1 : projectsData[currentProjectIndex].images.length - 1;
-        updateModalImage();
-    });
-
-    modalNextBtn.addEventListener('click', () => {
-        currentImageIndex = currentImageIndex < projectsData[currentProjectIndex].images.length - 1 ? currentImageIndex + 1 : 0;
-        updateModalImage();
-    });
-
-    modalThumbnails.forEach((thumb, index) => {
-        thumb.addEventListener('click', () => {
-            currentImageIndex = index;
-            updateModalImage();
         });
     });
 
@@ -233,22 +262,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.querySelector('.next-btn');
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
+    const cardWidth = 320 + 24;
     const totalCards = 5;
-    const cardWidth = 100 / 3.5;
+    const visibleCards = 3;
 
     function updateSlider() {
-        sliderTrack.style.transform = `translateX(-${currentIndex * cardWidth}%)`;
+        const maxIndex = totalCards - visibleCards;
+        if (currentIndex > maxIndex) {
+            currentIndex = maxIndex;
+        }
+        
+        sliderTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
         
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
         });
         
         prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex >= totalCards - 1;
+        nextBtn.disabled = currentIndex >= maxIndex;
     }
 
     nextBtn.addEventListener('click', () => {
-        if (currentIndex < totalCards - 1) {
+        if (currentIndex < totalCards - visibleCards) {
             currentIndex++;
             updateSlider();
         }
@@ -264,24 +299,66 @@ document.addEventListener('DOMContentLoaded', function() {
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentIndex = index;
+            if (currentIndex > totalCards - visibleCards) {
+                currentIndex = totalCards - visibleCards;
+            }
             updateSlider();
         });
     });
 
     updateSlider();
 
-    const langButtons = document.querySelectorAll('.lang-btn');
-    langButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const lang = btn.getAttribute('data-lang');
-            langButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+            const mobileCardWidth = 280 + 16;
+            sliderTrack.style.transform = `translateX(-${currentIndex * mobileCardWidth}px)`;
+        } else {
+            sliderTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        }
+    });
+
+    const languageBtn = document.querySelector('.language-btn');
+    const languageDropdown = document.querySelector('.language-dropdown');
+    const languageLinks = document.querySelectorAll('.language-dropdown a');
+
+    languageBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        languageDropdown.classList.toggle('show');
+    });
+
+    languageLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const lang = link.getAttribute('data-lang');
             
-            if (lang === 'en') {
-                Weglot.switchTo('en');
-            } else {
-                Weglot.switchTo('ru');
+            languageLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            
+            const span = languageBtn.querySelector('span');
+            span.textContent = lang.toUpperCase();
+            
+            const weglotContainer = document.querySelector('.weglot-container');
+            if (weglotContainer) {
+                weglotContainer.style.display = 'none';
             }
+            
+            languageDropdown.classList.remove('show');
         });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
+            languageDropdown.classList.remove('show');
+        }
+    });
+
+    const weglotContainer = document.querySelector('.weglot-container');
+    if (weglotContainer) {
+        weglotContainer.style.display = 'none';
+    }
+
+    const telegramIcons = document.querySelectorAll('.telegram-highlight');
+    telegramIcons.forEach(icon => {
+        icon.style.color = '#0088cc';
     });
 });
