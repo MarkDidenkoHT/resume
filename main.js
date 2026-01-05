@@ -59,10 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalXClose = document.querySelector('.modal-x-close');
     const imageNavDotsContainer = document.querySelector('.image-nav-dots');
     const thumbnailTrack = document.querySelector('.thumbnail-track');
-    const magnifyIcon = document.querySelector('.magnify-icon');
-    const imageModal = document.getElementById('imageModal');
-    const fullSizeImage = document.getElementById('fullSizeImage');
-    const imageModalClose = document.querySelector('.image-modal-close');
 
     const projectsData = [
         {
@@ -182,34 +178,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'auto';
     });
 
-    imageModalClose.addEventListener('click', () => {
-        imageModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    });
-
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-        if (e.target === imageModal) {
-            imageModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    modalImage.addEventListener('click', () => {
-        const project = projectsData[currentProjectIndex];
-        fullSizeImage.src = project.images[currentImageIndex];
-        imageModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    });
-
-    magnifyIcon.addEventListener('click', () => {
-        const project = projectsData[currentProjectIndex];
-        fullSizeImage.src = project.images[currentImageIndex];
-        imageModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
     });
 
     const imageNavPrev = document.querySelector('.image-nav-prev');
@@ -397,5 +370,106 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('.weglot-container').forEach(container => {
         container.style.display = 'none';
+    });
+
+    const galleryModal = document.getElementById('imageGalleryModal');
+    const galleryImage = document.getElementById('galleryImage');
+    const galleryClose = document.querySelector('.gallery-close');
+    const galleryPrev = document.querySelector('.gallery-prev');
+    const galleryNext = document.querySelector('.gallery-next');
+    const currentImageIndexSpan = document.getElementById('currentImageIndex');
+    const totalImagesSpan = document.getElementById('totalImages');
+    const galleryThumbnailsTrack = document.querySelector('.gallery-thumbnails-track');
+
+    let galleryImages = [];
+    let galleryCurrentIndex = 0;
+    let galleryCurrentProjectIndex = 0;
+
+    function openGallery(projectIndex, imageIndex) {
+        galleryCurrentProjectIndex = projectIndex;
+        galleryCurrentIndex = imageIndex;
+        galleryImages = projectsData[projectIndex].images;
+        
+        updateGallery();
+        galleryModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function updateGallery() {
+        galleryImage.src = galleryImages[galleryCurrentIndex];
+        currentImageIndexSpan.textContent = galleryCurrentIndex + 1;
+        totalImagesSpan.textContent = galleryImages.length;
+        
+        galleryThumbnailsTrack.innerHTML = '';
+        
+        galleryImages.forEach((image, index) => {
+            const thumbnail = document.createElement('div');
+            thumbnail.className = 'gallery-thumbnail';
+            if (index === galleryCurrentIndex) thumbnail.classList.add('active');
+            thumbnail.innerHTML = `<img src="${image.replace('800x600', '100x100')}" alt="">`;
+            thumbnail.addEventListener('click', () => {
+                galleryCurrentIndex = index;
+                updateGallery();
+            });
+            galleryThumbnailsTrack.appendChild(thumbnail);
+        });
+    }
+
+    galleryPrev.addEventListener('click', () => {
+        galleryCurrentIndex = (galleryCurrentIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateGallery();
+    });
+
+    galleryNext.addEventListener('click', () => {
+        galleryCurrentIndex = (galleryCurrentIndex + 1) % galleryImages.length;
+        updateGallery();
+    });
+
+    galleryClose.addEventListener('click', () => {
+        galleryModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === galleryModal) {
+            galleryModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (galleryModal.style.display === 'block') {
+            if (e.key === 'Escape') {
+                galleryModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            } else if (e.key === 'ArrowLeft') {
+                galleryPrev.click();
+            } else if (e.key === 'ArrowRight') {
+                galleryNext.click();
+            }
+        }
+    });
+
+    document.querySelectorAll('.project-image img').forEach((img, index) => {
+        img.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const projectCard = img.closest('.project-card');
+            const projectIndex = parseInt(projectCard.getAttribute('data-project-id')) - 1;
+            openGallery(projectIndex, 0);
+        });
+    });
+
+    modalImage.addEventListener('click', () => {
+        openGallery(currentProjectIndex, currentImageIndex);
+    });
+
+    document.querySelectorAll('.project-image').forEach((projectImage, index) => {
+        projectImage.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('btn-view')) {
+                const projectCard = projectImage.closest('.project-card');
+                const projectIndex = parseInt(projectCard.getAttribute('data-project-id')) - 1;
+                openGallery(projectIndex, 0);
+            }
+        });
     });
 });
