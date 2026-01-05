@@ -476,8 +476,6 @@ section {
 
 .projects-slider {
     position: relative;
-    /* max-width: 1000px; */
-    /* margin: 2rem auto; */
     overflow: visible;
 }
 
@@ -519,6 +517,7 @@ section {
     height: 100%;
     object-fit: contain;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .project-card:hover .project-image img {
@@ -709,10 +708,8 @@ section {
 }
 
 .modal-image-container {
-    /* padding: 1rem; */
     display: flex;
     flex-direction: column;
-    /* gap: 1rem; */
     overflow: auto;
 }
 
@@ -720,7 +717,6 @@ section {
     padding-top: 5px;
     position: relative;
     height: 500px;
-    /* width: 300px; */
     overflow: visible;
     border-radius: 10px;
     flex-shrink: 0;
@@ -733,6 +729,35 @@ section {
     object-fit: contain;
     border-radius: 4px;
     max-width: 400px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.main-image-container img:hover {
+    transform: scale(1.02);
+}
+
+.magnify-icon {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.magnify-icon:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
 }
 
 .image-nav-dots {
@@ -797,7 +822,6 @@ section {
 
 .thumbnail-track {
     display: flex;
-    /* gap: 1rem; */
     justify-content: center;
     width: max-content;
     margin: 0 auto;
@@ -813,6 +837,7 @@ section {
     border: 2px solid transparent;
     transition: border-color 0.3s ease;
     flex-shrink: 0;
+    position: relative;
 }
 
 .thumbnail.active {
@@ -823,6 +848,51 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.image-modal {
+    z-index: 3000;
+}
+
+.image-modal-content {
+    position: relative;
+    margin: 5% auto;
+    max-width: 90%;
+    max-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-modal-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.image-modal-close:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
 }
 
 .modal-text {
@@ -971,7 +1041,6 @@ section {
 
     .thumbnail-track {
         justify-content: flex-start;
-        /* padding: 0 1rem; */
     }
 
     .nav-menu {
@@ -1069,7 +1138,6 @@ section {
 
     .main-image-container {
         height: 400px;
-        /* width: 250px; */
     }
 
     .modal-content {
@@ -1080,6 +1148,14 @@ section {
 
     .modal-header {
         padding: 1rem 1.5rem;
+    }
+
+    .image-nav-prev {
+        left: 10px;
+    }
+
+    .image-nav-next {
+        right: 10px;
     }
 
     .skills-grid {
@@ -1135,5 +1211,15 @@ section {
     .btn-view {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
+    }
+
+    .main-image-container {
+        height: 300px;
+    }
+
+    .magnify-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
 }
