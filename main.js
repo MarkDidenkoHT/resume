@@ -84,11 +84,10 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             title: "Система отправки сообщений",
-            description: "Система отправки сообщений, со статистикой и сквозными фильтрами.",
+            description: "Система отправки сообщений, с отчетсностью и сквозными фильтрами. Позволяет точно выбрать кому отправить сообщение, по нескольким критериям, показывает результаты по ответам, дает возможность переотправить сообщение, отправить тем кто не ответил, прикрелпять фото как файл или url изображения.",
             images: [
                 "./assets/images/message1.jpg",
-                "https://via.placeholder.com/800x600/6366f1/ffffff?text=Project+3-2",
-                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+3-3"
+                "./assets/images/message2.jpg"
             ],
             tags: ["HTML/CSS/JS", "Supabase", "Telegram API", "Push Notifications"]
         },
