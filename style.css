@@ -510,7 +510,6 @@ section {
     height: 300px;
     overflow: hidden;
     background: var(--dark-light);
-    cursor: pointer;
 }
 
 .project-image img {
@@ -518,32 +517,11 @@ section {
     height: 100%;
     object-fit: contain;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .project-card:hover .project-image img {
     transform: scale(1.05);
-}
-
-.image-magnify-icon {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 3;
-    pointer-events: none;
-}
-
-.project-image:hover .image-magnify-icon {
-    opacity: 1;
 }
 
 .project-details-btn {
@@ -564,8 +542,6 @@ section {
     transition: all 0.3s ease;
     font-size: 0.9rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 4;
-    position: relative;
 }
 
 .btn-view:hover {
@@ -754,6 +730,30 @@ section {
     border-radius: 4px;
     max-width: 400px;
     cursor: pointer;
+    position: relative;
+}
+
+.main-image-container img::after {
+    content: '🔍';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.main-image-container img:hover::after {
+    opacity: 1;
 }
 
 .image-nav-dots {
@@ -833,6 +833,7 @@ section {
     border: 2px solid transparent;
     transition: border-color 0.3s ease;
     flex-shrink: 0;
+    position: relative;
 }
 
 .thumbnail.active {
@@ -859,7 +860,7 @@ section {
     line-height: 1.8;
 }
 
-.image-gallery-modal {
+.lightbox-modal {
     display: none;
     position: fixed;
     z-index: 3000;
@@ -871,7 +872,7 @@ section {
     animation: fadeIn 0.3s ease;
 }
 
-.gallery-modal-content {
+.lightbox-content {
     position: relative;
     width: 100%;
     height: 100%;
@@ -879,58 +880,51 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
 
-.gallery-close {
+.lightbox-close {
     position: absolute;
     top: 20px;
     right: 20px;
     background: none;
     border: none;
     color: white;
-    font-size: 2.5rem;
+    font-size: 2rem;
     cursor: pointer;
-    z-index: 10;
+    padding: 10px;
+    z-index: 3001;
     transition: color 0.3s ease;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.gallery-close:hover {
+.lightbox-close:hover {
     color: var(--primary);
 }
 
-.gallery-main-image {
+.lightbox-image-container {
     position: relative;
-    max-width: 90%;
-    max-height: 70%;
+    width: 90%;
+    height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
 }
 
-.gallery-main-image img {
+.lightbox-image-container img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    border-radius: 8px;
 }
 
-.gallery-prev,
-.gallery-next {
+.lightbox-prev,
+.lightbox-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.2);
     color: white;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 2rem;
@@ -940,59 +934,27 @@ section {
     transition: background 0.3s ease;
 }
 
-.gallery-prev:hover,
-.gallery-next:hover {
-    background: rgba(0, 0, 0, 0.8);
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(255, 255, 255, 0.4);
 }
 
-.gallery-prev {
+.lightbox-prev {
     left: 20px;
 }
 
-.gallery-next {
+.lightbox-next {
     right: 20px;
 }
 
-.gallery-counter {
+.lightbox-counter {
+    position: absolute;
+    bottom: 30px;
     color: white;
     font-size: 1.2rem;
-    margin-bottom: 20px;
-    font-weight: 500;
-}
-
-.gallery-thumbnails {
-    max-width: 90%;
-    overflow-x: auto;
-    padding: 10px 0;
-}
-
-.gallery-thumbnails-track {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-.gallery-thumbnail {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: border-color 0.3s ease;
-    flex-shrink: 0;
-    opacity: 0.6;
-}
-
-.gallery-thumbnail.active {
-    border-color: var(--primary);
-    opacity: 1;
-}
-
-.gallery-thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 15px;
+    border-radius: 20px;
 }
 
 .skills-grid {
@@ -1236,26 +1198,6 @@ section {
         padding: 1rem 1.5rem;
     }
 
-    .gallery-prev,
-    .gallery-next {
-        width: 40px;
-        height: 40px;
-        font-size: 1.5rem;
-    }
-
-    .gallery-prev {
-        left: 10px;
-    }
-
-    .gallery-next {
-        right: 10px;
-    }
-
-    .gallery-thumbnail {
-        width: 60px;
-        height: 60px;
-    }
-
     .skills-grid {
         grid-template-columns: 1fr;
     }
@@ -1268,6 +1210,21 @@ section {
     .contact-item {
         min-width: auto;
         width: 100%;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    .lightbox-prev {
+        left: 10px;
+    }
+
+    .lightbox-next {
+        right: 10px;
     }
 }
 
@@ -1309,17 +1266,5 @@ section {
     .btn-view {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
-    }
-
-    .gallery-prev,
-    .gallery-next {
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
-    }
-
-    .gallery-thumbnail {
-        width: 50px;
-        height: 50px;
     }
 }

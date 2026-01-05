@@ -138,7 +138,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const thumbnail = document.createElement('div');
             thumbnail.className = 'thumbnail';
             if (index === currentImageIndex) thumbnail.classList.add('active');
-            thumbnail.innerHTML = `<img src="${image.replace('800x600', '100x100')}" alt="">`;
+            
+            const img = document.createElement('img');
+            img.src = image.replace('800x600', '100x100');
+            img.alt = '';
+            
+            const magnifier = document.createElement('div');
+            magnifier.className = 'thumbnail-magnifier';
+            magnifier.innerHTML = '🔍';
+            
+            thumbnail.appendChild(img);
+            thumbnail.appendChild(magnifier);
+            
             thumbnail.addEventListener('click', () => {
                 currentImageIndex = index;
                 modalImage.src = project.images[currentImageIndex];
@@ -372,104 +383,112 @@ document.addEventListener('DOMContentLoaded', function() {
         container.style.display = 'none';
     });
 
-    const galleryModal = document.getElementById('imageGalleryModal');
-    const galleryImage = document.getElementById('galleryImage');
-    const galleryClose = document.querySelector('.gallery-close');
-    const galleryPrev = document.querySelector('.gallery-prev');
-    const galleryNext = document.querySelector('.gallery-next');
-    const currentImageIndexSpan = document.getElementById('currentImageIndex');
-    const totalImagesSpan = document.getElementById('totalImages');
-    const galleryThumbnailsTrack = document.querySelector('.gallery-thumbnails-track');
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const lightboxPrev = document.querySelector('.lightbox-prev');
+    const lightboxNext = document.querySelector('.lightbox-next');
+    const lightboxCurrent = document.getElementById('lightboxCurrent');
+    const lightboxTotal = document.getElementById('lightboxTotal');
 
-    let galleryImages = [];
-    let galleryCurrentIndex = 0;
-    let galleryCurrentProjectIndex = 0;
+    let lightboxImages = [];
+    let lightboxCurrentIndex = 0;
 
-    function openGallery(projectIndex, imageIndex) {
-        galleryCurrentProjectIndex = projectIndex;
-        galleryCurrentIndex = imageIndex;
-        galleryImages = projectsData[projectIndex].images;
-        
-        updateGallery();
-        galleryModal.style.display = 'block';
+    function openLightbox(images, startIndex) {
+        lightboxImages = images;
+        lightboxCurrentIndex = startIndex;
+        lightboxTotal.textContent = images.length;
+        updateLightboxImage();
+        lightboxModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
 
-    function updateGallery() {
-        galleryImage.src = galleryImages[galleryCurrentIndex];
-        currentImageIndexSpan.textContent = galleryCurrentIndex + 1;
-        totalImagesSpan.textContent = galleryImages.length;
-        
-        galleryThumbnailsTrack.innerHTML = '';
-        
-        galleryImages.forEach((image, index) => {
-            const thumbnail = document.createElement('div');
-            thumbnail.className = 'gallery-thumbnail';
-            if (index === galleryCurrentIndex) thumbnail.classList.add('active');
-            thumbnail.innerHTML = `<img src="${image.replace('800x600', '100x100')}" alt="">`;
-            thumbnail.addEventListener('click', () => {
-                galleryCurrentIndex = index;
-                updateGallery();
-            });
-            galleryThumbnailsTrack.appendChild(thumbnail);
-        });
+    function updateLightboxImage() {
+        lightboxImage.src = lightboxImages[lightboxCurrentIndex];
+        lightboxCurrent.textContent = lightboxCurrentIndex + 1;
     }
 
-    galleryPrev.addEventListener('click', () => {
-        galleryCurrentIndex = (galleryCurrentIndex - 1 + galleryImages.length) % galleryImages.length;
-        updateGallery();
-    });
-
-    galleryNext.addEventListener('click', () => {
-        galleryCurrentIndex = (galleryCurrentIndex + 1) % galleryImages.length;
-        updateGallery();
-    });
-
-    galleryClose.addEventListener('click', () => {
-        galleryModal.style.display = 'none';
+    function closeLightbox() {
+        lightboxModal.style.display = 'none';
         document.body.style.overflow = 'auto';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    lightboxPrev.addEventListener('click', () => {
+        lightboxCurrentIndex = (lightboxCurrentIndex - 1 + lightboxImages.length) % lightboxImages.length;
+        updateLightboxImage();
     });
 
-    window.addEventListener('click', (e) => {
-        if (e.target === galleryModal) {
-            galleryModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+    lightboxNext.addEventListener('click', () => {
+        lightboxCurrentIndex = (lightboxCurrentIndex + 1) % lightboxImages.length;
+        updateLightboxImage();
+    });
+
+    modalImage.addEventListener('click', () => {
+        const project = projectsData[currentProjectIndex];
+        openLightbox(project.images, currentImageIndex);
+    });
+
+    thumbnailTrack.addEventListener('click', (e) => {
+        if (e.target.tagName === 'IMG' || e.target.className === 'thumbnail-magnifier') {
+            const project = projectsData[currentProjectIndex];
+            const thumbnailIndex = Array.from(thumbnailTrack.children).indexOf(e.target.closest('.thumbnail'));
+            openLightbox(project.images, thumbnailIndex);
         }
     });
 
     document.addEventListener('keydown', (e) => {
-        if (galleryModal.style.display === 'block') {
+        if (lightboxModal.style.display === 'block') {
             if (e.key === 'Escape') {
-                galleryModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                closeLightbox();
             } else if (e.key === 'ArrowLeft') {
-                galleryPrev.click();
+                lightboxCurrentIndex = (lightboxCurrentIndex - 1 + lightboxImages.length) % lightboxImages.length;
+                updateLightboxImage();
             } else if (e.key === 'ArrowRight') {
-                galleryNext.click();
+                lightboxCurrentIndex = (lightboxCurrentIndex + 1) % lightboxImages.length;
+                updateLightboxImage();
             }
         }
     });
 
-    document.querySelectorAll('.project-image img').forEach((img, index) => {
-        img.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const projectCard = img.closest('.project-card');
-            const projectIndex = parseInt(projectCard.getAttribute('data-project-id')) - 1;
-            openGallery(projectIndex, 0);
-        });
+    lightboxModal.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) {
+            closeLightbox();
+        }
     });
 
-    modalImage.addEventListener('click', () => {
-        openGallery(currentProjectIndex, currentImageIndex);
+    lightboxImage.addEventListener('touchstart', handleTouchStart);
+    lightboxImage.addEventListener('touchmove', handleTouchMove);
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function handleTouchStart(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }
+
+    function handleTouchMove(e) {
+        touchEndX = e.changedTouches[0].screenX;
+    }
+
+    lightboxImage.addEventListener('touchend', (e) => {
+        handleTouchEnd(e);
+        touchStartX = 0;
+        touchEndX = 0;
     });
 
-    document.querySelectorAll('.project-image').forEach((projectImage, index) => {
-        projectImage.addEventListener('click', (e) => {
-            if (!e.target.classList.contains('btn-view')) {
-                const projectCard = projectImage.closest('.project-card');
-                const projectIndex = parseInt(projectCard.getAttribute('data-project-id')) - 1;
-                openGallery(projectIndex, 0);
+    function handleTouchEnd(e) {
+        const threshold = 50;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                lightboxCurrentIndex = (lightboxCurrentIndex + 1) % lightboxImages.length;
+            } else {
+                lightboxCurrentIndex = (lightboxCurrentIndex - 1 + lightboxImages.length) % lightboxImages.length;
             }
-        });
-    });
+            updateLightboxImage();
+        }
+    }
 });

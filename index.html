@@ -272,9 +272,6 @@
                                 <div class="project-details-btn">
                                     <button class="btn-view">Подробнее</button>
                                 </div>
-                                <div class="image-magnify-icon">
-                                    <i class="fas fa-search-plus"></i>
-                                </div>
                             </div>
                             <div class="project-info">
                                 <h3>Внутренняя система управления/контроля рабочего графика</h3>
@@ -293,9 +290,6 @@
                                 <img src="https://via.placeholder.com/400x300/8b5cf6/ffffff?text=Project+2-1" alt="Проект 2" loading="lazy">
                                 <div class="project-details-btn">
                                     <button class="btn-view">Подробнее</button>
-                                </div>
-                                <div class="image-magnify-icon">
-                                    <i class="fas fa-search-plus"></i>
                                 </div>
                             </div>
                             <div class="project-info">
@@ -317,9 +311,6 @@
                                 <div class="project-details-btn">
                                     <button class="btn-view">Подробнее</button>
                                 </div>
-                                <div class="image-magnify-icon">
-                                    <i class="fas fa-search-plus"></i>
-                                </div>
                             </div>
                             <div class="project-info">
                                 <h3>Система отправки сообщений</h3>
@@ -339,9 +330,6 @@
                                 <div class="project-details-btn">
                                     <button class="btn-view">Подробнее</button>
                                 </div>
-                                <div class="image-magnify-icon">
-                                    <i class="fas fa-search-plus"></i>
-                                </div>
                             </div>
                             <div class="project-info">
                                 <h3>Интеграция ИИ</h3>
@@ -360,9 +348,6 @@
                                 <img src="./assets/images/shattered_crown1.jpg" alt="Проект 5" loading="lazy">
                                 <div class="project-details-btn">
                                     <button class="btn-view">Подробнее</button>
-                                </div>
-                                <div class="image-magnify-icon">
-                                    <i class="fas fa-search-plus"></i>
                                 </div>
                             </div>
                             <div class="project-info">
@@ -418,19 +403,16 @@
         </div>
     </div>
 
-    <div id="imageGalleryModal" class="image-gallery-modal">
-        <div class="gallery-modal-content">
-            <button class="gallery-close">✕</button>
-            <div class="gallery-main-image">
-                <img id="galleryImage" src="" alt="">
-                <button class="gallery-prev">‹</button>
-                <button class="gallery-next">›</button>
+    <div id="lightboxModal" class="lightbox-modal">
+        <div class="lightbox-content">
+            <button class="lightbox-close">✕</button>
+            <div class="lightbox-image-container">
+                <img id="lightboxImage" src="" alt="">
+                <button class="lightbox-prev">‹</button>
+                <button class="lightbox-next">›</button>
             </div>
-            <div class="gallery-counter">
-                <span id="currentImageIndex">1</span> / <span id="totalImages">1</span>
-            </div>
-            <div class="gallery-thumbnails">
-                <div class="gallery-thumbnails-track"></div>
+            <div class="lightbox-counter">
+                <span id="lightboxCurrent">1</span> / <span id="lightboxTotal">1</span>
             </div>
         </div>
     </div>
