@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "./assets/images/timetable3.jpg",
                 "./assets/images/timetable4.jpg"
             ],
-            tags: ["Telegram Bots", "Supabase", "Apps Script", "PostgreSQL", "HIK-vision"]
+            tags: ["Telegram Bots", "Supabase", "PostgreSQL", "HIK-vision"]
         },
         {
             title: "Алгоритм распределения и перемещения товаров между магазинами",
