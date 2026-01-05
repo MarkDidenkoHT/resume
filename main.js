@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "./assets/images/timetable3.jpg",
                 "./assets/images/timetable4.jpg"
             ],
-            tags: ["Telegram Bots", "Supabase", "PostgreSQL", "HIK-vision"]
+            tags: ["HTML/CSS/JS", "Telegram Bots", "Supabase", "HIK-vision"]
         },
         {
             title: "Алгоритм распределения и перемещения товаров между магазинами",
@@ -78,23 +78,19 @@ document.addEventListener('DOMContentLoaded', function() {
             images: [
                 "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+2-1",
                 "https://via.placeholder.com/800x600/6366f1/ffffff?text=Project+2-2",
-                "https://via.placeholder.com/800x600/10b981/ffffff?text=Project+2-3",
-                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Project+2-4",
-                "https://via.placeholder.com/800x600/ef4444/ffffff?text=Project+2-5"
+                "https://via.placeholder.com/800x600/10b981/ffffff?text=Project+2-3"
             ],
-            tags: ["HTML/CSS/JS", "Excel", "SMTP", "Автоматизация"]
+            tags: ["HTML/CSS/JS","ETL", "Excel", "Analytics", "SMTP"]
         },
         {
-            title: "Аналитическая панель",
-            description: "Дашборд для отслеживания ключевых бизнес-метрик. Автоматизация отчетности, визуализация данных, интеграция с различными источниками данных.",
+            title: "Система отправки сообщений",
+            description: "Система отправки сообщений, со статистикой и сквозными фильтрами.",
             images: [
-                "https://via.placeholder.com/800x600/10b981/ffffff?text=Project+3-1",
+                "./assets/images/message1.jpg",
                 "https://via.placeholder.com/800x600/6366f1/ffffff?text=Project+3-2",
-                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+3-3",
-                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Project+3-4",
-                "https://via.placeholder.com/800x600/ef4444/ffffff?text=Project+3-5"
+                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+3-3"
             ],
-            tags: ["PostgreSQL", "Google Sheets", "JavaScript", "Data Visualization", "API"]
+            tags: ["HTML/CSS/JS", "Supabase", "Telegram API", "Push Notifications"]
         },
         {
             title: "Интеграция ИИ",
@@ -102,11 +98,9 @@ document.addEventListener('DOMContentLoaded', function() {
             images: [
                 "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Project+4-1",
                 "https://via.placeholder.com/800x600/6366f1/ffffff?text=Project+4-2",
-                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+4-3",
-                "https://via.placeholder.com/800x600/10b981/ffffff?text=Project+4-4",
-                "https://via.placeholder.com/800x600/ef4444/ffffff?text=Project+4-5"
+                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+4-3"
             ],
-            tags: ["AI Integration", "Automation", "Python", "NLP", "Machine Learning"]
+            tags: ["AI Integration", "Telegram API", "Google Sheets", "Apps Script"]
         },
         {
             title: "Shattered Crown",
