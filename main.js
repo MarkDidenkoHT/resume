@@ -65,11 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Внутренняя система управления/контроля рабочего графика",
             description: "Автоматизация запросов отпусков/больничных/отгулов, интеграция с Telegram и системой контроля доступа. Сотрудник в веб-приложении запрашивет время и дату, выбирает тип запроса, указывает причину. Руководителю в боте приходит уведомление с инлайн опциями подтвердить/отклонить. Из БД HIK-vision делается ежедневная выгрузка посещаемости и сопоставляется с одобренными запросами, таким образом корректируя присутствие/отсутствие сотрудника на рабочем месте. Данное решение сэкономило 3 рабочих дня сотруднику службы безопасности.",
             images: [
-                "./assets/images/timetable.jpg",
-                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+1-2",
-                "https://via.placeholder.com/800x600/10b981/ffffff?text=Project+1-3",
-                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Project+1-4",
-                "https://via.placeholder.com/800x600/ef4444/ffffff?text=Project+1-5"
+                "./assets/images/timetable1.jpg",
+                "./assets/images/timetable2.jpg",
+                "./assets/images/timetable3.jpg",
+                "./assets/images/timetable4.jpg"
             ],
             tags: ["Telegram Bots", "Supabase", "Apps Script", "PostgreSQL", "HIK-vision"]
         },
