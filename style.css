@@ -335,7 +335,7 @@ section {
 }
 
 .info-card h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 7px;
     color: var(--dark);
 }
 
@@ -507,7 +507,6 @@ section {
     font-size: 1.1rem;
     line-height: 1.6;
     color: var(--dark-light);
-    margin: 1.5rem 0;
 }
 
 .project-details {
