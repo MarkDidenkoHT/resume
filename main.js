@@ -21,23 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    const typingText = document.querySelector('.typing-text');
-    const text = "Разработчик, Аналитик, SEO-менеджер";
-    typingText.textContent = '';
-    let i = 0;
-
-    function typeWriter() {
-        if (i < text.length) {
-            typingText.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
-        }
-    }
-
-    window.addEventListener('load', () => {
-        setTimeout(typeWriter, 500);
-    });
-
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
