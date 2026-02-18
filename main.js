@@ -52,120 +52,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const modal = document.getElementById('projectModal');
-    const modalImage = document.getElementById('modalImage');
     const modalTitle = document.getElementById('modalTitle');
     const modalDescription = document.getElementById('modalDescription');
     const modalTags = document.getElementById('modalTags');
     const modalXClose = document.querySelector('.modal-x-close');
-    const imageNavDotsContainer = document.querySelector('.image-nav-dots');
-    const thumbnailTrack = document.querySelector('.thumbnail-track');
 
     const projectsData = [
         {
-            title: "Внутренняя система управления/контроля рабочего графика",
-            description: "Автоматизация запросов отпусков/больничных/отгулов, интеграция с Telegram и системой контроля доступа. Сотрудник в веб-приложении запрашивет время и дату, выбирает тип запроса, указывает причину. Руководителю в боте приходит уведомление с инлайн опциями подтвердить/отклонить. Из БД HIK-vision делается ежедневная выгрузка посещаемости и сопоставляется с одобренными запросами, таким образом корректируя присутствие/отсутствие сотрудника на рабочем месте. Данное решение сэкономило 3 рабочих дня сотруднику службы безопасности.",
-            images: [
-                "./assets/images/timetable1.jpg",
-                "./assets/images/timetable2.jpg",
-                "./assets/images/timetable3.jpg",
-                "./assets/images/timetable4.jpg"
-            ],
-            tags: ["HTML/CSS/JS", "Telegram Bots", "Supabase", "HIK-vision"]
-        },
-        {
-            title: "Алгоритм распределения и перемещения товаров между магазинами",
-            description: "Оптимизация и автоматизация процессов с остатками товаров и новыми поступления между магазинами торговой сети. Ранее сотрудник вручную делал выгрузку из 1С в эксель, в таблице смотрел на остатки между магазинами, новые поступления и реализацию, основываясь на эти показатели в таблице вручную отмечал сколько какого товара переметсить между магазинами и складами. Процесс занимал дни ручной работы. Я разработал алгоритм и приложение, которое выполняет работу с этими файлами со стороны клиета, данные остаются локально, и выполняет все эти операции за менеджера, менеджеру остается только проверить работу алгоритма, и по необходимости внести корректировки. Данный алгоритм ускорил работу на 90%.",
-            images: [
-                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+2-1",
-                "https://via.placeholder.com/800x600/6366f1/ffffff?text=Project+2-2",
-                "https://via.placeholder.com/800x600/10b981/ffffff?text=Project+2-3"
-            ],
-            tags: ["HTML/CSS/JS","ETL", "Excel", "Analytics", "SMTP"]
-        },
-        {
-            title: "Система отправки сообщений",
-            description: "Система отправки сообщений, с отчетсностью и сквозными фильтрами. Позволяет точно выбрать кому отправить сообщение, по нескольким критериям, показывает результаты по ответам, дает возможность переотправить сообщение, отправить тем кто не ответил, прикрелпять фото как файл или url изображения.",
-            images: [
-                "./assets/images/message1.jpg",
-                "./assets/images/message2.jpg"
-            ],
-            tags: ["HTML/CSS/JS", "Supabase", "Telegram API", "Push Notifications"]
-        },
-        {
-            title: "Интеграция ИИ",
-            description: "Внедрение искусственного интеллекта для автоматизации процессов автопарка компании. Водители отправляют фото машин, ИИ определяет по номеру машину, сверяет ее текущее состояние, определяет новые повреждения, информирует ежемесячно о новых повреждениях, царапинах, ржавчине.",
-            images: [
-                "https://via.placeholder.com/800x600/f59e0b/ffffff?text=Project+4-1",
-                "https://via.placeholder.com/800x600/6366f1/ffffff?text=Project+4-2",
-                "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Project+4-3"
-            ],
-            tags: ["AI Integration", "Telegram API", "Google Sheets", "Apps Script"]
-        },
-        {
-            title: "Shattered Crown",
-            description: "Хобби-проект, фэнтэзи tbrpg, альфа-версия запланирована на начало весны 2026. Пошаговая онлайн игра, с небольшой сюжетной линией, развитием персонажей, профессиями, экономикой.",
-            images: [
-                "./assets/images/shattered_crown1.jpg",
-                "./assets/images/shattered_crown2.jpg",
-                "./assets/images/shattered_crown3.jpg",
-                "./assets/images/shattered_crown4.jpg",
-                "./assets/images/shattered_crown5.jpg"
-            ],
-            tags: ["HTML/CSS/JS", "Supabase", "Telegram API", "Push Notifications", "Cloud Sync"]
+            title: "Hi-Tech App — Платформа для управления бизнесом",
+            description: "Разработал многофункциональную Telegram Web App (TWA) с Node.js/Express бэкендом, интегрированную с Supabase. Платформа автоматизирует ключевые бизнес-процессы: управление складом, планирование графиков, взаимодействие с клиентами, контроль качества и логистику. Реализована модульная архитектура с динамической загрузкой 20+ независимых модулей. Внедрена надежная система безопасности: JWT-аутентификация, шифрование паролей bcrypt, Helmet.js, rate limiting. Также интегрированы функции загрузки файлов, email-уведомлений, экспорта в Excel и генерации QR-кодов.",
+            tags: ["Node.js", "Express", "Supabase", "JWT", "Telegram API", "Helmet", "Nodemailer", "XLSX", "PostgreSQL"]
         }
     ];
 
     let currentProjectIndex = 0;
-    let currentImageIndex = 0;
-
-    function updateImageNavigation(projectIndex) {
-        const project = projectsData[projectIndex];
-        
-        imageNavDotsContainer.innerHTML = '';
-        thumbnailTrack.innerHTML = '';
-        
-        project.images.forEach((image, index) => {
-            const dot = document.createElement('span');
-            dot.className = 'image-nav-dot';
-            if (index === currentImageIndex) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                currentImageIndex = index;
-                modalImage.src = project.images[currentImageIndex];
-                updateImageNavigation(projectIndex);
-            });
-            imageNavDotsContainer.appendChild(dot);
-
-            const thumbnail = document.createElement('div');
-            thumbnail.className = 'thumbnail';
-            if (index === currentImageIndex) thumbnail.classList.add('active');
-            
-            const img = document.createElement('img');
-            img.src = image.replace('800x600', '100x100');
-            img.alt = '';
-            
-            const magnifier = document.createElement('div');
-            magnifier.className = 'thumbnail-magnifier';
-            magnifier.innerHTML = '🔍';
-            
-            thumbnail.appendChild(img);
-            thumbnail.appendChild(magnifier);
-            
-            thumbnail.addEventListener('click', () => {
-                currentImageIndex = index;
-                modalImage.src = project.images[currentImageIndex];
-                updateImageNavigation(projectIndex);
-            });
-            thumbnailTrack.appendChild(thumbnail);
-        });
-        
-        modalImage.src = project.images[currentImageIndex];
-    }
 
     document.querySelectorAll('.btn-view').forEach((btn, index) => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             currentProjectIndex = index;
-            currentImageIndex = 0;
             const project = projectsData[index];
             
             modalTitle.textContent = project.title;
@@ -178,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 modalTags.appendChild(span);
             });
             
-            updateImageNavigation(index);
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         });
@@ -194,23 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-    });
-
-    const imageNavPrev = document.querySelector('.image-nav-prev');
-    const imageNavNext = document.querySelector('.image-nav-next');
-
-    imageNavPrev.addEventListener('click', () => {
-        const project = projectsData[currentProjectIndex];
-        currentImageIndex = (currentImageIndex - 1 + project.images.length) % project.images.length;
-        modalImage.src = project.images[currentImageIndex];
-        updateImageNavigation(currentProjectIndex);
-    });
-
-    imageNavNext.addEventListener('click', () => {
-        const project = projectsData[currentProjectIndex];
-        currentImageIndex = (currentImageIndex + 1) % project.images.length;
-        modalImage.src = project.images[currentImageIndex];
-        updateImageNavigation(currentProjectIndex);
     });
 
     const skillBars = document.querySelectorAll('.skill-progress');
@@ -274,13 +161,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.querySelector('.next-btn');
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
-    const totalCards = 5;
+    const totalCards = 1;
 
     function calculateVisibleCards() {
         if (window.innerWidth <= 768) {
             return 1;
         } else {
-            return 3;
+            return 1;
         }
     }
 
@@ -312,14 +199,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         prevBtn.disabled = currentIndex === 0;
         nextBtn.disabled = currentIndex >= maxIndex;
-        
-        if (window.innerWidth <= 768) {
-            prevBtn.style.display = 'flex';
-            nextBtn.style.display = 'flex';
-        } else {
-            prevBtn.style.display = 'flex';
-            nextBtn.style.display = 'flex';
-        }
     }
 
     nextBtn.addEventListener('click', () => {
@@ -384,70 +263,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const lightboxModal = document.getElementById('lightboxModal');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxClose = document.querySelector('.lightbox-close');
-    const lightboxPrev = document.querySelector('.lightbox-prev');
-    const lightboxNext = document.querySelector('.lightbox-next');
-    const lightboxCurrent = document.getElementById('lightboxCurrent');
-    const lightboxTotal = document.getElementById('lightboxTotal');
-
-    let lightboxImages = [];
-    let lightboxCurrentIndex = 0;
-
-    function openLightbox(images, startIndex) {
-        lightboxImages = images;
-        lightboxCurrentIndex = startIndex;
-        lightboxTotal.textContent = images.length;
-        updateLightboxImage();
-        lightboxModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function updateLightboxImage() {
-        lightboxImage.src = lightboxImages[lightboxCurrentIndex];
-        lightboxCurrent.textContent = lightboxCurrentIndex + 1;
-    }
 
     function closeLightbox() {
         lightboxModal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
 
-    lightboxClose.addEventListener('click', closeLightbox);
-
-    lightboxPrev.addEventListener('click', () => {
-        lightboxCurrentIndex = (lightboxCurrentIndex - 1 + lightboxImages.length) % lightboxImages.length;
-        updateLightboxImage();
-    });
-
-    lightboxNext.addEventListener('click', () => {
-        lightboxCurrentIndex = (lightboxCurrentIndex + 1) % lightboxImages.length;
-        updateLightboxImage();
-    });
-
-    modalImage.addEventListener('click', () => {
-        const project = projectsData[currentProjectIndex];
-        openLightbox(project.images, currentImageIndex);
-    });
-
-    thumbnailTrack.addEventListener('click', (e) => {
-        if (e.target.tagName === 'IMG' || e.target.className === 'thumbnail-magnifier') {
-            const project = projectsData[currentProjectIndex];
-            const thumbnailIndex = Array.from(thumbnailTrack.children).indexOf(e.target.closest('.thumbnail'));
-            openLightbox(project.images, thumbnailIndex);
-        }
-    });
-
     document.addEventListener('keydown', (e) => {
         if (lightboxModal.style.display === 'block') {
             if (e.key === 'Escape') {
                 closeLightbox();
-            } else if (e.key === 'ArrowLeft') {
-                lightboxCurrentIndex = (lightboxCurrentIndex - 1 + lightboxImages.length) % lightboxImages.length;
-                updateLightboxImage();
-            } else if (e.key === 'ArrowRight') {
-                lightboxCurrentIndex = (lightboxCurrentIndex + 1) % lightboxImages.length;
-                updateLightboxImage();
             }
         }
     });
@@ -457,38 +282,4 @@ document.addEventListener('DOMContentLoaded', function() {
             closeLightbox();
         }
     });
-
-    lightboxImage.addEventListener('touchstart', handleTouchStart);
-    lightboxImage.addEventListener('touchmove', handleTouchMove);
-
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    function handleTouchStart(e) {
-        touchStartX = e.changedTouches[0].screenX;
-    }
-
-    function handleTouchMove(e) {
-        touchEndX = e.changedTouches[0].screenX;
-    }
-
-    lightboxImage.addEventListener('touchend', (e) => {
-        handleTouchEnd(e);
-        touchStartX = 0;
-        touchEndX = 0;
-    });
-
-    function handleTouchEnd(e) {
-        const threshold = 50;
-        const diff = touchStartX - touchEndX;
-
-        if (Math.abs(diff) > threshold) {
-            if (diff > 0) {
-                lightboxCurrentIndex = (lightboxCurrentIndex + 1) % lightboxImages.length;
-            } else {
-                lightboxCurrentIndex = (lightboxCurrentIndex - 1 + lightboxImages.length) % lightboxImages.length;
-            }
-            updateLightboxImage();
-        }
-    }
 });

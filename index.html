@@ -267,98 +267,24 @@
                 <div class="projects-container">
                     <div class="projects-track">
                         <div class="project-card" data-project-id="1">
-                            <div class="project-image">
-                                <img src="./assets/images/timetable1.jpg" alt="Проект 1" loading="lazy">
+                            <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                                <div style="color: white; font-size: 3rem; font-weight: bold; text-align: center; padding: 2rem;">
+                                    <i class="fas fa-cubes" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                                    <p style="font-size: 1rem; opacity: 0.9;">Hi-Tech App</p>
+                                </div>
                                 <div class="project-details-btn">
                                     <button class="btn-view">Подробнее</button>
                                 </div>
                             </div>
                             <div class="project-info">
-                                <h3>Внутренняя система управления/контроля рабочего графика</h3>
-                                <p>Автоматизация запросов отпусков/больничных/отгулов, интеграция с Telegram и системой контроля доступа</p>
+                                <h3>Hi-Tech App — Платформа для управления бизнесом</h3>
+                                <p>Многофункциональная Telegram Web App с Node.js/Express бэкендом. Интеграция с Supabase, JWT аутентификация, модульная архитектура и 20+ модулей для автоматизации всех ключевых бизнес-процессов компании.</p>
                                 <div class="project-tags">
-                                    <span>HTML/CSS/JS</span>
-                                    <span>Telegram Bots</span>
+                                    <span>Node.js</span>
+                                    <span>Express</span>
                                     <span>Supabase</span>
-                                    <span>HIK-vision</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card" data-project-id="2">
-                            <div class="project-image">
-                                <img src="https://via.placeholder.com/400x300/8b5cf6/ffffff?text=Project+2-1" alt="Проект 2" loading="lazy">
-                                <div class="project-details-btn">
-                                    <button class="btn-view">Подробнее</button>
-                                </div>
-                            </div>
-                            <div class="project-info">
-                                <h3>Алгоритм распределения и перемещения товаров между магазинами</h3>
-                                <p>Оптимизация и автоматизация процессов с остатками товаров и новыми поступления между магазинами торговой сети</p>
-                                <div class="project-tags">
-                                    <span>HTML/CSS/JS</span>
-                                    <span>ETL</span>
-                                    <span>Excel</span>
-                                    <span>Analytics</span>
-                                    <span>SMTP</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card" data-project-id="3">
-                            <div class="project-image">
-                                <img src="./assets/images/message1.jpg" alt="Проект 3" loading="lazy">
-                                <div class="project-details-btn">
-                                    <button class="btn-view">Подробнее</button>
-                                </div>
-                            </div>
-                            <div class="project-info">
-                                <h3>Система отправки сообщений</h3>
-                                <p>Система отправки сообщений, с отчестностью и сквозными фильтрами</p>
-                                <div class="project-tags">
-                                    <span>HTML/CSS/JS</span>
-                                    <span>Supabase</span>
+                                    <span>JWT</span>
                                     <span>Telegram API</span>
-                                    <span>Push Notifications</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card" data-project-id="4">
-                            <div class="project-image">
-                                <img src="https://via.placeholder.com/400x300/f59e0b/ffffff?text=Project+4-1" alt="Проект 4" loading="lazy">
-                                <div class="project-details-btn">
-                                    <button class="btn-view">Подробнее</button>
-                                </div>
-                            </div>
-                            <div class="project-info">
-                                <h3>Интеграция ИИ</h3>
-                                <p>Внедрение AI-инструментов для анализа состояния автопарка</p>
-                                <div class="project-tags">
-                                    <span>AI Integration</span>
-                                    <span>Telegram API</span>
-                                    <span>Google Sheets</span>
-                                    <span>Apps Script</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card" data-project-id="5">
-                            <div class="project-image">
-                                <img src="./assets/images/shattered_crown1.jpg" alt="Проект 5" loading="lazy">
-                                <div class="project-details-btn">
-                                    <button class="btn-view">Подробнее</button>
-                                </div>
-                            </div>
-                            <div class="project-info">
-                                <h3>Shattered Crown</h3>
-                                <p>Хобби-проект, фэнтэзи tbrpg, альфа-версия запланирована на начало весны 2026.</p>
-                                <div class="project-tags">
-                                    <span>HTML/CSS/JS</span>
-                                    <span>Supabase</span>
-                                    <span>Telegram API</span>
-                                    <span>Push Notifications</span>
-                                    <span>Cloud Sync</span>
                                 </div>
                             </div>
                         </div>
@@ -369,10 +295,6 @@
             
             <div class="slider-dots">
                 <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
             </div>
         </div>
     </section>
@@ -385,14 +307,11 @@
             </div>
             <div class="modal-body">
                 <div class="modal-image-container">
-                    <div class="main-image-container">
-                        <img id="modalImage" src="" alt="">
-                        <div class="image-nav-dots"></div>
-                        <button class="image-nav-prev">‹</button>
-                        <button class="image-nav-next">›</button>
-                    </div>
-                    <div class="thumbnail-container">
-                        <div class="thumbnail-track"></div>
+                    <div class="main-image-container" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                        <div style="color: white; text-align: center; padding: 2rem;">
+                            <i class="fas fa-cubes" style="font-size: 6rem; margin-bottom: 1rem;"></i>
+                            <p style="font-size: 1.2rem;">Hi-Tech App</p>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-text">
@@ -407,12 +326,10 @@
         <div class="lightbox-content">
             <button class="lightbox-close">✕</button>
             <div class="lightbox-image-container">
-                <img id="lightboxImage" src="" alt="">
-                <button class="lightbox-prev">‹</button>
-                <button class="lightbox-next">›</button>
-            </div>
-            <div class="lightbox-counter">
-                <span id="lightboxCurrent">1</span> / <span id="lightboxTotal">1</span>
+                <div style="color: white; text-align: center;">
+                    <i class="fas fa-cubes" style="font-size: 8rem;"></i>
+                    <p style="font-size: 1.5rem; margin-top: 2rem;">Hi-Tech App</p>
+                </div>
             </div>
         </div>
     </div>
