@@ -260,79 +260,63 @@
 
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">Проекты и работы</h2>
+            <h2 class="section-title">Ключевой проект</h2>
             
-            <div class="projects-slider">
-                <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <div class="projects-container">
-                    <div class="projects-track">
-                        <div class="project-card" data-project-id="1">
-                            <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
-                                <div style="color: white; font-size: 3rem; font-weight: bold; text-align: center; padding: 2rem;">
-                                    <i class="fas fa-cubes" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                                    <p style="font-size: 1rem; opacity: 0.9;">Hi-Tech App</p>
-                                </div>
-                                <div class="project-details-btn">
-                                    <button class="btn-view">Подробнее</button>
-                                </div>
-                            </div>
-                            <div class="project-info">
-                                <h3>Hi-Tech App — Платформа для управления бизнесом</h3>
-                                <p>Многофункциональная Telegram Web App с Node.js/Express бэкендом. Интеграция с Supabase, JWT аутентификация, модульная архитектура и 20+ модулей для автоматизации всех ключевых бизнес-процессов компании.</p>
-                                <div class="project-tags">
-                                    <span>Node.js</span>
-                                    <span>Express</span>
-                                    <span>Supabase</span>
-                                    <span>JWT</span>
-                                    <span>Telegram API</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; display: flex; align-items: center; justify-content: center;">
+                    <div style="color: white; text-align: center; padding: 2rem;">
+                        <i class="fas fa-cubes" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Hi-Tech App</h3>
+                        <p style="opacity: 0.9;">Telegram Web App для управления бизнесом</p>
                     </div>
                 </div>
-                <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-            </div>
-            
-            <div class="slider-dots">
-                <span class="dot active"></span>
+                <div class="project-info">
+                    <h3>Hi-Tech App — Платформа для управления бизнесом</h3>
+                    <p class="project-description">
+                        Разработал многофункциональную Telegram Web App с Node.js/Express бэкендом, интегрированную с Supabase. Платформа автоматизирует ключевые бизнес-процессы: управление складом, планирование графиков, взаимодействие с клиентами, контроль качества и логистику.
+                    </p>
+                    
+                    <div class="project-details">
+                        <h4>Ключевые особенности:</h4>
+                        <ul>
+                            <li>Модульная архитектура с динамической загрузкой 20+ независимых модулей</li>
+                            <li>JWT-аутентификация, шифрование паролей bcrypt, Helmet.js, rate limiting</li>
+                            <li>Интеграция с Telegram API для нативного пользовательского опыта</li>
+                            <li>Загрузка файлов (Multer), email-уведомления (Nodemailer), экспорт в Excel (XLSX)</li>
+                            <li>Генерация QR-кодов для операционных процессов</li>
+                            <li>PostgreSQL база данных через Supabase с облачным хранилищем</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-details">
+                        <h4>Бизнес-модули:</h4>
+                        <ul>
+                            <li><strong>Склад:</strong> управление автомобилями, проверка запчастей, ценники, напоминания</li>
+                            <li><strong>Графики:</strong> расписания, отпуска, больничные</li>
+                            <li><strong>Клиенты:</strong> заявки на обслуживание, отзывы, обратная связь</li>
+                            <li><strong>Логистика:</strong> отслеживание заказов и доставки</li>
+                            <li><strong>Аналитика:</strong> дашборды метрик производительности</li>
+                            <li><strong>Контроль качества:</strong> дегустации блюд, проверки безопасности</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-tags">
+                        <span>Node.js</span>
+                        <span>Express</span>
+                        <span>Supabase</span>
+                        <span>PostgreSQL</span>
+                        <span>JWT</span>
+                        <span>Telegram API</span>
+                        <span>Helmet</span>
+                        <span>Nodemailer</span>
+                        <span>XLSX</span>
+                        <span>Multer</span>
+                        <span>HTML/CSS/JS</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modalTitle"></h3>
-                <button class="modal-x-close">✕</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-image-container">
-                    <div class="main-image-container" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
-                        <div style="color: white; text-align: center; padding: 2rem;">
-                            <i class="fas fa-cubes" style="font-size: 6rem; margin-bottom: 1rem;"></i>
-                            <p style="font-size: 1.2rem;">Hi-Tech App</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-text">
-                    <p id="modalDescription"></p>
-                    <div id="modalTags" class="project-tags"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="lightboxModal" class="lightbox-modal">
-        <div class="lightbox-content">
-            <button class="lightbox-close">✕</button>
-            <div class="lightbox-image-container">
-                <div style="color: white; text-align: center;">
-                    <i class="fas fa-cubes" style="font-size: 8rem;"></i>
-                    <p style="font-size: 1.5rem; margin-top: 2rem;">Hi-Tech App</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <section id="skills">
         <div class="container">
@@ -348,7 +332,7 @@
                                 <span>C1</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="80" data-animated="false"></div>
+                                <div class="skill-progress" data-width="80"></div>
                             </div>
                             <p class="skill-desc">Переговоры, деловая переписка, технические коммуникации</p>
                         </div>
@@ -358,7 +342,7 @@
                                 <span>Родной</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="100" data-animated="false"></div>
+                                <div class="skill-progress" data-width="100"></div>
                             </div>
                             <p class="skill-desc">Родной язык, свободное владение</p>
                         </div>
@@ -374,16 +358,25 @@
                                 <span>Средний</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="65" data-animated="false"></div>
+                                <div class="skill-progress" data-width="65"></div>
                             </div>
                         </div>
                         <div class="skill-item">
                             <div class="skill-header">
-                                <span>Telegram Bots</span>
+                                <span>Node.js / Express</span>
+                                <span>Средний</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="60"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>Telegram Bots / API</span>
                                 <span>Экспертный</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="90" data-animated="false"></div>
+                                <div class="skill-progress" data-width="90"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -392,7 +385,7 @@
                                 <span>Продвинутый</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="80" data-animated="false"></div>
+                                <div class="skill-progress" data-width="80"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -401,7 +394,7 @@
                                 <span>Средний</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="60" data-animated="false"></div>
+                                <div class="skill-progress" data-width="60"></div>
                             </div>
                         </div>
                     </div>
@@ -416,7 +409,7 @@
                                 <span>Экспертный</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="100" data-animated="false"></div>
+                                <div class="skill-progress" data-width="100"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -425,25 +418,25 @@
                                 <span>Экспертный</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="90" data-animated="false"></div>
+                                <div class="skill-progress" data-width="90"></div>
                             </div>
                         </div>
-                                                <div class="skill-item">
+                        <div class="skill-item">
                             <div class="skill-header">
                                 <span>PlanFix</span>
                                 <span>Продвинутый</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="75" data-animated="false"></div>
+                                <div class="skill-progress" data-width="75"></div>
                             </div>
                         </div>
-                                                <div class="skill-item">
+                        <div class="skill-item">
                             <div class="skill-header">
                                 <span>Bitrix24</span>
                                 <span>Средний</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="60" data-animated="false"></div>
+                                <div class="skill-progress" data-width="60"></div>
                             </div>
                         </div>
                     </div>
@@ -458,7 +451,7 @@
                                 <span>Экспертный</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="100" data-animated="false"></div>
+                                <div class="skill-progress" data-width="100"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -467,7 +460,7 @@
                                 <span>Продвинутый</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="85" data-animated="false"></div>
+                                <div class="skill-progress" data-width="85"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -476,7 +469,7 @@
                                 <span>Продвинутый</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="75" data-animated="false"></div>
+                                <div class="skill-progress" data-width="75"></div>
                             </div>
                         </div>
                     </div>
@@ -491,7 +484,7 @@
                                 <span>Продвинутый</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="80" data-animated="false"></div>
+                                <div class="skill-progress" data-width="80"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -500,7 +493,7 @@
                                 <span>Продвинутый</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="85" data-animated="false"></div>
+                                <div class="skill-progress" data-width="85"></div>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -509,7 +502,7 @@
                                 <span>Средний</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" data-width="60" data-animated="false"></div>
+                                <div class="skill-progress" data-width="60"></div>
                             </div>
                         </div>
                     </div>

@@ -51,55 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const modal = document.getElementById('projectModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-    const modalTags = document.getElementById('modalTags');
-    const modalXClose = document.querySelector('.modal-x-close');
-
-    const projectsData = [
-        {
-            title: "Hi-Tech App — Платформа для управления бизнесом",
-            description: "Разработал многофункциональную Telegram Web App (TWA) с Node.js/Express бэкендом, интегрированную с Supabase. Платформа автоматизирует ключевые бизнес-процессы: управление складом, планирование графиков, взаимодействие с клиентами, контроль качества и логистику. Реализована модульная архитектура с динамической загрузкой 20+ независимых модулей. Внедрена надежная система безопасности: JWT-аутентификация, шифрование паролей bcrypt, Helmet.js, rate limiting. Также интегрированы функции загрузки файлов, email-уведомлений, экспорта в Excel и генерации QR-кодов.",
-            tags: ["Node.js", "Express", "Supabase", "JWT", "Telegram API", "Helmet", "Nodemailer", "XLSX", "PostgreSQL"]
-        }
-    ];
-
-    let currentProjectIndex = 0;
-
-    document.querySelectorAll('.btn-view').forEach((btn, index) => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            currentProjectIndex = index;
-            const project = projectsData[index];
-            
-            modalTitle.textContent = project.title;
-            modalDescription.textContent = project.description;
-            
-            modalTags.innerHTML = '';
-            project.tags.forEach(tag => {
-                const span = document.createElement('span');
-                span.textContent = tag;
-                modalTags.appendChild(span);
-            });
-            
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        });
-    });
-
-    modalXClose.addEventListener('click', () => {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    });
-
     const skillBars = document.querySelectorAll('.skill-progress');
     let skillsAnimated = false;
 
@@ -111,10 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (sectionTop < triggerPoint && !skillsAnimated) {
             skillsAnimated = true;
             skillBars.forEach(bar => {
-                if (bar.getAttribute('data-animated') === 'false') {
+                if (!bar.style.width) {
                     const width = bar.getAttribute('data-width');
                     bar.style.width = width + '%';
-                    bar.setAttribute('data-animated', 'true');
                 }
             });
         }
@@ -145,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.project-card').forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
-        card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+        card.style.transition = `all 0.6s ease 0.2s`;
         observer.observe(card);
     });
 
@@ -155,81 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
         category.style.transition = `all 0.6s ease ${index * 0.1}s`;
         observer.observe(category);
     });
-
-    const sliderTrack = document.querySelector('.projects-track');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const dots = document.querySelectorAll('.dot');
-    let currentIndex = 0;
-    const totalCards = 1;
-
-    function calculateVisibleCards() {
-        if (window.innerWidth <= 768) {
-            return 1;
-        } else {
-            return 1;
-        }
-    }
-
-    function calculateCardWidth() {
-        const containerWidth = document.querySelector('.projects-container').offsetWidth;
-        const visibleCards = calculateVisibleCards();
-        return containerWidth / visibleCards;
-    }
-
-    function updateSlider() {
-        const cardWidth = calculateCardWidth();
-        const visibleCards = calculateVisibleCards();
-        const maxIndex = Math.max(0, totalCards - visibleCards);
-        
-        if (currentIndex > maxIndex) {
-            currentIndex = maxIndex;
-        }
-        
-        sliderTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-        
-        dots.forEach((dot, index) => {
-            if (index <= maxIndex) {
-                dot.style.display = 'inline-block';
-                dot.classList.toggle('active', index === currentIndex);
-            } else {
-                dot.style.display = 'none';
-            }
-        });
-        
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex >= maxIndex;
-    }
-
-    nextBtn.addEventListener('click', () => {
-        const visibleCards = calculateVisibleCards();
-        const maxIndex = Math.max(0, totalCards - visibleCards);
-        if (currentIndex < maxIndex) {
-            currentIndex++;
-            updateSlider();
-        }
-    });
-
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSlider();
-        }
-    });
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            const visibleCards = calculateVisibleCards();
-            const maxIndex = Math.max(0, totalCards - visibleCards);
-            if (index <= maxIndex) {
-                currentIndex = index;
-                updateSlider();
-            }
-        });
-    });
-
-    updateSlider();
-    window.addEventListener('resize', updateSlider);
 
     const languageBtn = document.querySelector('.language-btn');
     const languageDropdown = document.querySelector('.language-dropdown');
@@ -260,26 +135,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('.weglot-container').forEach(container => {
         container.style.display = 'none';
-    });
-
-    const lightboxModal = document.getElementById('lightboxModal');
-
-    function closeLightbox() {
-        lightboxModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-
-    document.addEventListener('keydown', (e) => {
-        if (lightboxModal.style.display === 'block') {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
-        }
-    });
-
-    lightboxModal.addEventListener('click', (e) => {
-        if (e.target === lightboxModal) {
-            closeLightbox();
-        }
     });
 });
