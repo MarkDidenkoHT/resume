@@ -299,7 +299,7 @@ section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-top: 7.67rem;
+    margin-top: 2rem;
 }
 
 .highlight-item {
@@ -475,7 +475,6 @@ section {
 }
 
 .project-card {
-    max-width: 900px;
     margin: 0 auto;
     background: var(--white);
     border-radius: 15px;
@@ -543,20 +542,6 @@ section {
 
 .project-details li strong {
     color: var(--dark);
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
-}
-
-.project-tags span {
-    padding: 0.3rem 1rem;
-    background: var(--light);
-    border-radius: 20px;
-    font-size: 0.85rem;
 }
 
 .skills-grid {
@@ -682,7 +667,7 @@ section {
     }
 
     .about-highlights {
-        margin-top: unset;
+        margin-top: 2rem;
     }
 
     .nav-menu {
