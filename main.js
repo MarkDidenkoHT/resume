@@ -34,27 +34,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const skillBars = document.querySelectorAll('.skill-progress');
     let skillsAnimated = false;
 
-    const animateSkills = () => {
+    function animateSkills() {
         const skillsSection = document.getElementById('skills');
+        if (!skillsSection) return;
         const sectionTop = skillsSection.getBoundingClientRect().top;
         const triggerPoint = window.innerHeight / 1.3;
 
         if (sectionTop < triggerPoint && !skillsAnimated) {
             skillsAnimated = true;
-            skillBars.forEach(bar => {
-                if (!bar.style.width) {
-                    const width = bar.getAttribute('data-width');
-                    bar.style.width = width + '%';
-                }
+            document.querySelectorAll('.skill-progress').forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
             });
         }
-    };
+    }
 
     window.addEventListener('scroll', animateSkills);
-    animateSkills();
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -66,27 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
-    });
-
-    document.querySelectorAll('.timeline-item').forEach((item, index) => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        item.style.transition = `all 0.6s ease ${index * 0.1}s`;
-        observer.observe(item);
-    });
-
-    document.querySelectorAll('.project-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = `all 0.6s ease 0.2s`;
-        observer.observe(card);
-    });
-
-    document.querySelectorAll('.skill-category').forEach((category, index) => {
-        category.style.opacity = '0';
-        category.style.transform = 'translateY(20px)';
-        category.style.transition = `all 0.6s ease ${index * 0.1}s`;
-        observer.observe(category);
     });
 
     const translations = {
@@ -560,10 +536,14 @@ document.addEventListener('DOMContentLoaded', function() {
         `).join('');
 
         skillsAnimated = false;
-        document.querySelectorAll('.skill-category').forEach((category, index) => {
+
+        document.querySelectorAll('.skill-category').forEach((category) => {
             observer.observe(category);
         });
-        animateSkills();
+
+        requestAnimationFrame(() => {
+            animateSkills();
+        });
     }
 
     function renderProjects(lang) {

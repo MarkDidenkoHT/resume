@@ -281,6 +281,25 @@ section {
     grid-template-columns: 2fr 1fr;
     gap: 1.5rem;
     margin-top: 2rem;
+    align-items: stretch;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-text .info-card {
+    flex: 1;
+}
+
+.about-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-info .info-card {
+    flex: 1;
 }
 
 .about-text p {
@@ -326,6 +345,10 @@ section {
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 1.5rem;
+}
+
+.info-card:last-child {
+    margin-bottom: 0;
 }
 
 .info-card h3 {
