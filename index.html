@@ -7,24 +7,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
-    <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
-    <script>
-        Weglot.initialize({
-            api_key: 'wg_99727e8796de272a8eed80d7ce3ae4386'
-        });
-    </script>
 </head>
 <body>
-    <div class="weglot-container" style="display: none;"></div>
-
     <nav id="navbar">
         <div class="nav-container">
             <ul class="nav-menu">
-                <li><a href="#about">Обо мне</a></li>
-                <li><a href="#experience">Опыт</a></li>
-                <li><a href="#projects">Проекты</a></li>
-                <li><a href="#skills">Навыки</a></li>
-                <li><a href="#contact">Контакты</a></li>
+                <li><a href="#about" data-nav="about">Обо мне</a></li>
+                <li><a href="#experience" data-nav="experience">Опыт</a></li>
+                <li><a href="#projects" data-nav="projects">Проекты</a></li>
+                <li><a href="#skills" data-nav="skills">Навыки</a></li>
+                <li><a href="#contact" data-nav="contact">Контакты</a></li>
             </ul>
             <div class="language-switcher">
                 <button class="language-btn">
@@ -48,11 +40,11 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 style="color: #8b5cf6;">Марк Диденко</h1>
-                <h2>Разработчик, Аналитик, SEO-менеджер</h2>
+                <h2 class="hero-subtitle">Разработчик, Аналитик, SEO-менеджер</h2>
                 <p class="hero-description">Автоматизация бизнес-процессов, разработка внутренних инструментов, работа с данными</p>
                 <div class="hero-buttons" style="justify-content: center;">
-                    <a href="#projects" class="btn btn-primary">Мои работы</a>
-                    <a href="./assets/files/CV_Mark_Didenko.docx" class="btn btn-secondary" download>Скачать резюме</a>
+                    <a href="#projects" class="btn btn-primary" data-btn="projects">Мои работы</a>
+                    <a href="./assets/files/CV_Mark_Didenko.docx" class="btn btn-secondary" download data-btn="cv">Скачать резюме</a>
                 </div>
             </div>
             <div class="hero-photo">
@@ -65,42 +57,42 @@
 
     <section id="about">
         <div class="container">
-            <h2 class="section-title">Обо мне</h2>
+            <h2 class="section-title section-title-about">Обо мне</h2>
             <div class="about-content">
                 <div class="about-text">
                     <div class="info-card">
-                        <p>Мой путь начался с работы переводчиком английского языка, затем перешел в продажи и HR-менеджмент, где развивал аналитические навыки и оптимизацию процессов. Последние годы активно занимаюсь разработкой - создаю внутренние инструменты для автоматизации бизнес-процессов, боты, работаю с базами данных и активно использую ИИ в работе.</p>
-                        <p style="margin-top: 1rem;">Я стремлюсь к постоянному развитию, изучаю новые технологии и методы автоматизации, чтобы создавать эффективные решения для бизнеса. Моя цель - использовать свои навыки и опыт для создания инновационных продуктов, которые помогут компаниям расти и развиваться в цифровую эпоху.</p>
+                        <p class="about-p1">Мой путь начался с работы переводчиком английского языка, затем перешел в продажи и HR-менеджмент, где развивал аналитические навыки и оптимизацию процессов. Последние годы активно занимаюсь разработкой — создаю внутренние инструменты для автоматизации бизнес-процессов, боты, работаю с базами данных и активно использую ИИ в работе.</p>
+                        <p style="margin-top: 1rem;" class="about-p2">Я стремлюсь к постоянному развитию, изучаю новые технологии и методы автоматизации, чтобы создавать эффективные решения для бизнеса. Моя цель — использовать свои навыки и опыт для создания инновационных продуктов, которые помогут компаниям расти и развиваться в цифровую эпоху.</p>
                     </div>
                     <div class="about-highlights">
                         <div class="highlight-item">
                             <span class="highlight-number">14</span>
-                            <span class="highlight-label">Лет опыта</span>
+                            <span class="highlight-label" data-label="years">Лет опыта</span>
                         </div>
                         <div class="highlight-item">
                             <span class="highlight-number">8</span>
-                            <span class="highlight-label">Компаний</span>
+                            <span class="highlight-label" data-label="companies">Компаний</span>
                         </div>
                         <div class="highlight-item">
                             <span class="highlight-number">1</span>
-                            <span class="highlight-label">Год в разработке</span>
+                            <span class="highlight-label" data-label="dev_year">Год в разработке</span>
                         </div>
                     </div>
                 </div>
                 <div class="about-info">
                     <div class="info-card">
-                        <h3>Контактная информация</h3>
+                        <h3 class="contact-info-title">Контактная информация</h3>
                         <ul>
                             <li><i class="fas fa-envelope"></i><strong>Email:</strong> <a href="mailto:markdidenkowork@gmail.com">markdidenkowork@gmail.com</a></li>
                             <li><i class="fas fa-phone"></i><strong>Телефон:</strong> +373 777 93024</li>
-                            <li><i class="fab fa-telegram"></i><strong>Telegram:</strong> <a href="https://t.me/markdidenko" target="_blank">@markdidenko <span class="preferred">(Предпочтительно)</span></a></li>
+                            <li><i class="fab fa-telegram"></i><strong>Telegram:</strong> <a href="https://t.me/markdidenko" target="_blank">@markdidenko <span class="preferred preferred-label">(Предпочтительно)</span></a></li>
                         </ul>
                     </div>
                     <div class="info-card">
-                        <h3>Образование</h3>
+                        <h3 class="edu-title">Образование</h3>
                         <ul>
-                            <li><strong>ОГЭУ, Украина</strong><br><span class="text-sm">Менеджмент и туризмоведение<br>2012-2016 (заочно)</span></li>
-                            <li><strong>Английский язык</strong><br><span class="text-sm">Upper-Intermediate<br>Studium (1999-2001), Interpret (2004-2005)</span></li>
+                            <li><strong class="edu1-name">ОГЭУ, Украина</strong><br><span class="text-sm edu1-spec">Менеджмент и туризмоведение</span><br><span class="text-sm edu1-year">2012-2016 (заочно)</span></li>
+                            <li><strong class="edu2-name">Английский язык</strong><br><span class="text-sm edu2-spec">Upper-Intermediate</span><br><span class="text-sm edu2-year">Studium (1999-2001), Interpret (2004-2005)</span></li>
                         </ul>
                     </div>
                 </div>
@@ -110,175 +102,26 @@
 
     <section id="experience">
         <div class="container">
-            <h2 class="section-title">Профессиональный опыт</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Авг 2022 - Настоящее время</span>
-                        <h3>Контент-менеджер, Администратор сайта, SEO-менеджер, Программист</h3>
-                        <h4>ООО "Хайтек" - Тирасполь</h4>
-                        <p>Работа во всех проектах холдинга (hi-tech.md, keramika.md, piazzaitalia.md, milano.md, casta.md, gruzia.md и другие).</p>
-                        <ul>
-                            <li>Начинал контент-менеджером, быстро стал помогать администратору сайта</li>
-                            <li>Через 3 месяца стал выполнять обязанности администратора на всех сайтах</li>
-                            <li>Обучился SEO-оптимизации, настройке мета-данных</li>
-                            <li>Работа с программистами - определял проблемы и ставил задачи</li>
-                            <li>Разработал электронный журнал отпусков с веб-приложением и Telegram ботом</li>
-                            <li>Система выросла до 18 модулей с доступом по должности</li>
-                            <li>Интеграция с HIK-vision для автоматической проверки посещаемости</li>
-                            <li>Перевод на разработку - автоматизация процессов, внутренние инструменты, интеграция ИИ</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>CS-Cart</span>
-                            <span>Telegram Bots</span>
-                            <span>PostgreSQL</span>
-                            <span>Supabase</span>
-                            <span>Apps Script</span>
-                            <span>HTML/CSS/JS</span>
-                            <span>SEO</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Сен 2020 - Июл 2022</span>
-                        <h3>Руководитель отдела контент-менеджмента</h3>
-                        <h4>ООО "ХАББ" (маркетплейс) - Тирасполь</h4>
-                        <p>Повышение от контент-менеджера до руководителя отдела за полгода.</p>
-                        <ul>
-                            <li>Загрузил ~10,000 позиций на сайт за первые 6 месяцев</li>
-                            <li>Разработал шаблон для импорта данных, повысив скорость обработки</li>
-                            <li>Руководил 4 контент-менеджерами</li>
-                            <li>Разработал систему взаимодействия между партнерами и отделом</li>
-                            <li>Автоматизировал обновление остатков и цен с прайсов поставщиков</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>ETL процессы</span>
-                            <span>Автоматизация</span>
-                            <span>Google Docs</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Фев 2018 - Авг 2018</span>
-                        <h3>Контент-менеджер</h3>
-                        <h4>ООО "ТОПРАН" (интернет-магазин спортивной одежды) - Одесса (удаленно)</h4>
-                        <ul>
-                            <li>Работа с товарной базой, заполнение карточек товара</li>
-                            <li>Редактирование фото</li>
-                            <li>Познакомился с CMS OpenCart и CS-Cart</li>
-                            <li>Полный цикл вывода товара из каталога на витрину</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>OpenCart</span>
-                            <span>CS-Cart</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Июн 2017 - Ноя 2017</span>
-                        <h3>Руководитель отдела аналитики</h3>
-                        <h4>ООО "Профинвестком" (контакт-центр) - Тирасполь</h4>
-                        <p>Повышение от оператора БД до руководителя отдела за 1 месяц.</p>
-                        <ul>
-                            <li>Улучшил производительность двух отделов на 25%</li>
-                            <li>Сократил рабочий день на 2-3 часа через оптимизацию документооборота</li>
-                            <li>Сбор и анализ статистических данных</li>
-                            <li>Автоматизация работы с данными и ETL процессами</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>ETL</span>
-                            <span>Аналитика</span>
-                            <span>Excel</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Сен 2013 - Июн 2017</span>
-                        <h3>Региональный HR-менеджер и Супервайзер</h3>
-                        <h4>ООО "Апишопс" (интернет-магазин) - Москва, РФ (региональное представительство в Тирасполе)</h4>
-                        <p>Повышение из отдела продаж через 1 месяц работы.</p>
-                        <ul>
-                            <li>Отточил организаторские навыки</li>
-                            <li>Подбор и оптимизация работы персонала</li>
-                            <li>Приобрел хорошие знания Excel и Google Docs</li>
-                            <li>Развил аналитические навыки</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>HR</span>
-                            <span>Excel</span>
-                            <span>Google Docs</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Фев 2012 - Ноя 2012</span>
-                        <h3>Менеджер отдела продаж</h3>
-                        <h4>"International Travel Network" - Сан-Франциско, США (удаленно)</h4>
-                        <p>Работа в туристической компании, отдел продаж.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Июл 2011 - Фев 2012</span>
-                        <h3>Переводчик английского языка</h3>
-                        <h4>"Brandimex" LTD - Лондон, Великобритания (удаленно)</h4>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Фев 2011 - Июл 2011</span>
-                        <h3>Переводчик английского языка</h3>
-                        <h4>ЗАО СК "Шериф" (футбольный клуб) - Тирасполь</h4>
-                        <ul>
-                            <li>Широкий опыт общения с носителями языка</li>
-                            <li>Участие в организации мероприятий и праздников</li>
-                            <li>Ознакомление с базовыми понятиями документооборота</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <h2 class="section-title section-title-experience">Профессиональный опыт</h2>
+            <div class="timeline"></div>
         </div>
     </section>
 
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">Hi-Tech App</h2>
-            
+            <h2 class="section-title section-title-projects">Hi-Tech App</h2>
             <div class="project-card">
                 <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; display: flex; align-items: center; justify-content: center;">
                     <div style="color: white; text-align: center; padding: 2rem;">
                         <i class="fas fa-cubes" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Внутренее приложение компании</h3>
+                        <h3 class="project-subtitle" style="font-size: 1.8rem; margin-bottom: 0.5rem;">Внутреннее приложение компании</h3>
                     </div>
                 </div>
                 <div class="project-info">
-                    <p class="project-description">
-                        Разработал многофункциональную Telegram Web App платформу для управления и автоматизации бизнес процессов.
-                    </p>
-                    
+                    <p class="project-description">Разработал многофункциональную Telegram Web App платформу для управления и автоматизации бизнес-процессов.</p>
                     <div class="project-details">
-                        <h4>Ключевые особенности:</h4>
-                        <ul>
+                        <h4 class="features-title">Ключевые особенности:</h4>
+                        <ul class="features-list">
                             <li>Модульная архитектура с динамической загрузкой 20+ независимых модулей</li>
                             <li>Безопасная аутентификация и защита данных</li>
                             <li>Интеграция с Telegram API для нативного пользовательского опыта</li>
@@ -287,17 +130,17 @@
                             <li>Облачное хранилище и база данных</li>
                         </ul>
                     </div>
-
                     <div class="project-details">
-                        <h4>Бизнес-модули:</h4>
-                        <ul>
-                            <li><strong>Контроль посещаемости:</strong> рабочие графики, отпуска, больничные, уведомления о нарушениях, аналитика и отчетность, интеграция и hik-vision</li>
-                            <li><strong>Логистика:</strong> алгоритм перемещения и перераспределения товаров между магазинами на основании остатков, продаж и нагрузки по магазинам</li>
-                            <li><strong>Аналитика:</strong> дашборды метрик</li>
-                            <li><strong>Система отправки сообщений:</strong> умная система отправки сообщений через телеграмм между всеми сотрудниками компании, многосторонняя фильтрация, прикреление фото и документов, отчетность о просмотре сообщений, напоминания и уведомления о непросмотренных сообщениях, отдельный модуль для просмотра истории сообщений, админ панель</li>
-                            <li><strong>Контроль качества:</strong> проверка изображений в рич-контенте товаров, уведомления о битых изображениях, учет ошибок в ценниках, умные уведомления и онлайн чат через вебсокет между продавцами и отделом контента по устранению ошибок на ценниках</li>
-                            <li><strong>Автопарк:</strong> система учета пробега и расходов топлива, система анализа новых повреждений/ржавчины/царапин на машинах, система бронирования автомобилей компании</li>
-                            <li><strong>Рестораны:</strong> play/stop лист, аналитика блюд, модуль для управления дегустациями</li>
+                        <h4 class="modules-title">Бизнес-модули:</h4>
+                        <ul class="modules-list">
+                            <li><strong>Контроль посещаемости:</strong> Рабочие графики, отпуска, больничные, уведомления о нарушениях, аналитика и отчётность, интеграция с HIK-Vision</li>
+                            <li><strong>Логистика:</strong> Алгоритм перемещения и перераспределения товаров между магазинами на основании остатков, продаж и нагрузки по магазинам</li>
+                            <li><strong>Аналитика:</strong> Дашборды метрик</li>
+                            <li><strong>Система сообщений:</strong> Умная система отправки сообщений через Telegram между всеми сотрудниками компании, многосторонняя фильтрация, прикрепление фото и документов, отчётность о просмотре, напоминания, история сообщений, админ-панель</li>
+                            <li><strong>Контроль качества:</strong> Проверка изображений в рич-контенте товаров, уведомления о битых изображениях, учёт ошибок в ценниках, онлайн-чат через WebSocket между продавцами и отделом контента</li>
+                            <li><strong>Автопарк:</strong> Комплексный дашборд: учёт пробега, страховок, ремонтов и всех расходов по автомобилям; анализ повреждений, ржавчины и царапин; система бронирования автомобилей компании</li>
+                            <li><strong>Рестораны:</strong> Play/stop лист, аналитика блюд, модуль для управления дегустациями</li>
+                            <li><strong>AEO / SEO генератор описаний:</strong> Модуль с интеграцией Groq AI для генерации AEO-описаний категорий и товаров. Загрузка данных с сайта, фильтрация товаров, настройка промптов по схеме 1+5 (основной + пять рандомных вариаций для уникальности текста), автоматический импорт готовых описаний на сайт по принципу ETL</li>
                         </ul>
                     </div>
                 </div>
@@ -307,221 +150,35 @@
 
     <section id="skills">
         <div class="container">
-            <h2 class="section-title">Навыки и технологии</h2>
-            
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Языки и коммуникация</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Английский язык</span>
-                                <span>C1</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80"></div>
-                            </div>
-                            <p class="skill-desc">Переговоры, деловая переписка, технические коммуникации</p>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Русский язык</span>
-                                <span>Родной</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="100"></div>
-                            </div>
-                            <p class="skill-desc">Родной язык, свободное владение</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Разработка и программирование</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>HTML / CSS / JavaScript</span>
-                                <span>Средний</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="65"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Node.js / Express</span>
-                                <span>Средний</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="60"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Telegram Bots / API</span>
-                                <span>Экспертный</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Apps Script</span>
-                                <span>Продвинутый</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>PostgreSQL / Supabase</span>
-                                <span>Средний</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="60"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>CMS и CRM</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>CS-Cart</span>
-                                <span>Экспертный</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="100"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>OpenCart</span>
-                                <span>Экспертный</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>PlanFix</span>
-                                <span>Продвинутый</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="75"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Bitrix24</span>
-                                <span>Средний</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="60"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Данные и аналитика</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Google Sheets (формулы, скрипты)</span>
-                                <span>Экспертный</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="100"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>ETL процессы</span>
-                                <span>Продвинутый</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Аналитика процессов</span>
-                                <span>Продвинутый</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="75"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Другие навыки</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>SEO оптимизация</span>
-                                <span>Продвинутый</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Работа с ИИ</span>
-                                <span>Продвинутый</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span>Менеджмент и руководство</span>
-                                <span>Средний</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="60"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h2 class="section-title section-title-skills">Навыки и технологии</h2>
+            <div class="skills-grid"></div>
         </div>
     </section>
 
     <section id="contact">
         <div class="container">
-            <h2 class="section-title">Контакты</h2>
+            <h2 class="section-title section-title-contact">Контакты</h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
-                            <h4>Email</h4>
+                            <h4 data-contact="email">Email</h4>
                             <a href="mailto:markdidenkowork@gmail.com">markdidenkowork@gmail.com</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
                         <div>
-                            <h4>Телефон</h4>
+                            <h4 data-contact="phone">Телефон</h4>
                             <a href="tel:+37377793024">+373 777 93024</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-telegram"></i>
                         <div>
-                            <h4>Telegram</h4>
-                            <a href="https://t.me/markdidenko" target="_blank">@markdidenko <span class="preferred">(Предпочтительно)</span></a>
+                            <h4 data-contact="telegram">Telegram</h4>
+                            <a href="https://t.me/markdidenko" target="_blank">@markdidenko <span class="preferred contact-preferred">(Предпочтительно)</span></a>
                         </div>
                     </div>
                 </div>

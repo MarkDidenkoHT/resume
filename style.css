@@ -276,10 +276,6 @@ section {
     border-radius: 2px;
 }
 
-.weglot-container {
-    display: none !important;
-}
-
 .about-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
