@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 p2: 'Я стремлюсь к постоянному развитию, изучаю новые технологии и методы автоматизации, чтобы создавать эффективные решения для бизнеса. Моя цель — использовать свои навыки и опыт для создания инновационных продуктов, которые помогут компаниям расти и развиваться в цифровую эпоху.',
                 years: 'Лет опыта',
                 companies: 'Компаний',
-                dev_year: 'Год в разработке',
+                dev_year: 'Года в разработке',
                 contact_title: 'Контактная информация',
                 edu_title: 'Образование',
                 edu1_name: 'ОГЭУ, Украина',
@@ -114,7 +114,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Система выросла до 18 модулей с доступом по должности',
                             'Интеграция с HIK-vision для автоматической проверки посещаемости',
                             'Перевод на разработку — автоматизация процессов, внутренние инструменты, интеграция ИИ'
-                        ]
+                        ],
+                        stack: ['CS-Cart', 'OpenCart', 'Telegram Bots', 'PostgreSQL', 'Supabase', 'Apps Script', 'HTML/CSS/JS', 'SEO']
                     },
                     {
                         date: 'Сен 2020 — Июл 2022',
@@ -127,7 +128,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Руководил 4 контент-менеджерами',
                             'Разработал систему взаимодействия между партнерами и отделом',
                             'Автоматизировал обновление остатков и цен с прайсов поставщиков'
-                        ]
+                        ],
+                        stack: ['ETL процессы', 'Автоматизация', 'Google Docs']
                     },
                     {
                         date: 'Фев 2018 — Авг 2018',
@@ -139,7 +141,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Редактирование фото',
                             'Познакомился с CMS OpenCart и CS-Cart',
                             'Полный цикл вывода товара из каталога на витрину'
-                        ]
+                        ],
+                        stack: ['OpenCart', 'CS-Cart']
                     },
                     {
                         date: 'Июн 2017 — Ноя 2017',
@@ -151,7 +154,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Сократил рабочий день на 2–3 часа через оптимизацию документооборота',
                             'Сбор и анализ статистических данных',
                             'Автоматизация работы с данными и ETL процессами'
-                        ]
+                        ],
+                        stack: ['ETL', 'Аналитика', 'Excel']
                     },
                     {
                         date: 'Сен 2013 — Июн 2017',
@@ -163,21 +167,24 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Подбор и оптимизация работы персонала',
                             'Приобрел хорошие знания Excel и Google Docs',
                             'Развил аналитические навыки'
-                        ]
+                        ],
+                        stack: ['HR', 'Excel', 'Google Docs']
                     },
                     {
                         date: 'Фев 2012 — Ноя 2012',
                         title: 'Менеджер отдела продаж',
                         company: '"International Travel Network" — Сан-Франциско, США (удалённо)',
                         desc: 'Работа в туристической компании, отдел продаж.',
-                        items: []
+                        items: [],
+                        stack: []
                     },
                     {
                         date: 'Июл 2011 — Фев 2012',
                         title: 'Переводчик английского языка',
                         company: '"Brandimex" LTD — Лондон, Великобритания (удалённо)',
                         desc: '',
-                        items: []
+                        items: [],
+                        stack: []
                     },
                     {
                         date: 'Фев 2011 — Июл 2011',
@@ -188,7 +195,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Широкий опыт общения с носителями языка',
                             'Участие в организации мероприятий и праздников',
                             'Ознакомление с базовыми понятиями документооборота'
-                        ]
+                        ],
+                        stack: []
                     }
                 ]
             },
@@ -241,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         name: 'CMS и CRM',
                         items: [
                             { name: 'CS-Cart', level: 'Экспертный', width: 100, desc: '' },
-                            { name: 'OpenCart', level: 'Экспертный', width: 90, desc: '' },
+                            { name: 'OpenCart', level: 'Продвинутый', width: 75, desc: '' },
                             { name: 'PlanFix', level: 'Продвинутый', width: 75, desc: '' },
                             { name: 'Bitrix24', level: 'Средний', width: 60, desc: '' }
                         ]
@@ -259,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         items: [
                             { name: 'SEO / AEO оптимизация', level: 'Продвинутый', width: 80, desc: '' },
                             { name: 'Работа с ИИ', level: 'Продвинутый', width: 85, desc: '' },
-                            { name: 'Менеджмент и руководство', level: 'Средний', width: 60, desc: '' }
+                            { name: 'Менеджмент и руководство', level: 'Продвинутый', width: 75, desc: '' }
                         ]
                     }
                 ]
@@ -292,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 p2: 'I am committed to continuous growth, learning new technologies and automation methods to create effective solutions for business. My goal is to use my skills and experience to build innovative products that help companies grow and thrive in the digital age.',
                 years: 'Years of experience',
                 companies: 'Companies',
-                dev_year: 'Year in development',
+                dev_year: 'Years in development',
                 contact_title: 'Contact Information',
                 edu_title: 'Education',
                 edu1_name: 'OSEU, Ukraine',
@@ -320,7 +328,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             'System grew to 18 modules with role-based access control',
                             'Integrated HIK-Vision for automated attendance tracking',
                             'Transitioned to development — process automation, internal tools, AI integration'
-                        ]
+                        ],
+                        stack: ['CS-Cart', 'OpenCart', 'Telegram Bots', 'PostgreSQL', 'Supabase', 'Apps Script', 'HTML/CSS/JS', 'SEO']
                     },
                     {
                         date: 'Sep 2020 — Jul 2022',
@@ -333,7 +342,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Managed a team of 4 content managers',
                             'Built a workflow system between partners and the department',
                             'Automated stock and price updates from supplier price lists'
-                        ]
+                        ],
+                        stack: ['ETL', 'Automation', 'Google Docs']
                     },
                     {
                         date: 'Feb 2018 — Aug 2018',
@@ -345,7 +355,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Photo editing',
                             'Learned CMS OpenCart and CS-Cart',
                             'Full product lifecycle from catalogue to storefront'
-                        ]
+                        ],
+                        stack: ['OpenCart', 'CS-Cart']
                     },
                     {
                         date: 'Jun 2017 — Nov 2017',
@@ -357,7 +368,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Reduced working day by 2–3 hours through document workflow optimisation',
                             'Statistical data collection and analysis',
                             'Automated data processing and ETL workflows'
-                        ]
+                        ],
+                        stack: ['ETL', 'Analytics', 'Excel']
                     },
                     {
                         date: 'Sep 2013 — Jun 2017',
@@ -369,21 +381,24 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Staff recruitment and performance optimisation',
                             'Gained strong Excel and Google Docs skills',
                             'Developed analytical capabilities'
-                        ]
+                        ],
+                        stack: ['HR', 'Excel', 'Google Docs']
                     },
                     {
                         date: 'Feb 2012 — Nov 2012',
                         title: 'Sales Manager',
                         company: '"International Travel Network" — San Francisco, USA (remote)',
                         desc: 'Sales department at a travel company.',
-                        items: []
+                        items: [],
+                        stack: []
                     },
                     {
                         date: 'Jul 2011 — Feb 2012',
                         title: 'English Language Translator',
                         company: '"Brandimex" LTD — London, UK (remote)',
                         desc: '',
-                        items: []
+                        items: [],
+                        stack: []
                     },
                     {
                         date: 'Feb 2011 — Jul 2011',
@@ -394,7 +409,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Extensive experience communicating with native speakers',
                             'Participated in event and celebration organisation',
                             'Introduction to basic document management concepts'
-                        ]
+                        ],
+                        stack: []
                     }
                 ]
             },
@@ -447,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         name: 'CMS & CRM',
                         items: [
                             { name: 'CS-Cart', level: 'Expert', width: 100, desc: '' },
-                            { name: 'OpenCart', level: 'Expert', width: 90, desc: '' },
+                            { name: 'OpenCart', level: 'Advanced', width: 75, desc: '' },
                             { name: 'PlanFix', level: 'Advanced', width: 75, desc: '' },
                             { name: 'Bitrix24', level: 'Intermediate', width: 60, desc: '' }
                         ]
@@ -465,7 +481,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         items: [
                             { name: 'SEO / AEO Optimisation', level: 'Advanced', width: 80, desc: '' },
                             { name: 'AI Tools', level: 'Advanced', width: 85, desc: '' },
-                            { name: 'Management & Leadership', level: 'Intermediate', width: 60, desc: '' }
+                            { name: 'Management & Leadership', level: 'Advanced', width: 75, desc: '' }
                         ]
                     }
                 ]
@@ -484,14 +500,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function renderExperience(lang) {
         const t = translations[lang].experience;
-        const techStacks = [
-            ['CS-Cart', 'Telegram Bots', 'PostgreSQL', 'Supabase', 'Apps Script', 'HTML/CSS/JS', 'SEO'],
-            ['ETL процессы', 'Автоматизация', 'Google Docs'],
-            ['OpenCart', 'CS-Cart'],
-            ['ETL', 'Аналитика', 'Excel'],
-            ['HR', 'Excel', 'Google Docs'],
-            [], [], []
-        ];
         const timeline = document.querySelector('.timeline');
         timeline.innerHTML = t.jobs.map((job, i) => `
             <div class="timeline-item" style="opacity:0;transform:translateY(20px);transition:all 0.6s ease ${i * 0.1}s">
@@ -502,7 +510,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h4>${job.company}</h4>
                     ${job.desc ? `<p>${job.desc}</p>` : ''}
                     ${job.items.length ? `<ul>${job.items.map(item => `<li>${item}</li>`).join('')}</ul>` : ''}
-                    ${techStacks[i] && techStacks[i].length ? `<div class="tech-stack">${techStacks[i].map(t => `<span>${t}</span>`).join('')}</div>` : ''}
+                    ${job.stack && job.stack.length ? `<div class="tech-stack">${job.stack.map(s => `<span>${s}</span>`).join('')}</div>` : ''}
                 </div>
             </div>
         `).join('');
