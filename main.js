@@ -72,7 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 experience: 'Опыт',
                 projects: 'Проекты',
                 skills: 'Навыки',
-                contact: 'Контакты'
+                contact: 'Контакты',
+                game: 'Игра'
             },
             hero: {
                 subtitle: 'Разработчик, Аналитик, SEO-менеджер',
@@ -286,7 +287,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 experience: 'Experience',
                 projects: 'Projects',
                 skills: 'Skills',
-                contact: 'Contact'
+                contact: 'Contact',
+                game: 'Game'
             },
             hero: {
                 subtitle: 'Developer, Analyst, SEO Manager',
