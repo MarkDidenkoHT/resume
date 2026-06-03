@@ -72,7 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 experience: 'Опыт',
                 projects: 'Проекты',
                 skills: 'Навыки',
-                contact: 'Контакты'
+                contact: 'Контакты',
+                game: 'Игра'
             },
             hero: {
                 subtitle: 'Разработчик, Аналитик, SEO-менеджер',
@@ -102,20 +103,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 jobs: [
                     {
                         date: 'Авг 2022 — Настоящее время',
-                        title: 'Контент-менеджер, Администратор сайта, SEO-менеджер, Программист',
+                        title: 'Контент-менеджер → Администратор сайта → SEO/AEO-менеджер → Разработчик',
                         company: 'ООО "Хайтек" — Тирасполь',
                         desc: 'Работа во всех проектах холдинга (hi-tech.md, keramika.md, piazzaitalia.md, milano.md, casta.md, gruzia.md и другие).',
                         items: [
-                            'Начинал контент-менеджером, быстро стал помогать администратору сайта',
-                            'Через 3 месяца стал выполнять обязанности администратора на всех сайтах',
-                            'Обучился SEO-оптимизации, настройке мета-данных',
-                            'Работа с программистами — определял проблемы и ставил задачи',
-                            'Разработал электронный журнал отпусков с веб-приложением и Telegram ботом',
-                            'Система выросла до 18 модулей с доступом по должности',
-                            'Интеграция с HIK-vision для автоматической проверки посещаемости',
-                            'Перевод на разработку — автоматизация процессов, внутренние инструменты, интеграция ИИ'
+                            'Начинал контент-менеджером, за 3 месяца взял на себя обязанности администратора сайта по всем проектам холдинга',
+                            'Провёл SEO-аудит всех сайтов, выявил системные проблемы и выстроил совместную работу с программистами по их устранению — автоконвертация изображений в WebP, ограничение размера загружаемых файлов, оптимизация структуры URL',
+                            'Разработал и внедрил AEO/GEO-генератор на базе LLM (DeepSeek через OpenRouter) — генерация описаний товаров и категорий по схеме 1+5 (базовый вариант + 5 случайных вариаций для уникальности), автоматическая валидация и коррекция иностранных слов, автоимпорт готовых текстов на сайт через ETL; генерация тегов для карточек товаров',
+                            'Разработал систему автоматической AI-обработки пользовательских отзывов — LLM-агент анализирует, классифицирует и структурирует обратную связь в фоне по расписанию',
+                            'Перевёл бумажный журнал отпусков в Telegram-бот с веб-приложением: сотрудник подаёт заявку, руководитель подтверждает, данные сверяются с посещаемостью HIK-Vision, служба безопасности видит только реальные нарушения; процесс, занимавший 3 дня ручной работы, стал полностью автоматическим',
+                            'Внутреннее приложение выросло до 20+ модулей (логистика, автопарк, рестораны, контроль качества, ценники, стоп-лист, тайм-менеджмент и другие) с разграничением доступа по должностям',
+                            'Разработал алгоритм логистики товаров: автоматическое перераспределение остатков между магазинами на основе данных о продажах и нагрузке, генерация Excel-файлов с инструкциями по перемещению',
+                            'Внедрил автоматическую синхронизацию цен и остатков с прайсов поставщиков, мониторинг наличия товаров с Telegram-уведомлениями при восстановлении стока',
+                            'Разработал инструмент массовой проверки изображений в рич-контенте (cron-задача) — автоматически обнаруживает битые ссылки и уведомляет команду контента',
+                            'Предложил и реализовал на Пасху игру, встроенную в сайт магазина, где можно выиграть сертификат на скидку (4% при 200 очках, 5% при 250, 6% при 300, 7% при 350+); промокод автоматически устанавливался как cookie и применялся на странице оформления заказа с полноценной серверной верификацией через БД пользователей; конверсия в продажи составила 4%'
                         ],
-                        stack: ['CS-Cart', 'OpenCart', 'Telegram Bots', 'PostgreSQL', 'Supabase', 'Apps Script', 'HTML/CSS/JS', 'SEO']
+                        easterGame: true,
+                        stack: ['Node.js', 'Express', 'CS-Cart', 'OpenCart', 'Telegram Bots', 'PostgreSQL', 'Supabase', 'Apps Script', 'HTML/CSS/JS', 'LLM / AI', 'SEO / AEO / GEO', 'ETL', 'WebSocket', 'Docker']
                     },
                     {
                         date: 'Сен 2020 — Июл 2022',
@@ -207,22 +211,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 features_title: 'Ключевые особенности:',
                 features: [
                     'Модульная архитектура с динамической загрузкой 20+ независимых модулей',
-                    'Безопасная аутентификация и защита данных',
-                    'Интеграция с Telegram API для нативного пользовательского опыта',
-                    'Загрузка файлов, email-уведомления, экспорт в Excel',
-                    'Генерация QR-кодов для операционных процессов',
-                    'Облачное хранилище и база данных'
+                    'JWT-аутентификация, ролевой доступ, сессии в Supabase',
+                    'Интеграция с Telegram API — нативный пользовательский опыт без установки',
+                    'Загрузка файлов, email-уведомления (Nodemailer), экспорт в Excel (ExcelJS)',
+                    'Real-time обновления через WebSocket и Supabase Realtime',
+                    'LLM-интеграция: генерация AEO/GEO контента, обработка отзывов, AI-анализ данных',
+                    'Cron-задачи для автоматических фоновых процессов',
+                    'Docker-контейнеризация, rate limiting, Helmet, CORS'
                 ],
                 modules_title: 'Бизнес-модули:',
                 modules: [
-                    { name: 'Контроль посещаемости', desc: 'Рабочие графики, отпуска, больничные, уведомления о нарушениях, аналитика и отчётность, интеграция с HIK-Vision' },
-                    { name: 'Логистика', desc: 'Алгоритм перемещения и перераспределения товаров между магазинами на основании остатков, продаж и нагрузки по магазинам' },
-                    { name: 'Аналитика', desc: 'Дашборды метрик' },
-                    { name: 'Система сообщений', desc: 'Умная система отправки сообщений через Telegram между всеми сотрудниками компании, многосторонняя фильтрация, прикрепление фото и документов, отчётность о просмотре, напоминания, история сообщений, админ-панель' },
-                    { name: 'Контроль качества', desc: 'Проверка изображений в рич-контенте товаров, уведомления о битых изображениях, учёт ошибок в ценниках, онлайн-чат через WebSocket между продавцами и отделом контента' },
-                    { name: 'Автопарк', desc: 'Комплексный дашборд: учёт пробега, страховок, ремонтов и всех расходов по автомобилям; анализ повреждений, ржавчины и царапин; система бронирования автомобилей компании' },
-                    { name: 'Рестораны', desc: 'Play/stop лист, аналитика блюд, модуль для управления дегустациями' },
-                    { name: 'AEO / SEO генератор описаний', desc: 'Модуль с интеграцией Groq AI для генерации AEO-описаний категорий и товаров. Загрузка данных с сайта, фильтрация товаров, настройка промптов по схеме 1+5 (основной + пять рандомных вариаций для уникальности текста), автоматический импорт готовых описаний на сайт по принципу ETL' }
+                    { name: 'Контроль посещаемости', desc: 'Рабочие графики, заявки на отпуск/больничный, автосверка с HIK-Vision, уведомления о нарушениях в Telegram, аналитика и отчётность' },
+                    { name: 'Логистика', desc: 'Алгоритм перераспределения товаров между магазинами: анализирует остатки, продажи и нагрузку, автоматически формирует задания на перемещение и Excel-отчёты для склада' },
+                    { name: 'Мониторинг стоков', desc: 'Подписка на товары под заказ, автоматическое Telegram-уведомление при появлении товара в наличии' },
+                    { name: 'Аналитика', desc: 'Дашборды метрик по модулям, статистика использования, журналы активности' },
+                    { name: 'Система сообщений', desc: 'Корпоративный мессенджер через Telegram: многоуровневая фильтрация, вложения, уведомления о просмотре, напоминания, история сообщений, Broadcast, администрирование' },
+                    { name: 'Контроль качества', desc: 'Проверка изображений в рич-контенте через cron-задачу, уведомления о битых ссылках, учёт ошибок в ценниках, WebSocket-чат между продавцами и контент-отделом' },
+                    { name: 'Автопарк', desc: 'Учёт пробега, страховок, ремонтов и расходов; AI-анализ повреждений, ржавчины и царапин; система бронирования корпоративных автомобилей; синхронизация данных о топливе' },
+                    { name: 'Рестораны', desc: 'Play/stop лист, аналитика блюд, модуль управления дегустациями, отчётность' },
+                    { name: 'AEO / GEO / SEO генератор', desc: 'LLM-генерация описаний товаров и категорий (схема 1+5 для уникальности), автоматическая валидация иностранных слов и их замена, генерация тегов, прямой ETL-импорт на сайт; обработка отзывов AI-агентом по расписанию' },
+                    { name: 'Проверка запчастей (PC Checker)', desc: 'Инструмент для подбора совместимых запчастей и компонентов с маппингом характеристик' },
+                    { name: 'Прочие модули', desc: 'QR-генератор для операционных процессов, генератор ценников, стоп-лист, управление сервисными заявками, расписание сотрудников, модуль аренды, публичные формы и другое' }
                 ]
             },
             skills: {
@@ -239,10 +248,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         name: 'Разработка и программирование',
                         items: [
                             { name: 'HTML / CSS / JavaScript', level: 'Средний', width: 65, desc: '' },
-                            { name: 'Node.js / Express', level: 'Средний', width: 60, desc: '' },
+                            { name: 'Node.js / Express', level: 'Средний', width: 65, desc: '' },
                             { name: 'Telegram Bots / API', level: 'Экспертный', width: 90, desc: '' },
                             { name: 'Apps Script', level: 'Продвинутый', width: 80, desc: '' },
-                            { name: 'PostgreSQL / Supabase', level: 'Средний', width: 60, desc: '' }
+                            { name: 'PostgreSQL / Supabase', level: 'Средний', width: 65, desc: '' },
+                            { name: 'Docker', level: 'Базовый', width: 45, desc: '' }
                         ]
                     },
                     {
@@ -265,7 +275,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         name: 'Другие навыки',
                         items: [
-                            { name: 'SEO / AEO оптимизация', level: 'Продвинутый', width: 80, desc: '' },
+                            { name: 'SEO / AEO / GEO оптимизация', level: 'Продвинутый', width: 80, desc: '' },
+                            { name: 'LLM-интеграция (OpenRouter, DeepSeek)', level: 'Средний', width: 65, desc: '' },
                             { name: 'Работа с ИИ', level: 'Продвинутый', width: 85, desc: '' },
                             { name: 'Менеджмент и руководство', level: 'Продвинутый', width: 75, desc: '' }
                         ]
@@ -286,7 +297,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 experience: 'Experience',
                 projects: 'Projects',
                 skills: 'Skills',
-                contact: 'Contact'
+                contact: 'Contact',
+                game: 'Game'
             },
             hero: {
                 subtitle: 'Developer, Analyst, SEO Manager',
@@ -316,20 +328,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 jobs: [
                     {
                         date: 'Aug 2022 — Present',
-                        title: 'Content Manager, Website Administrator, SEO Manager, Developer',
+                        title: 'Content Manager → Website Admin → SEO/AEO Manager → Developer',
                         company: 'Hi-Tech LLC — Tiraspol',
                         desc: 'Working across all holding projects (hi-tech.md, keramika.md, piazzaitalia.md, milano.md, casta.md, gruzia.md and others).',
                         items: [
-                            'Started as content manager, quickly began assisting the website administrator',
-                            'After 3 months took over administrator duties across all websites',
-                            'Learned SEO optimisation and metadata configuration',
-                            'Collaborated with developers — identified issues and assigned tasks',
-                            'Built an electronic leave management system with a web app and Telegram bot',
-                            'System grew to 18 modules with role-based access control',
-                            'Integrated HIK-Vision for automated attendance tracking',
-                            'Transitioned to development — process automation, internal tools, AI integration'
+                            'Started as content manager; within 3 months took over website administration duties across all holding projects',
+                            'Conducted full SEO audit, identified systemic issues and coordinated with developers to resolve them — automatic WebP image conversion, upload size limits, URL structure optimisation',
+                            'Built an AEO/GEO content generator powered by LLM (DeepSeek via OpenRouter) — product and category descriptions using a 1+5 scheme (one base + five random variations for uniqueness), automatic foreign-word validation and correction, direct ETL import to the site; tag generation for product cards',
+                            'Developed an automated AI review-processing pipeline — an LLM agent analyses, classifies, and structures customer feedback in the background on a cron schedule',
+                            'Replaced a paper leave-request journal with a Telegram bot + web app: employees submit requests, managers approve, data is cross-referenced with HIK-Vision attendance; a process that took 3 days of manual work became fully automated',
+                            'Internal platform grew to 20+ modules (logistics, fleet management, restaurants, quality control, price tags, stop-list, scheduling and more) with role-based access control',
+                            'Built a goods logistics algorithm: automatic redistribution of stock between stores based on sales data and store load, with Excel reports for warehouse staff',
+                            'Implemented automatic price and stock sync from supplier price lists; stock monitoring with Telegram alerts on replenishment',
+                            'Built a bulk rich-content image checker (cron job) — automatically detects broken image links and notifies the content team',
+                            'Proposed and built an Easter game embedded in the store website where shoppers could win a discount voucher (4% at 200 pts, 5% at 250, 6% at 300, 7% at 350+); the promo code was automatically set as a cookie and applied at checkout with full server-side verification via a user DB; sales conversion was 4%'
                         ],
-                        stack: ['CS-Cart', 'OpenCart', 'Telegram Bots', 'PostgreSQL', 'Supabase', 'Apps Script', 'HTML/CSS/JS', 'SEO']
+                        easterGame: true,
+                        stack: ['Node.js', 'Express', 'CS-Cart', 'OpenCart', 'Telegram Bots', 'PostgreSQL', 'Supabase', 'Apps Script', 'HTML/CSS/JS', 'LLM / AI', 'SEO / AEO / GEO', 'ETL', 'WebSocket', 'Docker']
                     },
                     {
                         date: 'Sep 2020 — Jul 2022',
@@ -421,22 +436,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 features_title: 'Key Features:',
                 features: [
                     'Modular architecture with dynamic loading of 20+ independent modules',
-                    'Secure authentication and data protection',
-                    'Telegram API integration for a native user experience',
-                    'File uploads, email notifications, Excel export',
-                    'QR code generation for operational processes',
-                    'Cloud storage and database'
+                    'JWT auth, role-based access control, Supabase session management',
+                    'Telegram API integration for a native experience — no install required',
+                    'File uploads, email notifications (Nodemailer), Excel export (ExcelJS)',
+                    'Real-time updates via WebSocket and Supabase Realtime',
+                    'LLM integration: AEO/GEO content generation, review processing, AI data analysis',
+                    'Cron jobs for automated background processes',
+                    'Docker containerisation, rate limiting, Helmet, CORS'
                 ],
                 modules_title: 'Business Modules:',
                 modules: [
-                    { name: 'Attendance Control', desc: 'Work schedules, leave, sick days, violation notifications, analytics and reporting, HIK-Vision integration' },
-                    { name: 'Logistics', desc: 'Algorithm for moving and redistributing goods between stores based on stock levels, sales, and store load' },
-                    { name: 'Analytics', desc: 'Metrics dashboards' },
-                    { name: 'Messaging System', desc: 'Smart Telegram-based messaging between all company staff, multi-level filtering, photo and document attachments, read receipts, reminders, message history, admin panel' },
-                    { name: 'Quality Control', desc: 'Rich-content image validation, broken image notifications, price tag error tracking, real-time WebSocket chat between sales staff and the content team' },
-                    { name: 'Fleet Management', desc: 'Comprehensive dashboard: mileage, insurance, repairs and all vehicle costs; damage, rust and scratch analysis; company vehicle booking system' },
-                    { name: 'Restaurants', desc: 'Play/stop list, dish analytics, tasting session management module' },
-                    { name: 'AEO / SEO Description Generator', desc: 'Module with Groq AI integration for generating AEO descriptions for categories and products. Loads site data, filters products, configures prompts using a 1+5 scheme (one main + five random variations for text uniqueness), automatically imports finished descriptions to the site via ETL' }
+                    { name: 'Attendance Control', desc: 'Work schedules, leave and sick-day requests, automatic cross-check with HIK-Vision, Telegram violation alerts, analytics and reporting' },
+                    { name: 'Logistics', desc: 'Stock redistribution algorithm: analyses inventory, sales, and store load; auto-generates transfer tasks and Excel reports for warehouse staff' },
+                    { name: 'Stock Monitoring', desc: 'Back-in-stock subscriptions — automatic Telegram notification when a pre-order item becomes available' },
+                    { name: 'Analytics', desc: 'Per-module metrics dashboards, usage statistics, activity logs' },
+                    { name: 'Messaging System', desc: 'Corporate messenger via Telegram: multi-level filtering, attachments, read receipts, reminders, message history, broadcast, admin panel' },
+                    { name: 'Quality Control', desc: 'Rich-content image checker via cron job, broken-link notifications, price-tag error tracking, real-time WebSocket chat between sales staff and the content team' },
+                    { name: 'Fleet Management', desc: 'Mileage, insurance, repairs and all vehicle costs; AI damage/rust/scratch analysis; company vehicle booking; fuel data sync' },
+                    { name: 'Restaurants', desc: 'Play/stop list, dish analytics, tasting session management, reporting' },
+                    { name: 'AEO / GEO / SEO Generator', desc: 'LLM-powered description generation for products and categories (1+5 scheme for uniqueness), automatic foreign-word detection and replacement, tag generation, direct ETL import to the site; scheduled AI review processing agent' },
+                    { name: 'PC Checker', desc: 'Compatible parts and component lookup tool with feature mapping' },
+                    { name: 'Other Modules', desc: 'QR code generator for operations, price-tag generator, stop-list, service request management, employee scheduling, rental module, public forms and more' }
                 ]
             },
             skills: {
@@ -456,7 +476,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             { name: 'Node.js / Express', level: 'Intermediate', width: 60, desc: '' },
                             { name: 'Telegram Bots / API', level: 'Expert', width: 90, desc: '' },
                             { name: 'Apps Script', level: 'Advanced', width: 80, desc: '' },
-                            { name: 'PostgreSQL / Supabase', level: 'Intermediate', width: 60, desc: '' }
+                            { name: 'PostgreSQL / Supabase', level: 'Intermediate', width: 65, desc: '' },
+                            { name: 'Docker', level: 'Basic', width: 45, desc: '' }
                         ]
                     },
                     {
@@ -479,7 +500,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         name: 'Other Skills',
                         items: [
-                            { name: 'SEO / AEO Optimisation', level: 'Advanced', width: 80, desc: '' },
+                            { name: 'SEO / AEO / GEO Optimisation', level: 'Advanced', width: 80, desc: '' },
+                            { name: 'LLM Integration (OpenRouter, DeepSeek)', level: 'Intermediate', width: 65, desc: '' },
                             { name: 'AI Tools', level: 'Advanced', width: 85, desc: '' },
                             { name: 'Management & Leadership', level: 'Advanced', width: 75, desc: '' }
                         ]
@@ -501,6 +523,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function renderExperience(lang) {
         const t = translations[lang].experience;
         const timeline = document.querySelector('.timeline');
+        const easterLabel = lang === 'ru'
+            ? 'Пасхальная игра'
+            : 'Easter Game';
+        const easterHint = lang === 'ru'
+            ? '(демо-версия без сервера — логика купонов, cookie и верификация через БД доступны в production)'
+            : '(serverless demo — coupon logic, cookie injection & DB verification available in production)';
         timeline.innerHTML = t.jobs.map((job, i) => `
             <div class="timeline-item" style="opacity:0;transform:translateY(20px);transition:all 0.6s ease ${i * 0.1}s">
                 <div class="timeline-marker"></div>
@@ -510,6 +538,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h4>${job.company}</h4>
                     ${job.desc ? `<p>${job.desc}</p>` : ''}
                     ${job.items.length ? `<ul>${job.items.map(item => `<li>${item}</li>`).join('')}</ul>` : ''}
+                    ${job.easterGame ? `<div class="easter-game-row"><button class="btn-easter" onclick="openModal(event)">🐣 ${easterLabel}</button><span class="easter-hint">${easterHint}</span></div>` : ''}
                     ${job.stack && job.stack.length ? `<div class="tech-stack">${job.stack.map(s => `<span>${s}</span>`).join('')}</div>` : ''}
                 </div>
             </div>
