@@ -72,8 +72,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 experience: 'Опыт',
                 projects: 'Проекты',
                 skills: 'Навыки',
-                contact: 'Контакты',
-                game: 'Игра'
+                contact: 'Контакты'
+            },
+            timeline: {
+                collapse: 'Свернуть',
+                expand: 'Развернуть'
+            },
+            game: {
+                title: '🐣 Поймай Яйца',
+                sub: 'Лови яйца, избегай красных, открывай подарки!',
+                guideTitle: 'Типы яиц',
+                silver: 'Обычное яйцо',
+                gold: 'Золотое яйцо',
+                red: 'Тухлое яйцо',
+                blue: 'Магическое яйцо',
+                controlsTitle: 'Управление',
+                ctrl1: '← → Стрелки',
+                ctrl2: 'Тап влево / вправо',
+                bonusTitle: 'Бонус',
+                bonusHint: 'Поймай магические яйца, чтобы открыть все 5 подарков — и запустить золотое безумие! 🎁',
+                startBtn: 'Начать игру',
+                gameOver: 'Игра окончена!',
+                playAgain: '🔄 Играть снова',
+                topScores: '🏆 Лучшие результаты',
+                reach: 'Набери',
+                forDiscount: 'очков для скидки! 🥚',
+                pts: 'очк',
+                easterLabel: 'Пасхальная игра',
+                easterHint: '(демо-версия без сервера — логика купонов, cookie и верификация через БД доступны в production)'
             },
             hero: {
                 subtitle: 'Разработчик, Аналитик, SEO-менеджер',
@@ -104,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         date: 'Авг 2022 — Настоящее время',
                         title: 'Контент-менеджер → Администратор сайта → SEO/AEO-менеджер → Разработчик',
-                        company: 'ООО "Хайтек" — Тирасполь',
+                        company: 'ООО «Хайтек» — Тирасполь',
                         desc: 'Работа во всех проектах холдинга (hi-tech.md, keramika.md, piazzaitalia.md, milano.md, casta.md, gruzia.md и другие).',
                         items: [
                             'Начинал контент-менеджером, за 3 месяца взял на себя обязанности администратора сайта по всем проектам холдинга',
@@ -124,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         date: 'Сен 2020 — Июл 2022',
                         title: 'Руководитель отдела контент-менеджмента',
-                        company: 'ООО "ХАББ" (маркетплейс) — Тирасполь',
+                        company: 'ООО «ХАББ» (маркетплейс) — Тирасполь',
                         desc: 'Повышение от контент-менеджера до руководителя отдела за полгода.',
                         items: [
                             'Загрузил ~10,000 позиций на сайт за первые 6 месяцев',
@@ -138,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         date: 'Фев 2018 — Авг 2018',
                         title: 'Контент-менеджер',
-                        company: 'ООО "ТОПРАН" (интернет-магазин спортивной одежды) — Одесса (удалённо)',
+                        company: 'ООО «ТОПРАН» (интернет-магазин спортивной одежды) — Одесса (удалённо)',
                         desc: '',
                         items: [
                             'Работа с товарной базой, заполнение карточек товара',
@@ -151,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         date: 'Июн 2017 — Ноя 2017',
                         title: 'Руководитель отдела аналитики',
-                        company: 'ООО "Профинвестком" (контакт-центр) — Тирасполь',
+                        company: 'ООО «Профинвестком» (контакт-центр) — Тирасполь',
                         desc: 'Повышение от оператора БД до руководителя отдела за 1 месяц.',
                         items: [
                             'Улучшил производительность двух отделов на 25%',
@@ -164,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         date: 'Сен 2013 — Июн 2017',
                         title: 'Региональный HR-менеджер и Супервайзер',
-                        company: 'ООО "Апишопс" (интернет-магазин) — Москва, РФ (региональное представительство в Тирасполе)',
+                        company: 'ООО «Апишопс» (интернет-магазин) — Москва, РФ (региональное представительство в Тирасполе)',
                         desc: 'Повышение из отдела продаж через 1 месяц работы.',
                         items: [
                             'Отточил организаторские навыки',
@@ -177,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         date: 'Фев 2012 — Ноя 2012',
                         title: 'Менеджер отдела продаж',
-                        company: '"International Travel Network" — Сан-Франциско, США (удалённо)',
+                        company: '«International Travel Network» — Сан-Франциско, США (удалённо)',
                         desc: 'Работа в туристической компании, отдел продаж.',
                         items: [],
                         stack: []
@@ -185,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         date: 'Июл 2011 — Фев 2012',
                         title: 'Переводчик английского языка',
-                        company: '"Brandimex" LTD — Лондон, Великобритания (удалённо)',
+                        company: '«Brandimex» LTD — Лондон, Великобритания (удалённо)',
                         desc: '',
                         items: [],
                         stack: []
@@ -193,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         date: 'Фев 2011 — Июл 2011',
                         title: 'Переводчик английского языка',
-                        company: 'ЗАО СК "Шериф" (футбольный клуб) — Тирасполь',
+                        company: 'ЗАО СК «Шериф» (футбольный клуб) — Тирасполь',
                         desc: '',
                         items: [
                             'Широкий опыт общения с носителями языка',
@@ -297,8 +323,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 experience: 'Experience',
                 projects: 'Projects',
                 skills: 'Skills',
-                contact: 'Contact',
-                game: 'Game'
+                contact: 'Contact'
+            },
+            timeline: {
+                collapse: 'Collapse',
+                expand: 'Expand'
+            },
+            game: {
+                title: '🐣 Easter Egg Catch',
+                sub: 'Catch eggs, avoid the red ones, unlock gifts!',
+                guideTitle: 'Egg Guide',
+                silver: 'Regular egg',
+                gold: 'Golden egg',
+                red: 'Rotten egg',
+                blue: 'Magic egg',
+                controlsTitle: 'Controls',
+                ctrl1: '← → Arrow keys',
+                ctrl2: 'Tap left / right',
+                bonusTitle: 'Bonus',
+                bonusHint: 'Catch magic eggs to open all 5 gifts — and trigger a golden frenzy! 🎁',
+                startBtn: 'Start Game',
+                gameOver: 'Game Over!',
+                playAgain: '🔄 Play Again',
+                topScores: '🏆 Top Scores',
+                reach: 'Reach',
+                forDiscount: 'pts for a discount! 🥚',
+                pts: 'pts',
+                easterLabel: 'Easter Game',
+                easterHint: '(serverless demo — coupon logic, cookie injection & DB verification available in production)'
             },
             hero: {
                 subtitle: 'Developer, Analyst, SEO Manager',
@@ -520,32 +572,87 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentLang = 'ru';
 
+    function updateGameOverlay(lang) {
+        const g = translations[lang].game;
+        const overlay = document.getElementById('overlayInner');
+        if (!overlay) return;
+        overlay.querySelector('.overlay-title').textContent = g.title;
+        overlay.querySelector('.overlay-sub').textContent = g.sub;
+        const instrCards = overlay.querySelectorAll('.instr-card');
+        if (instrCards[0]) {
+            instrCards[0].querySelector('h3').textContent = g.guideTitle;
+            const rows = instrCards[0].querySelectorAll('.egg-row span:not(.pts)');
+            if (rows[0]) rows[0].textContent = g.silver;
+            if (rows[1]) rows[1].textContent = g.gold;
+            if (rows[2]) rows[2].textContent = g.red;
+            if (rows[3]) rows[3].textContent = g.blue;
+        }
+        if (instrCards[1]) {
+            instrCards[1].querySelector('h3').textContent = g.controlsTitle;
+            const ctrlSpans = instrCards[1].querySelectorAll('.ctrl-row span:last-child');
+            if (ctrlSpans[0]) ctrlSpans[0].textContent = g.ctrl1;
+            if (ctrlSpans[1]) ctrlSpans[1].textContent = g.ctrl2;
+        }
+        if (instrCards[2]) {
+            instrCards[2].querySelector('h3').textContent = g.bonusTitle;
+            instrCards[2].querySelector('.gift-hint span').textContent = g.bonusHint;
+        }
+        overlay.querySelector('.btn-start').textContent = g.startBtn;
+        const gameOverScreen = document.getElementById('gameOverScreen');
+        if (gameOverScreen) {
+            gameOverScreen.querySelector('h2').textContent = g.gameOver;
+            gameOverScreen.querySelector('.btn-start').textContent = g.playAgain;
+            gameOverScreen.querySelector('#leaderboard h3').textContent = g.topScores;
+        }
+    }
+
     function renderExperience(lang) {
         const t = translations[lang].experience;
+        const tl = translations[lang].timeline;
+        const g = translations[lang].game;
         const timeline = document.querySelector('.timeline');
-        const easterLabel = lang === 'ru'
-            ? 'Пасхальная игра'
-            : 'Easter Game';
-        const easterHint = lang === 'ru'
-            ? '(демо-версия без сервера — логика купонов, cookie и верификация через БД доступны в production)'
-            : '(serverless demo — coupon logic, cookie injection & DB verification available in production)';
         timeline.innerHTML = t.jobs.map((job, i) => `
             <div class="timeline-item" style="opacity:0;transform:translateY(20px);transition:all 0.6s ease ${i * 0.1}s">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
-                    <span class="timeline-date">${job.date}</span>
-                    <h3>${job.title}</h3>
-                    <h4>${job.company}</h4>
-                    ${job.desc ? `<p>${job.desc}</p>` : ''}
-                    ${job.items.length ? `<ul>${job.items.map(item => `<li>${item}</li>`).join('')}</ul>` : ''}
-                    ${job.easterGame ? `<div class="easter-game-row"><button class="btn-easter" onclick="openModal(event)">🐣 ${easterLabel}</button><span class="easter-hint">${easterHint}</span></div>` : ''}
-                    ${job.stack && job.stack.length ? `<div class="tech-stack">${job.stack.map(s => `<span>${s}</span>`).join('')}</div>` : ''}
+                    <div class="timeline-header">
+                        <span class="timeline-date">${job.date}</span>
+                        <button class="timeline-toggle" aria-expanded="true" aria-label="${tl.collapse}">
+                            <span class="toggle-label">${tl.collapse}</span>
+                            <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                        </button>
+                    </div>
+                    <div class="timeline-body">
+                        <h3>${job.title}</h3>
+                        <h4>${job.company}</h4>
+                        ${job.desc ? `<p>${job.desc}</p>` : ''}
+                        ${job.items.length ? `<ul>${job.items.map(item => `<li>${item}</li>`).join('')}</ul>` : ''}
+                        ${job.easterGame ? `<div class="easter-game-row"><button class="btn-easter" onclick="openModal(event)">🐣 ${g.easterLabel}</button><span class="easter-hint">${g.easterHint}</span></div>` : ''}
+                        ${job.stack && job.stack.length ? `<div class="tech-stack">${job.stack.map(s => `<span>${s}</span>`).join('')}</div>` : ''}
+                    </div>
                 </div>
             </div>
         `).join('');
 
         document.querySelectorAll('.timeline-item').forEach(item => {
             observer.observe(item);
+            const btn = item.querySelector('.timeline-toggle');
+            const body = item.querySelector('.timeline-body');
+            btn.addEventListener('click', () => {
+                const expanded = btn.getAttribute('aria-expanded') === 'true';
+                const tl = translations[currentLang].timeline;
+                if (expanded) {
+                    body.classList.add('collapsed');
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.querySelector('.toggle-label').textContent = tl.expand;
+                    btn.querySelector('.toggle-icon').style.transform = 'rotate(180deg)';
+                } else {
+                    body.classList.remove('collapsed');
+                    btn.setAttribute('aria-expanded', 'true');
+                    btn.querySelector('.toggle-label').textContent = tl.collapse;
+                    btn.querySelector('.toggle-icon').style.transform = 'rotate(0deg)';
+                }
+            });
         });
     }
 
@@ -598,7 +705,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const t = translations[lang];
 
         document.querySelectorAll('[data-nav]').forEach(el => {
-            el.textContent = t.nav[el.getAttribute('data-nav')];
+            const key = el.getAttribute('data-nav');
+            if (t.nav[key]) el.textContent = t.nav[key];
         });
 
         document.querySelector('.hero-subtitle').textContent = t.hero.subtitle;
@@ -635,6 +743,8 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('[data-contact="phone"]').textContent = t.contact.phone;
         document.querySelector('[data-contact="telegram"]').textContent = t.contact.telegram;
         document.querySelector('.contact-preferred').textContent = t.contact.preferred;
+
+        updateGameOverlay(lang);
     }
 
     const languageBtn = document.querySelector('.language-btn');

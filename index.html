@@ -17,7 +17,6 @@
                 <li><a href="#projects" data-nav="projects">Проекты</a></li>
                 <li><a href="#skills" data-nav="skills">Навыки</a></li>
                 <li><a href="#contact" data-nav="contact">Контакты</a></li>
-                <li><a href="#" id="openGameModal" data-nav="game">Игра</a></li>
             </ul>
             <div class="language-switcher">
                 <button class="language-btn">
@@ -44,8 +43,8 @@
             <div id="gameWrapper">
                 <div id="overlay">
                     <div id="overlayInner">
-                        <div class="overlay-title">🐣 Easter Egg Catch</div>
-                        <div class="overlay-sub">Catch eggs, avoid the red ones, unlock gifts!</div>
+                        <div class="overlay-title">🐣 Поймай Яйца</div>
+                        <div class="overlay-sub">Лови яйца, избегай красных, открывай подарки!</div>
                         <div class="bunny-stage" id="bunnyStage">
                             <img class="bunny bunny-left" id="imgBunnyLeft" src="" alt="">
                             <img class="bunny bunny-right" id="imgBunnyRight" src="" alt="">
@@ -54,37 +53,37 @@
                             <img class="egg-fall" id="ef3" src="" style="left:72%;animation-delay:0.9s">
                         </div>
                         <div class="instr-card">
-                            <h3>Egg Guide</h3>
-                            <div class="egg-row"><img id="iSilver" src=""><span>Regular egg</span><span class="pts plus">+1 pt</span></div>
-                            <div class="egg-row"><img id="iGold" src=""><span>Golden egg</span><span class="pts plus">+5 pts</span></div>
-                            <div class="egg-row"><img id="iRed" src=""><span>Rotten egg</span><span class="pts minus">−5 pts</span></div>
-                            <div class="egg-row"><img id="iBlue" src=""><span>Magic egg</span><span class="pts blue">+2 sec</span></div>
+                            <h3>Типы яиц</h3>
+                            <div class="egg-row"><img id="iSilver" src=""><span>Обычное яйцо</span><span class="pts plus">+1 pt</span></div>
+                            <div class="egg-row"><img id="iGold" src=""><span>Золотое яйцо</span><span class="pts plus">+5 pts</span></div>
+                            <div class="egg-row"><img id="iRed" src=""><span>Тухлое яйцо</span><span class="pts minus">−5 pts</span></div>
+                            <div class="egg-row"><img id="iBlue" src=""><span>Магическое яйцо</span><span class="pts blue">+2 sec</span></div>
                         </div>
                         <div class="instr-card">
-                            <h3>Controls</h3>
-                            <div class="ctrl-row">💻 <span class="ctrl-badge">← →</span> Arrow keys</div>
-                            <div class="ctrl-row">📱 <span class="ctrl-badge">Tap left / right</span> on screen</div>
+                            <h3>Управление</h3>
+                            <div class="ctrl-row">💻 <span class="ctrl-badge">← →</span> <span>← → Стрелки</span></div>
+                            <div class="ctrl-row">📱 <span class="ctrl-badge">Tap left / right</span> <span>Тап влево / вправо</span></div>
                         </div>
                         <div class="instr-card">
-                            <h3>Bonus</h3>
+                            <h3>Бонус</h3>
                             <div class="gift-hint">
                                 <img id="iBlue2" src="">
-                                <span>Catch magic eggs to open all 5 gifts — and trigger a golden frenzy! 🎁</span>
+                                <span>Поймай магические яйца, чтобы открыть все 5 подарков — и запустить золотое безумие! 🎁</span>
                             </div>
                         </div>
-                        <button class="btn-start" onclick="startGame()">Start Game</button>
+                        <button class="btn-start" onclick="startGame()">Начать игру</button>
                     </div>
                 </div>
                 <div id="gameOverScreen">
                     <img class="final-img" id="imgFinal" src="" alt="">
-                    <h2>Game Over!</h2>
+                    <h2>Игра окончена!</h2>
                     <div id="finalScore">0</div>
                     <div id="couponResult"></div>
                     <div id="leaderboard">
-                        <h3>🏆 Top Scores</h3>
+                        <h3>🏆 Лучшие результаты</h3>
                         <div id="lbList"></div>
                     </div>
-                    <button class="btn-start" onclick="restartGame()" style="margin-top:0;">🔄 Play Again</button>
+                    <button class="btn-start" onclick="restartGame()" style="margin-top:0;">🔄 Играть снова</button>
                 </div>
                 <div id="scoreboard">
                     <span class="score-chip">🥚 <span id="sbScore">0</span></span>
@@ -258,6 +257,7 @@
     </section>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap');
         *,*::before,*::after{box-sizing:border-box;}
         #gameModal{
             display:none;
@@ -305,10 +305,9 @@
             --sky:#b8e4ff;
             --cream:#fffdf5;
             --radius:18px;
-            --font-head:'Fredoka One',cursive;
-            --font-body:'Nunito',sans-serif;
+            --font-head:'DM Sans',sans-serif;
+            --font-body:'Inter',sans-serif;
         }
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap');
         #gameWrapper{
             position:relative;
             width:350px;
@@ -337,6 +336,7 @@
             backdrop-filter:blur(6px);
             font-family:var(--font-head);
             font-size:17px;
+            font-weight:700;
             color:#2e7d32;
             position:relative;
             z-index:2;
@@ -423,14 +423,17 @@
         }
         .overlay-title{
             font-family:var(--font-head);
-            font-size:24px;
+            font-size:22px;
+            font-weight:800;
             color:#2e7d32;
             margin-bottom:2px;
+            letter-spacing:-0.3px;
         }
         .overlay-sub{
             font-size:13px;
             color:#888;
             margin-bottom:10px;
+            font-weight:500;
         }
         .bunny-stage{
             position:relative;
@@ -482,20 +485,23 @@
         }
         .instr-card h3{
             font-family:var(--font-head);
+            font-weight:700;
             color:#2e7d32;
-            font-size:15px;
+            font-size:14px;
             margin-bottom:4px;
+            letter-spacing:0.2px;
+            text-transform:uppercase;
         }
         .egg-row{
             display:flex;
             align-items:center;
             gap:10px;
             margin:2px 0;
-            font-size:14px;
-            font-weight:700;
+            font-size:13px;
+            font-weight:600;
         }
         .egg-row img{height:28px;}
-        .egg-row .pts{margin-left:auto;font-family:var(--font-head);}
+        .egg-row .pts{margin-left:auto;font-family:var(--font-head);font-weight:700;}
         .pts.plus{color:#2e7d32;}.pts.minus{color:#e53935;}.pts.blue{color:#1565c0;}
         .ctrl-row{
             display:flex;
@@ -503,10 +509,11 @@
             margin:2px 0;
             font-size:13px;
             align-items:center;
+            font-weight:500;
         }
         .ctrl-badge{
             background:#e8f5e9;
-            border-radius:8px;
+            border-radius:6px;
             padding:3px 10px;
             font-weight:700;
             color:#388e3c;
@@ -518,6 +525,7 @@
             gap:8px;
             font-size:13px;
             margin-top:6px;
+            font-weight:500;
         }
         .gift-hint img{width:28px;}
         .btn-start{
@@ -526,9 +534,11 @@
             background:linear-gradient(135deg,#43a047,#66bb6a);
             color:#fff;
             border:none;
-            border-radius:14px;
+            border-radius:12px;
             font-family:var(--font-head);
-            font-size:20px;
+            font-size:17px;
+            font-weight:700;
+            letter-spacing:0.3px;
             cursor:pointer;
             box-shadow:0 4px 14px rgba(67,160,71,0.4);
             transition:transform 0.12s,box-shadow 0.12s;
@@ -553,13 +563,15 @@
         #gameOverScreen img.final-img{width:110px;margin-bottom:10px;}
         #gameOverScreen h2{
             font-family:var(--font-head);
-            font-size:26px;
+            font-size:24px;
+            font-weight:800;
             color:#2e7d32;
             margin-bottom:6px;
         }
         #finalScore{
             font-family:var(--font-head);
             font-size:36px;
+            font-weight:800;
             color:#f9c515;
             text-shadow:0 2px 0 #e0a800;
             margin-bottom:16px;
@@ -567,12 +579,12 @@
         #leaderboard{
             width:100%;
             background:#fff;
-            border-radius:14px;
+            border-radius:12px;
             padding:14px 16px;
             box-shadow:0 2px 10px rgba(0,0,0,0.07);
             margin-bottom:16px;
         }
-        #leaderboard h3{font-family:var(--font-head);color:#2e7d32;margin-bottom:10px;font-size:17px;}
+        #leaderboard h3{font-family:var(--font-head);font-weight:700;color:#2e7d32;margin-bottom:10px;font-size:16px;}
         #couponResult{margin:8px 0 4px;}
         .coupon-banner{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border-radius:10px;padding:10px 14px;font-size:14px;text-align:center;line-height:1.5;}
         .coupon-banner strong{font-size:16px;}
@@ -582,20 +594,21 @@
             display:flex;align-items:center;gap:10px;
             padding:5px 0;
             border-bottom:1px solid #f0f0f0;
-            font-size:14px;font-weight:700;
+            font-size:14px;font-weight:600;
         }
         .lb-entry:last-child{border-bottom:none;}
         .lb-rank{
             width:24px;height:24px;border-radius:50%;
             background:#e8f5e9;color:#388e3c;
             font-family:var(--font-head);
+            font-weight:700;
             display:flex;align-items:center;justify-content:center;
             font-size:13px;flex-shrink:0;
         }
         .lb-rank.gold{background:#fff9c4;color:#f9a825;}
         .lb-rank.silver{background:#f5f5f5;color:#757575;}
         .lb-rank.bronze{background:#fbe9e7;color:#bf360c;}
-        .lb-score{margin-left:auto;font-family:var(--font-head);color:#2e7d32;}
+        .lb-score{margin-left:auto;font-family:var(--font-head);font-weight:700;color:#2e7d32;}
     </style>
 
     <script>
@@ -835,7 +848,6 @@
         };
 
         const gameModal = document.getElementById('gameModal');
-        const openGameBtn = document.getElementById('openGameModal');
         const closeGameBtn = document.getElementById('gameModalClose');
         const modalBackdrop = document.getElementById('gameModalBackdrop');
 
@@ -851,7 +863,6 @@
             stopGame();
         };
 
-        openGameBtn.addEventListener('click', openModal);
         closeGameBtn.addEventListener('click', closeModal);
         modalBackdrop.addEventListener('click', closeModal);
         document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
