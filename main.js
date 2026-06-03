@@ -137,10 +137,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             'С этого и начался путь разработчика: перевёл бумажный журнал отпусков в Telegram-бот с веб-приложением — сотрудник подаёт заявку, руководитель подтверждает, данные сверяются с посещаемостью HIK-Vision, служба безопасности видит только реальные нарушения; процесс, занимавший 3 дня ручной работы, стал полностью автоматическим. Это решение стало первым из множества — со временем к нему добавились другие модули',
                             'Внутреннее приложение выросло до 20+ модулей (логистика, автопарк, рестораны, контроль качества, ценники, стоп-лист, тайм-менеджмент и другие) с разграничением доступа по должностям',
                             'Разработал и внедрил AEO/GEO-генератор на базе LLM (DeepSeek через OpenRouter) — генерация описаний товаров и категорий по схеме 1+5 (базовый вариант + 5 случайных вариаций для уникальности), автоматическая валидация и коррекция иностранных слов, автоимпорт готовых текстов на сайт через ETL; генерация тегов для карточек товаров',
-                            'Разработал систему автоматической AI-обработки пользовательских отзывов — LLM-агент анализирует, классифицирует и структурирует обратную связь в фоне по расписанию',
                             'Разработал алгоритм логистики товаров: автоматическое перераспределение остатков между магазинами на основе данных о продажах и нагрузке, генерация Excel-файлов с инструкциями по перемещению',
-                            'Внедрил автоматическую синхронизацию цен и остатков с прайсов поставщиков, мониторинг наличия товаров с Telegram-уведомлениями при восстановлении стока',
-                            'Разработал инструмент массовой проверки изображений в рич-контенте (cron-задача) — автоматически обнаруживает битые ссылки и уведомляет команду контента',
+                            'Внедрил систему мониторинга наличия товаров с Telegram-уведомлениями при поступлении',
+                            'Разработал инструмент массовой проверки изображений в рич-контенте (cron-задача) — автоматически обнаруживает битые ссылки и уведомляет отдел контента',
                             'Предложил и реализовал на Пасху игру, встроенную в сайт магазина, где можно выиграть сертификат на скидку (4% при 200 очках, 5% при 250, 6% при 300, 7% при 350+); промокод автоматически устанавливался как cookie и применялся на странице оформления заказа с полноценной серверной верификацией через БД пользователей; конверсия в продажи составила 4%'
                         ],
                         easterGame: true,
@@ -152,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         company: 'ООО «ХАББ» (маркетплейс) — Тирасполь',
                         desc: 'Повышение от контент-менеджера до руководителя отдела за полгода.',
                         items: [
-                            'Загрузил ~10,000 позиций на сайт за первые 6 месяцев',
+                            'Загрузил ~10,000 позиций на сайт за первые 6 месяцев при помощи парсинга и импорта',
                             'Разработал шаблон для импорта данных, повысив скорость обработки',
                             'Руководил 4 контент-менеджерами',
                             'Разработал систему взаимодействия между партнерами и отделом',
@@ -357,9 +356,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             'This is where the developer journey began: replaced a paper leave-request journal with a Telegram bot + web app — employees submit requests, managers approve, data is cross-referenced with HIK-Vision attendance; a process that took 3 days of manual work became fully automated. This solution was the first of many — over time, more modules were added to it',
                             'Internal platform grew to 20+ modules (logistics, fleet management, restaurants, quality control, price tags, stop-list, scheduling and more) with role-based access control',
                             'Built an AEO/GEO content generator powered by LLM (DeepSeek via OpenRouter) — product and category descriptions using a 1+5 scheme (one base + five random variations for uniqueness), automatic foreign-word validation and correction, direct ETL import to the site; tag generation for product cards',
-                            'Developed an automated AI review-processing pipeline — an LLM agent analyses, classifies, and structures customer feedback in the background on a cron schedule',
                             'Built a goods logistics algorithm: automatic redistribution of stock between stores based on sales data and store load, with Excel reports for warehouse staff',
-                            'Implemented automatic price and stock sync from supplier price lists; stock monitoring with Telegram alerts on replenishment',
+                            'Implemented stock monitoring with Telegram alerts on replenishment',
                             'Built a bulk rich-content image checker (cron job) — automatically detects broken image links and notifies the content team',
                             'Proposed and built an Easter game embedded in the store website where shoppers could win a discount voucher (4% at 200 pts, 5% at 250, 6% at 300, 7% at 350+); the promo code was automatically set as a cookie and applied at checkout with full server-side verification via a user DB; sales conversion was 4%'
                         ],
@@ -372,7 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         company: 'HABB LLC (marketplace) — Tiraspol',
                         desc: 'Promoted from content manager to department head in six months.',
                         items: [
-                            'Uploaded ~10,000 product listings in the first 6 months',
+                            'Uploaded ~10,000 product listings in the first 6 months via parsing and import',
                             'Developed a data import template, significantly increasing processing speed',
                             'Managed a team of 4 content managers',
                             'Built a workflow system between partners and the department',
