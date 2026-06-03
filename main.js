@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
             nav: {
                 about: 'Обо мне',
                 experience: 'Опыт',
-                projects: 'Проекты',
                 skills: 'Навыки',
                 contact: 'Контакты'
             },
@@ -135,10 +134,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         items: [
                             'Начинал контент-менеджером, за 3 месяца взял на себя обязанности администратора сайта по всем проектам холдинга',
                             'Провёл SEO-аудит всех сайтов, выявил системные проблемы и выстроил совместную работу с программистами по их устранению — автоконвертация изображений в WebP, ограничение размера загружаемых файлов, оптимизация структуры URL',
+                            'С этого и начался путь разработчика: перевёл бумажный журнал отпусков в Telegram-бот с веб-приложением — сотрудник подаёт заявку, руководитель подтверждает, данные сверяются с посещаемостью HIK-Vision, служба безопасности видит только реальные нарушения; процесс, занимавший 3 дня ручной работы, стал полностью автоматическим. Это решение стало первым из множества — со временем к нему добавились другие модули',
+                            'Внутреннее приложение выросло до 20+ модулей (логистика, автопарк, рестораны, контроль качества, ценники, стоп-лист, тайм-менеджмент и другие) с разграничением доступа по должностям',
                             'Разработал и внедрил AEO/GEO-генератор на базе LLM (DeepSeek через OpenRouter) — генерация описаний товаров и категорий по схеме 1+5 (базовый вариант + 5 случайных вариаций для уникальности), автоматическая валидация и коррекция иностранных слов, автоимпорт готовых текстов на сайт через ETL; генерация тегов для карточек товаров',
                             'Разработал систему автоматической AI-обработки пользовательских отзывов — LLM-агент анализирует, классифицирует и структурирует обратную связь в фоне по расписанию',
-                            'Перевёл бумажный журнал отпусков в Telegram-бот с веб-приложением: сотрудник подаёт заявку, руководитель подтверждает, данные сверяются с посещаемостью HIK-Vision, служба безопасности видит только реальные нарушения; процесс, занимавший 3 дня ручной работы, стал полностью автоматическим',
-                            'Внутреннее приложение выросло до 20+ модулей (логистика, автопарк, рестораны, контроль качества, ценники, стоп-лист, тайм-менеджмент и другие) с разграничением доступа по должностям',
                             'Разработал алгоритм логистики товаров: автоматическое перераспределение остатков между магазинами на основе данных о продажах и нагрузке, генерация Excel-файлов с инструкциями по перемещению',
                             'Внедрил автоматическую синхронизацию цен и остатков с прайсов поставщиков, мониторинг наличия товаров с Telegram-уведомлениями при восстановлении стока',
                             'Разработал инструмент массовой проверки изображений в рич-контенте (cron-задача) — автоматически обнаруживает битые ссылки и уведомляет команду контента',
@@ -230,36 +229,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 ]
             },
-            projects: {
-                title: 'Hi-Tech App',
-                subtitle: 'Внутреннее приложение компании',
-                desc: 'Разработал многофункциональную Telegram Web App платформу для управления и автоматизации бизнес-процессов.',
-                features_title: 'Ключевые особенности:',
-                features: [
-                    'Модульная архитектура с динамической загрузкой 20+ независимых модулей',
-                    'JWT-аутентификация, ролевой доступ, сессии в Supabase',
-                    'Интеграция с Telegram API — нативный пользовательский опыт без установки',
-                    'Загрузка файлов, email-уведомления (Nodemailer), экспорт в Excel (ExcelJS)',
-                    'Real-time обновления через WebSocket и Supabase Realtime',
-                    'LLM-интеграция: генерация AEO/GEO контента, обработка отзывов, AI-анализ данных',
-                    'Cron-задачи для автоматических фоновых процессов',
-                    'Docker-контейнеризация, rate limiting, Helmet, CORS'
-                ],
-                modules_title: 'Бизнес-модули:',
-                modules: [
-                    { name: 'Контроль посещаемости', desc: 'Рабочие графики, заявки на отпуск/больничный, автосверка с HIK-Vision, уведомления о нарушениях в Telegram, аналитика и отчётность' },
-                    { name: 'Логистика', desc: 'Алгоритм перераспределения товаров между магазинами: анализирует остатки, продажи и нагрузку, автоматически формирует задания на перемещение и Excel-отчёты для склада' },
-                    { name: 'Мониторинг стоков', desc: 'Подписка на товары под заказ, автоматическое Telegram-уведомление при появлении товара в наличии' },
-                    { name: 'Аналитика', desc: 'Дашборды метрик по модулям, статистика использования, журналы активности' },
-                    { name: 'Система сообщений', desc: 'Корпоративный мессенджер через Telegram: многоуровневая фильтрация, вложения, уведомления о просмотре, напоминания, история сообщений, Broadcast, администрирование' },
-                    { name: 'Контроль качества', desc: 'Проверка изображений в рич-контенте через cron-задачу, уведомления о битых ссылках, учёт ошибок в ценниках, WebSocket-чат между продавцами и контент-отделом' },
-                    { name: 'Автопарк', desc: 'Учёт пробега, страховок, ремонтов и расходов; AI-анализ повреждений, ржавчины и царапин; система бронирования корпоративных автомобилей; синхронизация данных о топливе' },
-                    { name: 'Рестораны', desc: 'Play/stop лист, аналитика блюд, модуль управления дегустациями, отчётность' },
-                    { name: 'AEO / GEO / SEO генератор', desc: 'LLM-генерация описаний товаров и категорий (схема 1+5 для уникальности), автоматическая валидация иностранных слов и их замена, генерация тегов, прямой ETL-импорт на сайт; обработка отзывов AI-агентом по расписанию' },
-                    { name: 'Проверка запчастей (PC Checker)', desc: 'Инструмент для подбора совместимых запчастей и компонентов с маппингом характеристик' },
-                    { name: 'Прочие модули', desc: 'QR-генератор для операционных процессов, генератор ценников, стоп-лист, управление сервисными заявками, расписание сотрудников, модуль аренды, публичные формы и другое' }
-                ]
-            },
             skills: {
                 title: 'Навыки и технологии',
                 categories: [
@@ -321,7 +290,6 @@ document.addEventListener('DOMContentLoaded', function() {
             nav: {
                 about: 'About',
                 experience: 'Experience',
-                projects: 'Projects',
                 skills: 'Skills',
                 contact: 'Contact'
             },
@@ -386,10 +354,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         items: [
                             'Started as content manager; within 3 months took over website administration duties across all holding projects',
                             'Conducted full SEO audit, identified systemic issues and coordinated with developers to resolve them — automatic WebP image conversion, upload size limits, URL structure optimisation',
+                            'This is where the developer journey began: replaced a paper leave-request journal with a Telegram bot + web app — employees submit requests, managers approve, data is cross-referenced with HIK-Vision attendance; a process that took 3 days of manual work became fully automated. This solution was the first of many — over time, more modules were added to it',
+                            'Internal platform grew to 20+ modules (logistics, fleet management, restaurants, quality control, price tags, stop-list, scheduling and more) with role-based access control',
                             'Built an AEO/GEO content generator powered by LLM (DeepSeek via OpenRouter) — product and category descriptions using a 1+5 scheme (one base + five random variations for uniqueness), automatic foreign-word validation and correction, direct ETL import to the site; tag generation for product cards',
                             'Developed an automated AI review-processing pipeline — an LLM agent analyses, classifies, and structures customer feedback in the background on a cron schedule',
-                            'Replaced a paper leave-request journal with a Telegram bot + web app: employees submit requests, managers approve, data is cross-referenced with HIK-Vision attendance; a process that took 3 days of manual work became fully automated',
-                            'Internal platform grew to 20+ modules (logistics, fleet management, restaurants, quality control, price tags, stop-list, scheduling and more) with role-based access control',
                             'Built a goods logistics algorithm: automatic redistribution of stock between stores based on sales data and store load, with Excel reports for warehouse staff',
                             'Implemented automatic price and stock sync from supplier price lists; stock monitoring with Telegram alerts on replenishment',
                             'Built a bulk rich-content image checker (cron job) — automatically detects broken image links and notifies the content team',
@@ -479,36 +447,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         ],
                         stack: []
                     }
-                ]
-            },
-            projects: {
-                title: 'Hi-Tech App',
-                subtitle: 'Internal Company Platform',
-                desc: 'Built a multifunctional Telegram Web App platform for business process management and automation.',
-                features_title: 'Key Features:',
-                features: [
-                    'Modular architecture with dynamic loading of 20+ independent modules',
-                    'JWT auth, role-based access control, Supabase session management',
-                    'Telegram API integration for a native experience — no install required',
-                    'File uploads, email notifications (Nodemailer), Excel export (ExcelJS)',
-                    'Real-time updates via WebSocket and Supabase Realtime',
-                    'LLM integration: AEO/GEO content generation, review processing, AI data analysis',
-                    'Cron jobs for automated background processes',
-                    'Docker containerisation, rate limiting, Helmet, CORS'
-                ],
-                modules_title: 'Business Modules:',
-                modules: [
-                    { name: 'Attendance Control', desc: 'Work schedules, leave and sick-day requests, automatic cross-check with HIK-Vision, Telegram violation alerts, analytics and reporting' },
-                    { name: 'Logistics', desc: 'Stock redistribution algorithm: analyses inventory, sales, and store load; auto-generates transfer tasks and Excel reports for warehouse staff' },
-                    { name: 'Stock Monitoring', desc: 'Back-in-stock subscriptions — automatic Telegram notification when a pre-order item becomes available' },
-                    { name: 'Analytics', desc: 'Per-module metrics dashboards, usage statistics, activity logs' },
-                    { name: 'Messaging System', desc: 'Corporate messenger via Telegram: multi-level filtering, attachments, read receipts, reminders, message history, broadcast, admin panel' },
-                    { name: 'Quality Control', desc: 'Rich-content image checker via cron job, broken-link notifications, price-tag error tracking, real-time WebSocket chat between sales staff and the content team' },
-                    { name: 'Fleet Management', desc: 'Mileage, insurance, repairs and all vehicle costs; AI damage/rust/scratch analysis; company vehicle booking; fuel data sync' },
-                    { name: 'Restaurants', desc: 'Play/stop list, dish analytics, tasting session management, reporting' },
-                    { name: 'AEO / GEO / SEO Generator', desc: 'LLM-powered description generation for products and categories (1+5 scheme for uniqueness), automatic foreign-word detection and replacement, tag generation, direct ETL import to the site; scheduled AI review processing agent' },
-                    { name: 'PC Checker', desc: 'Compatible parts and component lookup tool with feature mapping' },
-                    { name: 'Other Modules', desc: 'QR code generator for operations, price-tag generator, stop-list, service request management, employee scheduling, rental module, public forms and more' }
                 ]
             },
             skills: {
@@ -690,17 +628,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function renderProjects(lang) {
-        const t = translations[lang].projects;
-        document.querySelector('.section-title-projects').textContent = t.title;
-        document.querySelector('.project-subtitle').textContent = t.subtitle;
-        document.querySelector('.project-description').textContent = t.desc;
-        document.querySelector('.features-title').textContent = t.features_title;
-        document.querySelector('.features-list').innerHTML = t.features.map(f => `<li>${f}</li>`).join('');
-        document.querySelector('.modules-title').textContent = t.modules_title;
-        document.querySelector('.modules-list').innerHTML = t.modules.map(m => `<li><strong>${m.name}:</strong> ${m.desc}</li>`).join('');
-    }
-
     function applyTranslation(lang) {
         const t = translations[lang];
 
@@ -733,7 +660,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.section-title-experience').textContent = t.experience.title;
         renderExperience(lang);
 
-        renderProjects(lang);
 
         document.querySelector('.section-title-skills').textContent = t.skills.title;
         renderSkills(lang);
